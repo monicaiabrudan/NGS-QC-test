@@ -324,8 +324,8 @@
   {
     "objectID": "course_modules/NGS_Data_Formats_and_QC_test/data_formats.html",
     "href": "course_modules/NGS_Data_Formats_and_QC_test/data_formats.html",
-    "title": "NGS Bioinformatics - test ",
+    "title": "Data formats",
     "section": "",
-    "text": "Data formats\n0bjectives\nTheoretical background\n\nKey NGS data formats\n\nFASTA\nFASTQ\nSAM_BAM\nCRAM\nVCF\nSummary\n\n\nPractical exercises\nSummary"
+    "text": "Data formats\n\n0bjectives\n\n\nTheoretical background: Key NGS data formats\n\n\nFASTA\n\nFASTA - reference genome\n&gt;1 dna:chromosome chromosome:GRCh37:1:1:249250621:1\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nTATTCAAAAAATTGAGAATTTCTGACCACTTAACAAACCCACAGAAAATCCACCCGAGTG\nCACTGAGCACGCCAGAAATCAGGTGGCCTCAAAGAGCTGCTCCCACCTGAAGGAGACGCG\nCTGCTGCTGCTGTCGTCCTGCCTGGCGCCTTGGCCTACAGGGGCCGCGGTTGAGGGTGGG\nAGTGGGGGTGCACTGGCCAGCACCTCAGGAGCTGGGGGTGGTGGTGGGGGCGGTGGGGGT\nGGTGTTAGTACCCCATCTTGTAGGTCTGAAACACAAAGTGTGGGGTGTCTAGGGAAGAAG\n&gt;2\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN\nAAAAGCATTTATGCTACAAATTACTATGGTAATTATGCTACAAATTTATGGTACCATAAA\nTTACCATAGTAATTTGTAGCATAAATTTGTACTATGGTACAAATTACATGGGAGAGTGAA\nGGTGGGTTAAAACATTCATATTAAAGAACTTCCACTCAGATTGCAAGAAAAGAGAGAGGA\nATGGAGATGGTAGCACAAGTCCCTACAATAAAAGTAGATGTTTTGAGATCAGTTCTATTT\n\n\n\nFASTQ\n\n\nFASTQ format\n\nSimple format for raw unaligned sequencing reads\n\n\n\nPaired-end sequencing: two FASTQ files or one interleaved file\n\n\nQuality encoded in ASCII characters with decimal\nASCII code of “A” is 65, the corresponding quality is Q = 65− 33 = 32\n\nQuality = Phred-scaled probability of an error\n\n\n\n\nSAM_BAM\n\n\n\n\nCRAM\n\n\n\n\nVCF\n\n\n\n\nSummary\n\n\n\n\nTips for instructors: how to present the theoretical concepts on file formats\n\n\nPractical exercises\n\n\nTips for instructors: how to offer assistance during the practical exercises\n\n\nSummary"
   }
 ]

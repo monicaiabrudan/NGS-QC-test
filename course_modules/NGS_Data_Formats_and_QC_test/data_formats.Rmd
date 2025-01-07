@@ -1,23 +1,67 @@
-Data formats
+# Data formats
 
-0bjectives
+### 0bjectives
 
-Theoretical background
+### Theoretical background: Key NGS data formats
 
--   Key NGS data formats
+<details>
 
-    -   [FASTA](/course_modules/NGS_Data_Formats_and_QC_test/FASTA)
+<summary>FASTA</summary>
 
-    -   [FASTQ](/FASTQ)
+```{r child-document, child = "FASTA.Rmd"}
+```
 
-    -   SAM_BAM
+</details>
 
-    -   CRAM
+<details>
 
-    -   VCF
+<summary>FASTQ</summary>
 
-    -   Summary
+```{r child-document, child = "FASTQ.Rmd"}
+```
 
-Practical exercises
+</details>
 
-Summary
+<details>
+
+<summary>SAM_BAM</summary>
+
+```{r child-document, child = "SAM_BAM.Rmd"}
+```
+
+</details>
+
+<details>
+
+<summary>CRAM</summary>
+
+```{r child-document, child = "CRAM.Rmd"}
+```
+
+</details>
+
+<details>
+
+<summary>VCF</summary>
+
+```{r child-document, child = "VCF.Rmd"}
+```
+
+</details>
+
+<details>
+
+<summary>Summary</summary>
+
+```{r child-document, child = "Summary.Rmd"}
+```
+
+</details>
+
+### Tips for instructors: how to present the theoretical concepts on file formats
+
+### Practical exercises
+
+### Tips for instructors:  how to offer assistance during the practical exercises
+
+### Summary

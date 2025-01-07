@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "NGS Bioinformatics - test "
+  title: "NGS Bioinformatics - training materials for instructors - test "
   navbar:
     left:
       - href: index.qmd

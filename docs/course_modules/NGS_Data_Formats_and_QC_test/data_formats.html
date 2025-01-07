@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>NGS Bioinformatics - test</title>
+<title>NGS Bioinformatics - training materials for instructors - test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">NGS Bioinformatics - test</span>
+    <span class="navbar-title">NGS Bioinformatics - training materials for instructors - test</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -137,24 +137,92 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Data formats</p>
-<p>0bjectives</p>
-<p>Theoretical background</p>
+<section id="data-formats" class="level1">
+<h1>Data formats</h1>
+<section id="bjectives" class="level3">
+<h3 class="anchored" data-anchor-id="bjectives">0bjectives</h3>
+</section>
+<section id="theoretical-background-key-ngs-data-formats" class="level3">
+<h3 class="anchored" data-anchor-id="theoretical-background-key-ngs-data-formats">Theoretical background: Key NGS data formats</h3>
+<details>
+<summary>
+FASTA
+</summary>
+<p>FASTA - reference genome</p>
+<p>&gt;1 dna:chromosome chromosome:GRCh37:1:1:249250621:1</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>TATTCAAAAAATTGAGAATTTCTGACCACTTAACAAACCCACAGAAAATCCACCCGAGTG</p>
+<p>CACTGAGCACGCCAGAAATCAGGTGGCCTCAAAGAGCTGCTCCCACCTGAAGGAGACGCG</p>
+<p>CTGCTGCTGCTGTCGTCCTGCCTGGCGCCTTGGCCTACAGGGGCCGCGGTTGAGGGTGGG</p>
+<p>AGTGGGGGTGCACTGGCCAGCACCTCAGGAGCTGGGGGTGGTGGTGGGGGCGGTGGGGGT</p>
+<p>GGTGTTAGTACCCCATCTTGTAGGTCTGAAACACAAAGTGTGGGGTGTCTAGGGAAGAAG</p>
+<p>&gt;2</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN</p>
+<p>AAAAGCATTTATGCTACAAATTACTATGGTAATTATGCTACAAATTTATGGTACCATAAA</p>
+<p>TTACCATAGTAATTTGTAGCATAAATTTGTACTATGGTACAAATTACATGGGAGAGTGAA</p>
+<p>GGTGGGTTAAAACATTCATATTAAAGAACTTCCACTCAGATTGCAAGAAAAGAGAGAGGA</p>
+<p>ATGGAGATGGTAGCACAAGTCCCTACAATAAAAGTAGATGTTTTGAGATCAGTTCTATTT</p>
+</details>
+<details>
+<summary>
+FASTQ
+</summary>
+<p><img src="images/fastq.png" class="img-fluid"></p>
+<p>FASTQ format</p>
 <ul>
-<li><p>Key NGS data formats</p>
-<ul>
-<li><p><a href="../../course_modules/NGS_Data_Formats_and_QC_test/FASTA">FASTA</a></p></li>
-<li><p><a href="../../FASTQ">FASTQ</a></p></li>
-<li><p>SAM_BAM</p></li>
-<li><p>CRAM</p></li>
-<li><p>VCF</p></li>
-<li><p>Summary</p></li>
-</ul></li>
+<li>Simple format for raw unaligned sequencing reads</li>
 </ul>
-<p>Practical exercises</p>
-<p>Summary</p>
+<!-- -->
+<ul>
+<li><p>Paired-end sequencing: two FASTQ files or one interleaved file</p></li>
+<li></li>
+</ul>
+<p>Quality encoded in ASCII characters with decimal</p>
+<p>ASCII code of “A” is 65, the corresponding quality is Q = 65− 33 = 32</p>
+<p><img src="images/fastq2.png" class="img-fluid"></p>
+<p>Quality = Phred-scaled probability of an error</p>
+<p><img src="images/phred.png" class="img-fluid" width="411"></p>
+</details>
+<details>
+<summary>
+SAM_BAM
+</summary>
+</details>
+<details>
+<summary>
+CRAM
+</summary>
+</details>
+<details>
+<summary>
+VCF
+</summary>
+</details>
+<details>
+<summary>
+Summary
+</summary>
+</details>
+</section>
+<section id="tips-for-instructors-how-to-present-the-theoretical-concepts-on-file-formats" class="level3">
+<h3 class="anchored" data-anchor-id="tips-for-instructors-how-to-present-the-theoretical-concepts-on-file-formats">Tips for instructors: how to present the theoretical concepts on file formats</h3>
+</section>
+<section id="practical-exercises" class="level3">
+<h3 class="anchored" data-anchor-id="practical-exercises">Practical exercises</h3>
+</section>
+<section id="tips-for-instructors-how-to-offer-assistance-during-the-practical-exercises" class="level3">
+<h3 class="anchored" data-anchor-id="tips-for-instructors-how-to-offer-assistance-during-the-practical-exercises">Tips for instructors: how to offer assistance during the practical exercises</h3>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
