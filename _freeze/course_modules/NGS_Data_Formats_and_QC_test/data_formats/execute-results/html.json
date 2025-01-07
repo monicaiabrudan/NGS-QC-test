@@ -1,0 +1,17 @@
+{
+  "hash": "5843e7ae9daa4413fea450449902e845",
+  "result": {
+    "engine": "knitr",
+    "markdown": "Data formats\n\n0bjectives\n\nTheoretical background\n\n-   Key NGS data formats\n\n    -   [FASTA](/course_modules/NGS_Data_Formats_and_QC_test/FASTA)\n\n    -   [FASTQ](/FASTQ)\n\n    -   SAM_BAM\n\n    -   CRAM\n\n    -   VCF\n\n    -   Summary\n\nPractical exercises\n\nSummary\n",
+    "supporting": [
+      "data_formats_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

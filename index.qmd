@@ -4,4 +4,6 @@ title: "Introduction"
 
 ***The materials provided in this repository are FREE to use.*** ***This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement.***
 
-Find out more about the author [here](https://www.linkedin.com/in/monica-abrudan-09bb34a/)
+-   All materials to be added in markdown (with extension .Rmd), except for recorded lectures.
+
+-   There are no slides on this website. Instead, you will find instructions on how to generate slides from the markdown content.

@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: course_modules/NGS_Data_Formats_and_QC_test/data_formats.Rmd
+        text: Data formats
  
 
 

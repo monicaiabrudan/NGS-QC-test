@@ -1,0 +1,23 @@
+Data formats
+
+0bjectives
+
+Theoretical background
+
+-   Key NGS data formats
+
+    -   [FASTA](/course_modules/NGS_Data_Formats_and_QC_test/FASTA)
+
+    -   [FASTQ](/FASTQ)
+
+    -   SAM_BAM
+
+    -   CRAM
+
+    -   VCF
+
+    -   Summary
+
+Practical exercises
+
+Summary
