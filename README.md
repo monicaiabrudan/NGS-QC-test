@@ -1,4 +1,4 @@
-# Digital Epidemiology Workshop, Colombia, September 2023
+# NGS course - training materials - test version
 
 ------------------------------------------------------------------------
 
