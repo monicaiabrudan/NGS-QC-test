@@ -21,7 +21,7 @@ In this module, learners will look at ...
 
 # Manual
 
-[Module manual](module2_manual.qmd)
+[Module manual](module3_manual.qmd)
 
 # Presentation slides
 

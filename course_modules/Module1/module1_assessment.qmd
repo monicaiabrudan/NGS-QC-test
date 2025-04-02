@@ -1,7 +1,9 @@
 ---
-title: "NGS data formats and QC assessment"
+title: "Assessment Quiz"
 format: html
 ---
+
+# Quiz 
 
 1.  Look at the following FASTQ line:
 
@@ -29,4 +31,4 @@ What is the probability that there was a base call error for the first base (T)?
 
 @RG`ID:ERR003612 PL:ILLUMINA LB:g1k-sc-NA20538-TOS-1 PI:2000 DS:SRP000540 SM:NA20538 CN:SC`
 
-What does RG stand for?
+`What does RG stand for?`

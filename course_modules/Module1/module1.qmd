@@ -1,5 +1,5 @@
 ---
-title: "NGS data formats and QC"
+title: "Overview"
 format: html
 ---
 
@@ -41,7 +41,7 @@ In this module, learners will look at data formats in detail. At the end of the 
 
 -   Practical exercises: 1.5 hours
 
--   Quiz: 0.5 hours
+-   Assessment quiz: 0.5 hours
 
 # Manual
 
@@ -49,16 +49,38 @@ In this module, learners will look at data formats in detail. At the end of the 
 
 # Presentation slides
 
-(PPT/PDF, to be generated from the module manual)
+(PPT/PDF, to be generated from the module manual. Instructions on how to that will be added here.)
 
-# Lecture notes or scripts
+# Lecture recording, notes and scripts
 
 [Pre-recorded lecture, temporally stored on the LMS](https://lms.wellcomeconnectingscience.org/mod/page/view.php?id=8519)
 
 # Practical exercises
 
-Google Colab walkthrough
+### Google Colab
 
-Command line walkthrough
+You can practice working with the file formats presented in this modules using [a Google Colab](https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb) developed specifically for this purpose.
+
+For detailed information on what is Google Colab, check: [[What is google colab?]{.underline}](https://github.com/WCSCourses/index/blob/main/Google_Colab.md#1-what-is-google-colab)
+
+To get started with Google Colab use a shared link from Google Drive:
+
+**a. Open the Shared Link:** Click on the shared link provided to you. It will usually look like this: [`https://drive.google.com/file/d/`](https://drive.google.com/file/d/)`...`.
+
+**The shared link is [[IntroductionToLinux.ipynb]{.underline}](https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb)**
+
+**b. Make a Copy:** If the link opens a view-only version of the notebook, you can create your own editable copy by **selecting File \> Save a copy in Drive**. This will save the notebook to your Google Drive.
+
+**c. Open Your Copy:** Once the copy is saved, you can open it from your Google Drive. You can also access it anytime through Google Colab by selecting File \> Open notebook and navigating to your Drive.
+
+### Virtual Machine
+
+Command line walk through.
 
 # Datasets
+
+Practice files for this module can be found on [Github](https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data).
+
+# Assessment quiz
+
+[Questions](module1_assessment.qmd)

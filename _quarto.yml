@@ -10,7 +10,12 @@ website:
         text: Home
       - text: Modules
         menu:
-          - course_modules/Module1/module1.qmd
+          - href: course_modules/Module1/module1.qmd
+            text: "File formats"
+          - href: course_modules/Module2/module2.qmd
+            text: "Reads alignment"
+          - href: course_modules/Module3/module3.qmd
+            text: "Variant calling"
 
   page-footer: 
     left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
@@ -20,17 +25,22 @@ website:
     search: true
     collapse-level: 1
     contents:
-      - text: "Modules"
-      - section: "Module 1"
+      - text: "Content"
+      - section: "File formats"
         contents:
           - course_modules/Module1/module1.qmd
           - course_modules/Module1/module1_manual.qmd
           - course_modules/Module1/module1_assessment.qmd
-      - section: "Module 2"
+      - section: "Read alignment"
         contents:
           - course_modules/Module2/module2.qmd
           - course_modules/Module2/module2_manual.qmd
           - course_modules/Module2/module2_assessment.qmd
+      - section: "Variant calling"
+        contents:
+          - course_modules/Module3/module3.qmd
+          - course_modules/Module3/module3_manual.qmd
+          - course_modules/Module3/module3_assessment.qmd
  
 format:
   html:

@@ -1,5 +1,5 @@
 ---
-title: "NGS data formats and QC manual"
+title: "Manual"
 format: html
 ---
 
