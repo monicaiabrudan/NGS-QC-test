@@ -1,0 +1,40 @@
+---
+title: "Reads alignment"
+format: html
+---
+
+Content by
+
+# Duration
+
+# Key topics
+
+In this module, learners will look at ...
+
+# Activities
+
+-   Lecture:
+
+-   Practical exercises:
+
+-   Quiz:
+
+# Manual
+
+[Module manual](module2_manual.qmd)
+
+# Presentation slides
+
+(PPT/PDF, to be generated from the module manual)
+
+# Lecture notes or scripts
+
+Pre-recorded lecture
+
+# Practical exercises
+
+Google Colab walkthrough
+
+Command line walkthrough
+
+# Datasets

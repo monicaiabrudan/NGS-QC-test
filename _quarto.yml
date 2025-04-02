@@ -3,15 +3,14 @@ project:
   output-dir: docs
   
 website:
-  title: "NGS Bioinformatics - training materials for instructors - test "
+  title: "NGS Bioinformatics course"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: course_modules/NGS_Data_Formats_and_QC_test/data_formats.Rmd
-        text: Data formats
- 
-
+      - text: Modules
+        menu:
+          - course_modules/Module1/module1.qmd
 
   page-footer: 
     left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
@@ -20,6 +19,19 @@ website:
     style: "docked"
     search: true
     collapse-level: 1
+    contents:
+      - text: "Modules"
+      - section: "Module 1"
+        contents:
+          - course_modules/Module1/module1.qmd
+          - course_modules/Module1/module1_manual.qmd
+          - course_modules/Module1/module1_assessment.qmd
+      - section: "Module 2"
+        contents:
+          - course_modules/Module2/module2.qmd
+          - course_modules/Module2/module2_manual.qmd
+          - course_modules/Module2/module2_assessment.qmd
+ 
 format:
   html:
     theme:

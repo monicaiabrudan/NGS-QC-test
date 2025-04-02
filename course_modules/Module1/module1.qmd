@@ -1,0 +1,64 @@
+---
+title: "NGS data formats and QC"
+format: html
+---
+
+Content by **Eric Dawson (**Bioinformatics Scientist (Genomics / AI) - Nvidia) **and Carla Daniela Robles Espinoza (**Laboratorio Internacional de Investigación sobre el Genoma Humano, Universidad Nacional Autónoma de México)
+
+# Duration
+
+3 hours
+
+# Key topics
+
+In this module, learners will look at data formats in detail. At the end of the theory, there is a mandatory to test their knowledge.
+
+**FASTQ**
+
+• Unaligned read sequences with base qualities
+
+**SAM/BAM**
+
+• Unaligned or aligned reads
+
+• Text and binary formats
+
+**CRAM**
+
+• Better compression than BAM
+
+**VCF/BCF**
+
+• Flexible variant call format
+
+• Arbitrary types of sequence variation
+
+• SNPs, indels, structural variations
+
+# Activities 
+
+-   Lecture: 1 hour
+
+-   Practical exercises: 1.5 hours
+
+-   Quiz: 0.5 hours
+
+# Manual
+
+[Module manual](module1_manual.qmd)
+
+# Presentation slides
+
+(PPT/PDF, to be generated from the module manual)
+
+# Lecture notes or scripts
+
+[Pre-recorded lecture, temporally stored on the LMS](https://lms.wellcomeconnectingscience.org/mod/page/view.php?id=8519)
+
+# Practical exercises
+
+Google Colab walkthrough
+
+Command line walkthrough
+
+# Datasets
