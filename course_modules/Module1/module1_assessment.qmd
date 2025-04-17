@@ -3,7 +3,7 @@ title: "Assessment Quiz"
 format: html
 ---
 
-# Quiz 
+# Quiz
 
 1.  Look at the following FASTQ line:
 

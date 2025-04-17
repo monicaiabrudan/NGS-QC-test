@@ -46,14 +46,13 @@ ul.task-list li input[type="checkbox"] {
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "overlay",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -72,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -119,131 +118,67 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../course_modules/Module1/module1.html">File formats</a></li><li class="breadcrumb-item"><a href="../../course_modules/Module1/module1_manual.html">Manual</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
- <span class="menu-text">Content</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">File formats</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module1/module1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module1/module1_manual.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module1/module1_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment Quiz</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Read alignment</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module2/module2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module2/module2_manual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module2/module2_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Variant calling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module3/module3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module3/module3_manual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../course_modules/Module3/module3_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sequence-data-formats" id="toc-sequence-data-formats" class="nav-link active" data-scroll-target="#sequence-data-formats"><strong>1. Sequence Data Formats</strong></a>
+  <ul class="collapse">
+  <li><a href="#the-fasta-file-format" id="toc-the-fasta-file-format" class="nav-link" data-scroll-target="#the-fasta-file-format">The FASTA file format</a></li>
+  <li><a href="#the-fastq-file-format" id="toc-the-fastq-file-format" class="nav-link" data-scroll-target="#the-fastq-file-format"><strong>The FASTQ file format</strong></a></li>
+  </ul></li>
+  <li><a href="#alignment-and-mapping-formats" id="toc-alignment-and-mapping-formats" class="nav-link" data-scroll-target="#alignment-and-mapping-formats"><strong>2. Alignment and Mapping Formats</strong></a>
+  <ul class="collapse">
+  <li><a href="#structure-of-the-flag" id="toc-structure-of-the-flag" class="nav-link" data-scroll-target="#structure-of-the-flag"><strong>Structure of the Flag</strong></a></li>
+  <li><a href="#how-to-interpret-a-sam-file-flag" id="toc-how-to-interpret-a-sam-file-flag" class="nav-link" data-scroll-target="#how-to-interpret-a-sam-file-flag"><strong>How to interpret a SAM file flag</strong></a></li>
+  <li><a href="#the-bam-file-format" id="toc-the-bam-file-format" class="nav-link" data-scroll-target="#the-bam-file-format">The BAM file format</a></li>
+  <li><a href="#key-features-of-the-bam-format" id="toc-key-features-of-the-bam-format" class="nav-link" data-scroll-target="#key-features-of-the-bam-format"><strong>Key Features of the BAM Format</strong></a></li>
+  <li><a href="#sambam-tools" id="toc-sambam-tools" class="nav-link" data-scroll-target="#sambam-tools"><strong>SAM/BAM Tools</strong></a></li>
+  <li><a href="#reference-based-compression" id="toc-reference-based-compression" class="nav-link" data-scroll-target="#reference-based-compression">Reference-Based Compression</a></li>
+  <li><a href="#limitations-of-bam-compression" id="toc-limitations-of-bam-compression" class="nav-link" data-scroll-target="#limitations-of-bam-compression"><strong>Limitations of BAM Compression</strong></a></li>
+  <li><a href="#the-case-for-reference-based-compression" id="toc-the-case-for-reference-based-compression" class="nav-link" data-scroll-target="#the-case-for-reference-based-compression"><strong>The Case for Reference-Based Compression</strong></a></li>
+  <li><a href="#benefits-of-reference-based-compression" id="toc-benefits-of-reference-based-compression" class="nav-link" data-scroll-target="#benefits-of-reference-based-compression"><strong>Benefits of Reference-Based Compression</strong></a></li>
+  <li><a href="#looking-ahead" id="toc-looking-ahead" class="nav-link" data-scroll-target="#looking-ahead"><strong>Looking Ahead</strong></a></li>
+  <li><a href="#the-cram-file-format" id="toc-the-cram-file-format" class="nav-link" data-scroll-target="#the-cram-file-format">The CRAM file format</a></li>
+  <li><a href="#key-features-of-cram" id="toc-key-features-of-cram" class="nav-link" data-scroll-target="#key-features-of-cram"><strong>Key Features of CRAM</strong></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  <li><a href="#variant-calling-formats" id="toc-variant-calling-formats" class="nav-link" data-scroll-target="#variant-calling-formats"><strong>3. Variant Calling Formats</strong></a>
+  <ul class="collapse">
+  <li><a href="#variant-call-format-vcf-summary" id="toc-variant-call-format-vcf-summary" class="nav-link" data-scroll-target="#variant-call-format-vcf-summary">Variant Call Format (VCF) Summary</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#genotype-representation" id="toc-genotype-representation" class="nav-link" data-scroll-target="#genotype-representation">Genotype Representation</a></li>
+  <li><a href="#role-in-genomic-analysis" id="toc-role-in-genomic-analysis" class="nav-link" data-scroll-target="#role-in-genomic-analysis">Role in Genomic Analysis</a></li>
+  <li><a href="#tumor-specific-annotations-in-vcf" id="toc-tumor-specific-annotations-in-vcf" class="nav-link" data-scroll-target="#tumor-specific-annotations-in-vcf">Tumor-Specific Annotations in VCF</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#example-vcf-file" id="toc-example-vcf-file" class="nav-link" data-scroll-target="#example-vcf-file"><strong>Example VCF File</strong></a></li>
+  <li><a href="#explanation-of-each-column" id="toc-explanation-of-each-column" class="nav-link" data-scroll-target="#explanation-of-each-column"><strong>Explanation of Each Column</strong></a></li>
+  <li><a href="#other-important-information" id="toc-other-important-information" class="nav-link" data-scroll-target="#other-important-information"><strong>Other important information</strong></a>
+  <ul class="collapse">
+  <li><a href="#structure-of-a-cigar-string" id="toc-structure-of-a-cigar-string" class="nav-link" data-scroll-target="#structure-of-a-cigar-string"><strong>Structure of a CIGAR String</strong></a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">** Key Takeaways:**</a></li>
+  <li><a href="#the-maf-file-format" id="toc-the-maf-file-format" class="nav-link" data-scroll-target="#the-maf-file-format"><strong>The MAF file format</strong></a></li>
+  </ul></li>
+  <li><a href="#ga4gh" id="toc-ga4gh" class="nav-link" data-scroll-target="#ga4gh"><u>GA4GH</u></a>
+  <ul class="collapse">
+  <li><a href="#working-groups" id="toc-working-groups" class="nav-link" data-scroll-target="#working-groups"><strong>Working Groups</strong></a></li>
+  <li><a href="#key-projects-of-the-data-working-group" id="toc-key-projects-of-the-data-working-group" class="nav-link" data-scroll-target="#key-projects-of-the-data-working-group"><strong>Key Projects of the Data Working Group</strong></a></li>
+  <li><a href="#file-format-standards" id="toc-file-format-standards" class="nav-link" data-scroll-target="#file-format-standards"><strong>File Format Standards</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../course_modules/Module1/module1.html">File formats</a></li><li class="breadcrumb-item"><a href="../../course_modules/Module1/module1_manual.html">Manual</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Manual</h1>
 </div>

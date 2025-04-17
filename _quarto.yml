@@ -5,6 +5,7 @@ project:
 website:
   title: "NGS Bioinformatics course"
   navbar:
+    background: light
     left:
       - href: index.qmd
         text: Home
@@ -17,37 +18,48 @@ website:
           - href: course_modules/Module3/module3.qmd
             text: "Variant calling"
 
+  page-navigation: true 
   page-footer: 
     left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
-
-  sidebar:
-    style: "docked"
-    search: true
-    collapse-level: 1
-    contents:
-      - text: "Content"
-      - section: "File formats"
-        contents:
-          - course_modules/Module1/module1.qmd
-          - course_modules/Module1/module1_manual.qmd
-          - course_modules/Module1/module1_assessment.qmd
-      - section: "Read alignment"
-        contents:
-          - course_modules/Module2/module2.qmd
-          - course_modules/Module2/module2_manual.qmd
-          - course_modules/Module2/module2_assessment.qmd
-      - section: "Variant calling"
-        contents:
-          - course_modules/Module3/module3.qmd
-          - course_modules/Module3/module3_manual.qmd
-          - course_modules/Module3/module3_assessment.qmd
+  search:
+    location: navbar
+    type: textbox
+    
+ # sidebar:
+ #   style: "docked"
+#    search: true
+ #   collapse-level: 1
+  #  contents:
+   #   - section: "File formats"
+    #    contents:
+#          - course_modules/Module1/module1.qmd
+#          - course_modules/Module1/module1_manual.qmd
+#          - course_modules/Module1/module1_assessment.qmd
+#      - section: "Read alignment"
+#        contents:
+#          - course_modules/Module2/module2.qmd
+#          - course_modules/Module2/module2_manual.qmd
+#          - course_modules/Module2/module2_assessment.qmd
+#      - section: "Variant calling"
+ #       contents:
+#          - course_modules/Module3/module3.qmd
+#          - course_modules/Module3/module3_manual.qmd
+#          - course_modules/Module3/module3_assessment.qmd
  
 format:
   html:
     theme:
-      light: [materia, theme-light.scss]
-      dark: [materia, theme-dark.scss]
+      light: [theme_lter-edu-light, _extensions/lter/lter_scss-theme/theme_lter-edu-light.scss]
+      dark: [theme_lter-edu-dark, _extensions/lter/lter_scss-theme/theme_lter-edu-dark.scss]
     anchor-sections: true
+    toc: true
+    footnotes-hover: true
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    fig-align: center
+    link-external-icon: false
+    link-external-newwindow: true
 
 editor: visual
 

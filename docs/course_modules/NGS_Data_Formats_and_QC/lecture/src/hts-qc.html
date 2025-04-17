@@ -47,14 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
-  "type": "overlay",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -102,7 +101,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -149,127 +148,49 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">only for printing</li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
- <span class="menu-text">Content</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">File formats</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module1/module1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module1/module1_manual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module1/module1_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment Quiz</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Read alignment</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module2/module2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module2/module2_manual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module2/module2_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Variant calling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module3/module3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module3/module3_manual.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manual</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../course_modules/Module3/module3_assessment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Assessment</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-formats" id="toc-data-formats" class="nav-link active" data-scroll-target="#data-formats">Data Formats</a></li>
+  <li><a href="#fastq" id="toc-fastq" class="nav-link" data-scroll-target="#fastq">FASTQ</a></li>
+  <li><a href="#sam-bam" id="toc-sam-bam" class="nav-link" data-scroll-target="#sam-bam">SAM / BAM</a></li>
+  <li><a href="#sam" id="toc-sam" class="nav-link" data-scroll-target="#sam">SAM</a></li>
+  <li><a href="#cigar-string" id="toc-cigar-string" class="nav-link" data-scroll-target="#cigar-string">CIGAR string</a></li>
+  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags">Flags</a></li>
+  <li><a href="#optional-tags" id="toc-optional-tags" class="nav-link" data-scroll-target="#optional-tags">Optional tags</a></li>
+  <li><a href="#bam" id="toc-bam" class="nav-link" data-scroll-target="#bam">BAM</a></li>
+  <li><a href="#reference-based-compression" id="toc-reference-based-compression" class="nav-link" data-scroll-target="#reference-based-compression">Reference based Compression</a></li>
+  <li><a href="#cram" id="toc-cram" class="nav-link" data-scroll-target="#cram">CRAM</a></li>
+  <li><a href="#vcf-variant-call-format" id="toc-vcf-variant-call-format" class="nav-link" data-scroll-target="#vcf-variant-call-format">VCF: Variant Call Format</a></li>
+  <li><a href="#vcf-bcf" id="toc-vcf-bcf" class="nav-link" data-scroll-target="#vcf-bcf">VCF / BCF</a></li>
+  <li><a href="#gvcf" id="toc-gvcf" class="nav-link" data-scroll-target="#gvcf">gVCF</a></li>
+  <li><a href="#optimizing-variant-calls-for-speed" id="toc-optimizing-variant-calls-for-speed" class="nav-link" data-scroll-target="#optimizing-variant-calls-for-speed">Optimizing variant calls for speed</a></li>
+  <li><a href="#custom-formats-for-custom-tasks" id="toc-custom-formats-for-custom-tasks" class="nav-link" data-scroll-target="#custom-formats-for-custom-tasks">Custom formats for custom tasks</a></li>
+  <li><a href="#global-alliance-for-genomics-and-health" id="toc-global-alliance-for-genomics-and-health" class="nav-link" data-scroll-target="#global-alliance-for-genomics-and-health">Global Alliance for Genomics and Health</a></li>
+  <li><a href="#quality-control" id="toc-quality-control" class="nav-link" data-scroll-target="#quality-control">Quality Control</a></li>
+  <li><a href="#base-quality" id="toc-base-quality" class="nav-link" data-scroll-target="#base-quality">Base quality</a></li>
+  <li><a href="#base-calling-errors" id="toc-base-calling-errors" class="nav-link" data-scroll-target="#base-calling-errors">Base calling errors</a></li>
+  <li><a href="#base-quality-1" id="toc-base-quality-1" class="nav-link" data-scroll-target="#base-quality-1">Base quality</a></li>
+  <li><a href="#mismatches-per-cycle" id="toc-mismatches-per-cycle" class="nav-link" data-scroll-target="#mismatches-per-cycle">Mismatches per cycle</a></li>
+  <li><a href="#gc-bias" id="toc-gc-bias" class="nav-link" data-scroll-target="#gc-bias">GC bias</a></li>
+  <li><a href="#gc-content-by-cycle" id="toc-gc-content-by-cycle" class="nav-link" data-scroll-target="#gc-content-by-cycle">GC content by cycle</a></li>
+  <li><a href="#fragment-size" id="toc-fragment-size" class="nav-link" data-scroll-target="#fragment-size">Fragment size</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  <li><a href="#insertions-deletions-per-cycle" id="toc-insertions-deletions-per-cycle" class="nav-link" data-scroll-target="#insertions-deletions-per-cycle">Insertions / Deletions per cycle</a></li>
+  <li><a href="#auto-qc-tests" id="toc-auto-qc-tests" class="nav-link" data-scroll-target="#auto-qc-tests">Auto QC tests</a></li>
+  <li><a href="#detecting-sample-swaps" id="toc-detecting-sample-swaps" class="nav-link" data-scroll-target="#detecting-sample-swaps">Detecting sample swaps</a></li>
+  <li><a href="#how-many-markers-are-necessary" id="toc-how-many-markers-are-necessary" class="nav-link" data-scroll-target="#how-many-markers-are-necessary">How many markers are necessary?</a></li>
+  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
