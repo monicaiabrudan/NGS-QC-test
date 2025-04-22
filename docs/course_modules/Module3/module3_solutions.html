@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Manual – NGS Bioinformatics course</title>
+<title>module3_solutions – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,21 +128,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a>
-  <ul class="collapse">
-  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
-  <li><a href="#introduction-and-learning-outcomes" id="toc-introduction-and-learning-outcomes" class="nav-link" data-scroll-target="#introduction-and-learning-outcomes">1. Introduction and Learning Outcomes</a></li>
-  <li><a href="#dna-variations-definitions-and-types" id="toc-dna-variations-definitions-and-types" class="nav-link" data-scroll-target="#dna-variations-definitions-and-types">2. DNA Variations: Definitions and Types</a></li>
-  <li><a href="#practical-applications-of-variant-calling" id="toc-practical-applications-of-variant-calling" class="nav-link" data-scroll-target="#practical-applications-of-variant-calling">3. Practical Applications of Variant Calling</a></li>
-  <li><a href="#variant-calling-basics" id="toc-variant-calling-basics" class="nav-link" data-scroll-target="#variant-calling-basics">4. Variant Calling Basics</a></li>
-  <li><a href="#steps-in-variant-detection" id="toc-steps-in-variant-detection" class="nav-link" data-scroll-target="#steps-in-variant-detection">5. Steps in Variant Detection</a></li>
-  <li><a href="#common-sources-of-error" id="toc-common-sources-of-error" class="nav-link" data-scroll-target="#common-sources-of-error">6. Common Sources of Error</a></li>
-  <li><a href="#advanced-topics-in-variant-calling" id="toc-advanced-topics-in-variant-calling" class="nav-link" data-scroll-target="#advanced-topics-in-variant-calling">7. Advanced Topics in Variant Calling</a></li>
-  <li><a href="#assessing-and-benchmarking-variant-calls" id="toc-assessing-and-benchmarking-variant-calls" class="nav-link" data-scroll-target="#assessing-and-benchmarking-variant-calls">8. Assessing and Benchmarking Variant Calls</a></li>
-  <li><a href="#functional-annotation-and-variant-consequences" id="toc-functional-annotation-and-variant-consequences" class="nav-link" data-scroll-target="#functional-annotation-and-variant-consequences">9. Functional Annotation and Variant Consequences</a></li>
-  <li><a href="#population-level-variant-data" id="toc-population-level-variant-data" class="nav-link" data-scroll-target="#population-level-variant-data">10. Population-Level Variant Data</a></li>
-  <li><a href="#references-and-additional-resources" id="toc-references-and-additional-resources" class="nav-link" data-scroll-target="#references-and-additional-resources">11. References and Additional Resources</a></li>
-  </ul></li>
+  <li><a href="#variant-calling---solutions" id="toc-variant-calling---solutions" class="nav-link active" data-scroll-target="#variant-calling---solutions">1 Variant Calling - Solutions</a></li>
+  <li><a href="#performing-variant-calling" id="toc-performing-variant-calling" class="nav-link" data-scroll-target="#performing-variant-calling">2 Performing variant calling</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">2.1 Exercises</a></li>
+  <li><a href="#variant-filtering" id="toc-variant-filtering" class="nav-link" data-scroll-target="#variant-filtering">3 Variant Filtering</a></li>
+  <li><a href="#calling-variants-across-multiple-samples" id="toc-calling-variants-across-multiple-samples" class="nav-link" data-scroll-target="#calling-variants-across-multiple-samples">4 Calling Variants Across Multiple Samples</a></li>
+  <li><a href="#visualising-alignments" id="toc-visualising-alignments" class="nav-link" data-scroll-target="#visualising-alignments">5 Visualising Alignments</a></li>
+  <li><a href="#variant-annotation" id="toc-variant-annotation" class="nav-link" data-scroll-target="#variant-annotation">6 Variant annotation</a></li>
   </ul>
 </nav>
     </div>
@@ -151,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Manual</h1>
+<h1 class="title">module3_solutions</h1>
 </div>
 
 
@@ -168,101 +160,71 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"></h2>
-<section id="table-of-contents" class="level3">
-<h3 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h3>
-<ol type="1">
-<li><p>Introduction and Learning Outcomes</p></li>
-<li><p>DNA Variations: Definitions and Types</p></li>
-<li><p>Practical Applications of Variant Calling</p></li>
-<li><p>Variant Calling Basics</p></li>
-<li><p>Steps in Variant Detection</p></li>
-<li><p>Common Sources of Error</p></li>
-<li><p>Advanced Topics in Variant Calling</p></li>
-<li><p>Assessing and Benchmarking Variant Calls</p></li>
-<li><p>Functional Annotation and Variant Consequences</p></li>
-<li><p>Population-Level Variant Data</p></li>
-<li><p>References and Additional Resources</p></li>
-</ol>
+<section id="variant-calling---solutions" class="level3">
+<h3 class="anchored" data-anchor-id="variant-calling---solutions">1 Variant Calling - Solutions</h3>
+<p>No exercises in this section.</p>
 </section>
-<section id="introduction-and-learning-outcomes" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-and-learning-outcomes">1. Introduction and Learning Outcomes</h3>
-<p>By the end of this course, you should be able to:</p>
-<ul>
-<li><p>Understand various types of genomic variations and how they arise.</p></li>
-<li><p>Describe how variant calls are generated from raw sequencing data.</p></li>
-<li><p>Assess variant quality and visualize variants using tools such as IGV.</p></li>
-<li><p>Perform basic variant annotation and interpret biological consequences.</p></li>
-</ul>
+<section id="performing-variant-calling" class="level3">
+<h3 class="anchored" data-anchor-id="performing-variant-calling">2 Performing variant calling</h3>
+<p><strong>Q1</strong> 66 reads</p>
+<p><strong>Q2</strong> The reference allele is A and the alternate allele is G. The upper/lower case letters indicate the forward/reverse orientation of the read.</p>
+<p><strong>Q3</strong> 0 reads calling reference allelle and 66 reads calling the alternate allele</p>
+<p><strong>Q4</strong> Add the <strong><em>-v</em></strong> option to the command:</p>
+<p><code>bcftools mpileup -f GRCm38_68.19.fa A_J.bam | bcftools call -mv | less -S</code></p>
 </section>
-<section id="dna-variations-definitions-and-types" class="level3">
-<h3 class="anchored" data-anchor-id="dna-variations-definitions-and-types">2. DNA Variations: Definitions and Types</h3>
-<p>Mutations refer to any alteration in the DNA base sequence and can be broadly classified into germline and somatic mutations. Germline mutations occur in the egg or sperm cells and are heritable, meaning they can be passed on to subsequent generations. In contrast, somatic mutations arise in non-germline tissues and do not get inherited by offspring. When examining the types of genomic variations, it is essential to differentiate between large-scale and small-scale changes. Large-scale variations include chromosomal gains or losses (such as aneuploidies), various forms of translocations (for instance, reciprocal and Robertsonian), and copy number variants (CNVs), which are duplications or deletions typically ranging from approximately 1 kilobase to several megabases—collectively accounting for roughly 12% of the human genome. Structural variants (SVs), including insertions, inversions, translocations, and tandem duplications larger than 50 base pairs, also fall into this category. On the other hand, small-scale variations involve more subtle changes such as single nucleotide variants (SNVs), which are simple base substitutions (for example, A→C or G→T), indels that represent small insertions or deletions (less than 50 base pairs), multinucleotide polymorphisms (MNPs) which involve multiple adjacent base substitutions, and microsatellites or short tandem repeats (STRs). STRs are characterized by the repetition of small motifs of 2–6 base pairs—like the “GATA” sequence repeated 7 versus 8 times—which are inherently more variable. Notably, while single nucleotide polymorphisms (SNPs) are usually biallelic with a relatively low mutation rate (around 10^-8 per base pair per generation), STRs are multiallelic with higher mutation rates, making their ancestral states more challenging to infer.</p>
-<p>To summarise:</p>
-<p><strong>Mutation / Variation</strong>: Any change in the DNA base sequence.</p>
-<p><strong>Germline mutation</strong>: Heritable variation present in egg or sperm cells.</p>
-<p><strong>Somatic mutation</strong>: Variation in non-germline tissues; not passed to offspring.</p>
-<p><strong>Copy number variants (CNVs)</strong>: Duplications or deletions ranging from ~1 kb to many Mb, accounting for roughly 12% of the human genome.</p>
-<p><strong>Structural Variants (SVs)</strong>: Insertions, inversions, translocations, tandem duplications, etc. (often &gt;50 bp).</p>
-<p><strong>Single Nucleotide Variants (SNVs)</strong>: Base substitutions (A→C, G→T, etc.).</p>
-<p><strong>Indels</strong>: Small insertions or deletions (&lt;50 bp).</p>
-<p><strong>Multinucleotide Polymorphisms (MNPs):</strong> Multiple adjacent base substitutions.</p>
-<p><strong>Microsatellites / STRs</strong>: Short-tandem repeats of 2–6 bp repeated multiple times (e.g., “GATA” repeated 7 vs 8 times).</p>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">2.1 Exercises</h3>
+<p><strong>Q1</strong> The reference allele is A and the alternate allele is G.</p>
+<p><strong>Q2</strong> Look up the tag DP in the INFO column: there were 69 raw reads at the position.</p>
+<p><strong>Q3</strong> There are 0 reads calling the reference and 66 high-quality reads calling the alternate.</p>
+<p><strong>Q4</strong> An indel. Five bases TGTGG were inserted after the T at position 10003649</p>
 </section>
-<section id="practical-applications-of-variant-calling" class="level3">
-<h3 class="anchored" data-anchor-id="practical-applications-of-variant-calling">3. Practical Applications of Variant Calling</h3>
-<p>Cataloging biological diversity is fundamental for understanding population genetics and exploring evolutionary trends, while disease diagnosis leverages the identification of pathogenic mutations in clinical settings. In addition, deciphering genotype-phenotype associations plays a crucial role in locating variants that underlie specific traits or diseases, thereby facilitating pharmacogenomics where drug choice and dosage are tailored based on individual genotypes. DNA forensics employs STR profiling to aid law enforcement and personal identification, and comprehensive population genetics studies help infer demographic history. Finally, marker-assisted selection is widely used in agriculture and breeding programs to improve crop and livestock traits efficiently.</p>
+<section id="variant-filtering" class="level3">
+<h3 class="anchored" data-anchor-id="variant-filtering">3 Variant Filtering</h3>
+<p><strong>Q1</strong> The complete command is:</p>
+<p><code>bcftools query -f'%POS %QUAL [%GT %AD] %REF %ALT\n' -i'QUAL&gt;=30 &amp;&amp; type="snp" &amp;&amp; AD[*:1]&gt;=25' out.vcf | head</code></p>
+<p><strong>Q2</strong> The complete command is:</p>
+<p><code>bcftools stats -i'QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25' out.vcf | grep TSTV | cut -f5</code></p>
+<p><strong>Q3</strong> The complete command is:</p>
+<p><code>bcftools stats -e'QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25' out.vcf | grep TSTV | cut -f5</code></p>
+<p><strong>Q4</strong> The complete command is:</p>
+<p><code>bcftools stats -i 'GT="het"' out.vcf | grep TSTV | cut -f5</code></p>
+<p><strong>Q5</strong> The complete command is:</p>
+<p><code>bcftools norm -f GRCm38_68.19.fa out.flt.vcf -o out.flt.norm.vcf</code></p>
 </section>
-<section id="variant-calling-basics" class="level3">
-<h3 class="anchored" data-anchor-id="variant-calling-basics">4. Variant Calling Basics</h3>
-<p>In a diploid genome, each human cell contains two copies of every chromosome, which means that each locus on the genome has two alleles. The combination of these alleles is referred to as the genotype, and examples include homozygous genotypes like “RR” and “AA” or heterozygous combinations such as “RA.” When these allele combinations are resolved into phase, meaning the specific arrangement on each individual chromosome is known, they form what is called a haplotype.</p>
-<p>In the context of variant calling, the term “reference allele” (or “Ref”) refers to the allele that appears in the reference genome, whereas the “alternate allele” (or “Alt”) is the observed variant in the sequenced sample. For a diploid organism, the possible genotypes based on these alleles can be represented as RR (0/0), RA (0/1), or AA (1/1).</p>
-<p>The Variant Call Format, or VCF, is a widely adopted tab-delimited text format designed for storing gene sequence variations. The format includes key fields such as CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO, FORMAT, and additional sample-specific columns. Notably, the VCF format captures details such as the depth (DP), which is the total number of sequencing reads covering a variant site, and the allelic depth (AD), which provides coverage information for each allele.</p>
-<p>Several tools are available for variant calling. <strong>BCFtools</strong> and <strong>samtools</strong> are frequently used for identifying single nucleotide variants (SNPs) and small insertions or deletions (indels) from alignment data. For more advanced analyses, tools like <strong>GATK’s</strong> <strong>HaplotypeCaller</strong> leverage local re-assembly techniques to improve the accuracy of indel calling. Additionally, other tools such as <strong>FreeBayes, Platypus</strong>, and <strong>DeepVariant</strong> contribute to variant calling efforts by offering alternative methodologies and algorithms suited to various data types and experimental designs.</p>
+<section id="calling-variants-across-multiple-samples" class="level3">
+<h3 class="anchored" data-anchor-id="calling-variants-across-multiple-samples">4 Calling Variants Across Multiple Samples</h3>
+<p><strong>Q1</strong> Use the commands:</p>
+<p><code>bcftools mpileup -a AD -f GRCm38_68.19.fa *.bam -Ou | bcftools call -mv -Ob -o multi.bcf bcftools index multi.bcf</code></p>
+<p><strong>Q2</strong> Use the commands</p>
+<p><code>bcftools filter -s LowQual -i'QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25' -g8 -G10 multi.bcf -Ob -o multi.filt.bcf bcftools index multi.filt.bcf</code></p>
+<p><strong>Q3</strong> Use the commands:</p>
+<p><code>bcftools stats multi.filt.bcf | grep TSTV | cut -f5 (raw calls)</code></p>
+<p><code>bcftools stats -i 'FILTER="PASS"' multi.filt.bcf | grep TSTV | cut -f5 (only filtered set)</code></p>
+<p><strong>Q4</strong> Use the commands:</p>
+<p><code>bcftools stats -e 'FILTER="PASS"' multi.filt.bcf | grep TSTV | cut -f5</code></p>
 </section>
-<section id="steps-in-variant-detection" class="level3">
-<h3 class="anchored" data-anchor-id="steps-in-variant-detection">5. Steps in Variant Detection</h3>
-<p>The process begins by generating sequencing data, which consists of raw reads produced by sequencing platforms such as Illumina. These reads are subjected to rigorous quality control, including trimming of adapters and filtering out low-quality bases, before being aligned or mapped to a reference genome. Once aligned, a pileup is generated to summarize the number of reads supporting each base at every position, which then informs the variant calling step—determining the genotype probabilities at each locus. Subsequent filtering addresses factors such as base quality, where Phred scores indicate the confidence in each base call, mapping quality that reflects the accuracy of the read’s placement within the genome, and established depth thresholds to ensure sufficient coverage. Variant calling itself can be approached naïvely, using simple allele-frequency thresholds (for example, calling a heterozygote if roughly 50% of reads show a particular base), or through more sophisticated statistical methods that incorporate base and mapping error rates, prior allele frequencies, and other variables to compute a posterior probability for each potential genotype.</p>
+<section id="visualising-alignments" class="level3">
+<h3 class="anchored" data-anchor-id="visualising-alignments">5 Visualising Alignments</h3>
+<p><strong>Q1</strong> 75 in total, 39 on the forward and 36 on the reverse strand.</p>
+<p><strong>Q2</strong> Yes. Use the command:</p>
+<p><code>bcftools view -H -r 19:10001946 multi.filt.bcf</code></p>
+<p><strong>Q3</strong> Yes.</p>
+<p><strong>Q4</strong> Yes. Use the command:</p>
+<p><code>bcftools view -H -r 19:10072443 multi.filt.bcf</code></p>
+<p><strong>Q5</strong> No.&nbsp;It fails due to lowQual and snpGap, this means the call was removed by filtering because the quality of the call falls below the treshold set and the call is in close proximity to an indel.</p>
+<p><strong>Q6</strong> No.&nbsp;It is an alignment artefact, the aligner prefered two SNPs instead of a long deletion.</p>
 </section>
-<section id="common-sources-of-error" class="level3">
-<h3 class="anchored" data-anchor-id="common-sources-of-error">6. Common Sources of Error</h3>
-<p>Several common sources of error must be considered during variant calling. Homopolymers and repetitive regions, characterized by long runs of identical bases, frequently cause systematic sequencing and mapping errors. Strand bias, where a variant appears exclusively on forward or reverse sequencing reads, often signals technical artefacts rather than genuine biological variants. Incorrect alignments, particularly near insertions or deletions (indels), may lead to false-positive single nucleotide polymorphisms (SNPs). Additionally, extremely high sequencing coverage can indicate repetitive elements or duplicated genomic regions, complicating accurate variant calling. Differences between RNA-seq and DNA-seq data, such as splice junctions and RNA editing events, may also produce apparent variants that do not reflect underlying genomic DNA sequence changes. Finally, variability in experimental conditions can result in non-reproducible calls, emphasizing the importance of validating and replicating findings to ensure reliability.</p>
-</section>
-<section id="advanced-topics-in-variant-calling" class="level3">
-<h3 class="anchored" data-anchor-id="advanced-topics-in-variant-calling">7. Advanced Topics in Variant Calling</h3>
-<p><strong>Somatic variant calling</strong> specifically aims to identify genetic variants present in tumor cells by comparing sequences from tumor samples against matched normal tissues. The primary objective is detecting mutations that may drive cancer progression. Because tumors are heterogeneous, subclonal variants—mutations present in only a subset of cells—often exhibit widely varying allele fractions, complicating their detection and interpretation. Specialized bioinformatics pipelines such as Mutect2 and Strelka2 have been developed to address these complexities and accurately distinguish true somatic mutations from background noise.</p>
-<p><strong>Indel calling presents unique challenges</strong>, notably due to elevated sequencing error rates in regions such as microsatellites and homopolymers, where accurate base calling is particularly difficult. Additionally, indels can be represented in multiple valid ways by different alignment tools, leading to inconsistencies in their annotation and interpretation. As a result, complex indel regions often suffer from low reproducibility, with significant discrepancies observed across different variant callers. Users are encouraged to validate indel calls rigorously, especially in clinical or sensitive research contexts.</p>
-<p><strong>Emerging approaches in variant calling</strong> are addressing these limitations. Local de novo assembly methods, implemented in tools like GATK’s HaplotypeCaller, Scalpel, and Octopus, reconstruct local genomic haplotypes directly from sequencing reads, helping resolve complex variants more effectively. Additionally, newer methods employ variation graphs—data structures that represent multiple known variants simultaneously—to improve alignment accuracy and variant calling performance, particularly in regions of high genetic complexity or variability. These innovative approaches promise to significantly enhance the accuracy and comprehensiveness of genomic analyses moving forward.</p>
-</section>
-<section id="assessing-and-benchmarking-variant-calls" class="level3">
-<h3 class="anchored" data-anchor-id="assessing-and-benchmarking-variant-calls">8. Assessing and Benchmarking Variant Calls</h3>
-<p>The <strong>transition/transversion (Ts/Tv) ratio</strong> is a critical metric used to assess the quality of variant calls. Transitions (Ts)—base substitutions within purines (A↔︎G) or pyrimidines (C↔︎T)—occur more frequently than transversions (Tv), substitutions between purines and pyrimidines. For high-quality SNP datasets in humans, a Ts/Tv ratio of approximately 2 to 3 is typically expected; deviations from this range can indicate underlying errors in variant calling.</p>
-<p>Another key consideration is the concept of a <strong>callable genome</strong>, as certain regions of the genome are inherently difficult to analyze due to repetitive sequences, structural complexities, or extreme GC content. Not all genomic regions are equally accessible or “callable,” and thus it is beneficial to utilize established benchmark sets, such as the Genome in a Bottle project, which define high-confidence genomic regions suitable for accurate variant detection and performance assessment.</p>
-<p>When evaluating variant-calling performance, metrics such as <strong>precision and recall</strong> become essential. Precision represents the proportion of called variants that are correct (true positives), while recall, also known as sensitivity, measures the proportion of true variants correctly identified. To accurately compute these metrics, benchmarking tools like hap.py or vcfeval are routinely employed, allowing researchers to systematically assess and optimize variant-calling workflows for reliability and accuracy.</p>
-</section>
-<section id="functional-annotation-and-variant-consequences" class="level3">
-<h3 class="anchored" data-anchor-id="functional-annotation-and-variant-consequences">9. Functional Annotation and Variant Consequences</h3>
-<p>Functional annotation of genetic variants is an essential step in understanding their potential biological impacts. Annotation tools such as <strong>BCFtools/csq</strong>, <strong>Ensembl Variant Effect Predictor (VEP)</strong>, and <strong>ANNOVAR</strong> are commonly utilized to systematically determine the genomic context of variants, categorizing them as coding, intronic, untranslated region (UTR), or intergenic. These tools further predict the functional consequences of variants, distinguishing between synonymous changes, which do not alter the amino acid sequence, and non-synonymous or missense mutations, which result in amino acid substitutions. More severe mutations include nonsense variants, which introduce premature stop codons, and frameshift variants, which disrupt the reading frame of the protein. Variant pathogenicity is often classified into categories such as pathogenic, likely pathogenic, benign, likely benign, or variants of uncertain significance (VUS). These classifications integrate population frequency data, computational prediction models, family-based segregation analyses, and results from functional assays to provide meaningful insights into the clinical or biological relevance of each variant.</p>
-</section>
-<section id="population-level-variant-data" class="level3">
-<h3 class="anchored" data-anchor-id="population-level-variant-data">10. Population-Level Variant Data</h3>
-<p>Population-level variant datasets provide critical resources for interpreting genetic variation in a global context. The <strong>1000 Genomes Project</strong>, for instance, encompasses genomic data from over 2,500 individuals representing 26 distinct populations worldwide, with an average sequencing coverage of approximately 7–8X. This extensive collection offers researchers a comprehensive snapshot of human genetic diversity, aiding studies in population genetics, evolutionary biology, and clinical genomics.</p>
-<p>Complementary to the 1000 Genomes Project, resources like <strong>HapMap</strong>, <strong>HGDP-CEPH</strong>, and <strong>gnomAD</strong> further enrich our understanding of global genetic variation. The International HapMap Project, although now archived, was an early effort aimed at cataloging common single nucleotide polymorphisms (SNPs) across diverse human populations. The HGDP-CEPH panel provides valuable genomic data from a broad array of worldwide populations, offering insights into human evolutionary history and population structure. The Genome Aggregation Database (gnomAD) expands upon these earlier efforts by compiling allele frequency data from tens of thousands of sequenced individuals, greatly enhancing our ability to interpret genetic variants, understand their functional significance, and accurately determine their frequencies across different populations.</p>
-</section>
-<section id="references-and-additional-resources" class="level3">
-<h3 class="anchored" data-anchor-id="references-and-additional-resources">11. References and Additional Resources</h3>
-<p>Olson, N.D., et al.&nbsp;(2023) Nature Reviews Genetics 24:464–483.</p>
-<p>The 1000 Genomes Project Consortium. (2015) Nature 526:68–74.</p>
-<p>Cann, H.M., et al.&nbsp;(2002) Science 296:261–262. (HGDP-CEPH)</p>
-<p>Ensembl Variation documentation: https://www.ensembl.org/info/docs/variation/index.html</p>
-<p>BCFtools: <a href="https://github.com/samtools/bcftools" class="uri">https://github.com/samtools/bcftools</a></p>
-<p>VEP (Variant Effect Predictor): <a href="https://github.com/willmclaren/ensembl-vep" class="uri">https://github.com/willmclaren/ensembl-vep</a></p>
-<p>gnomAD: <a href="https://gnomad.broadinstitute.org/about" class="uri">https://gnomad.broadinstitute.org/about</a></p>
-<p>For course-related inquiries, contact: qasim.ayub@monash.edu</p>
+<section id="variant-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="variant-annotation">6 Variant annotation</h3>
+<p><strong>Q1</strong> Use the command:</p>
+<p><code>bcftools query -f '%BCSQ' -r 19:10088937 multi.filt.annot.bcf</code></p>
+<p>to return</p>
+<p><code>missense|Fads2|ENSMUST00000025567|protein_coding|-|163V&gt;163I|10088937C&gt;T(base)</code></p>
+<p><strong>Q2</strong> A missense mutation</p>
+<p><strong>Q3</strong> The C&gt;T mutation changes the amino acid at position 163 in the protein sequence, from valine to isoleucine.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

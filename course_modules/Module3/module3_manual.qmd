@@ -2,3 +2,131 @@
 title: "Manual"
 format: html
 ---
+
+## 
+
+### Table of Contents
+
+1.  Introduction and Learning Outcomes
+
+2.  DNA Variations: Definitions and Types
+
+3.  Practical Applications of Variant Calling
+
+4.  Variant Calling Basics
+
+5.  Steps in Variant Detection
+
+6.  Common Sources of Error
+
+7.  Advanced Topics in Variant Calling
+
+8.  Assessing and Benchmarking Variant Calls
+
+9.  Functional Annotation and Variant Consequences
+
+10. Population-Level Variant Data
+
+11. References and Additional Resources
+
+### 1. Introduction and Learning Outcomes
+
+By the end of this course, you should be able to:
+
+-   Understand various types of genomic variations and how they arise.
+
+-   Describe how variant calls are generated from raw sequencing data.
+
+-   Assess variant quality and visualize variants using tools such as IGV.
+
+-   Perform basic variant annotation and interpret biological consequences.
+
+### 2. DNA Variations: Definitions and Types
+
+Mutations refer to any alteration in the DNA base sequence and can be broadly classified into germline and somatic mutations. Germline mutations occur in the egg or sperm cells and are heritable, meaning they can be passed on to subsequent generations. In contrast, somatic mutations arise in non-germline tissues and do not get inherited by offspring. When examining the types of genomic variations, it is essential to differentiate between large-scale and small-scale changes. Large-scale variations include chromosomal gains or losses (such as aneuploidies), various forms of translocations (for instance, reciprocal and Robertsonian), and copy number variants (CNVs), which are duplications or deletions typically ranging from approximately 1 kilobase to several megabases—collectively accounting for roughly 12% of the human genome. Structural variants (SVs), including insertions, inversions, translocations, and tandem duplications larger than 50 base pairs, also fall into this category. On the other hand, small-scale variations involve more subtle changes such as single nucleotide variants (SNVs), which are simple base substitutions (for example, A→C or G→T), indels that represent small insertions or deletions (less than 50 base pairs), multinucleotide polymorphisms (MNPs) which involve multiple adjacent base substitutions, and microsatellites or short tandem repeats (STRs). STRs are characterized by the repetition of small motifs of 2–6 base pairs—like the “GATA” sequence repeated 7 versus 8 times—which are inherently more variable. Notably, while single nucleotide polymorphisms (SNPs) are usually biallelic with a relatively low mutation rate (around 10\^-8 per base pair per generation), STRs are multiallelic with higher mutation rates, making their ancestral states more challenging to infer.
+
+To summarise:
+
+**Mutation / Variation**: Any change in the DNA base sequence.
+
+**Germline mutation**: Heritable variation present in egg or sperm cells.
+
+**Somatic mutation**: Variation in non-germline tissues; not passed to offspring.
+
+**Copy number variants (CNVs)**: Duplications or deletions ranging from \~1 kb to many Mb, accounting for roughly 12% of the human genome.
+
+**Structural Variants (SVs)**: Insertions, inversions, translocations, tandem duplications, etc. (often \>50 bp).
+
+**Single Nucleotide Variants (SNVs)**: Base substitutions (A→C, G→T, etc.).
+
+**Indels**: Small insertions or deletions (\<50 bp).
+
+**Multinucleotide Polymorphisms (MNPs):** Multiple adjacent base substitutions.
+
+**Microsatellites / STRs**: Short-tandem repeats of 2–6 bp repeated multiple times (e.g., “GATA” repeated 7 vs 8 times).
+
+### 3. Practical Applications of Variant Calling
+
+Cataloging biological diversity is fundamental for understanding population genetics and exploring evolutionary trends, while disease diagnosis leverages the identification of pathogenic mutations in clinical settings. In addition, deciphering genotype-phenotype associations plays a crucial role in locating variants that underlie specific traits or diseases, thereby facilitating pharmacogenomics where drug choice and dosage are tailored based on individual genotypes. DNA forensics employs STR profiling to aid law enforcement and personal identification, and comprehensive population genetics studies help infer demographic history. Finally, marker-assisted selection is widely used in agriculture and breeding programs to improve crop and livestock traits efficiently.
+
+### 4. Variant Calling Basics
+
+In a diploid genome, each human cell contains two copies of every chromosome, which means that each locus on the genome has two alleles. The combination of these alleles is referred to as the genotype, and examples include homozygous genotypes like "RR" and "AA" or heterozygous combinations such as "RA." When these allele combinations are resolved into phase, meaning the specific arrangement on each individual chromosome is known, they form what is called a haplotype.
+
+In the context of variant calling, the term "reference allele" (or “Ref”) refers to the allele that appears in the reference genome, whereas the "alternate allele" (or “Alt”) is the observed variant in the sequenced sample. For a diploid organism, the possible genotypes based on these alleles can be represented as RR (0/0), RA (0/1), or AA (1/1).
+
+The Variant Call Format, or VCF, is a widely adopted tab-delimited text format designed for storing gene sequence variations. The format includes key fields such as CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO, FORMAT, and additional sample-specific columns. Notably, the VCF format captures details such as the depth (DP), which is the total number of sequencing reads covering a variant site, and the allelic depth (AD), which provides coverage information for each allele.
+
+Several tools are available for variant calling. **BCFtools** and **samtools** are frequently used for identifying single nucleotide variants (SNPs) and small insertions or deletions (indels) from alignment data. For more advanced analyses, tools like **GATK's** **HaplotypeCaller** leverage local re-assembly techniques to improve the accuracy of indel calling. Additionally, other tools such as **FreeBayes, Platypus**, and **DeepVariant** contribute to variant calling efforts by offering alternative methodologies and algorithms suited to various data types and experimental designs.
+
+### 5. Steps in Variant Detection
+
+The process begins by generating sequencing data, which consists of raw reads produced by sequencing platforms such as Illumina. These reads are subjected to rigorous quality control, including trimming of adapters and filtering out low-quality bases, before being aligned or mapped to a reference genome. Once aligned, a pileup is generated to summarize the number of reads supporting each base at every position, which then informs the variant calling step—determining the genotype probabilities at each locus. Subsequent filtering addresses factors such as base quality, where Phred scores indicate the confidence in each base call, mapping quality that reflects the accuracy of the read’s placement within the genome, and established depth thresholds to ensure sufficient coverage. Variant calling itself can be approached naïvely, using simple allele-frequency thresholds (for example, calling a heterozygote if roughly 50% of reads show a particular base), or through more sophisticated statistical methods that incorporate base and mapping error rates, prior allele frequencies, and other variables to compute a posterior probability for each potential genotype.
+
+### 6. Common Sources of Error
+
+Several common sources of error must be considered during variant calling. Homopolymers and repetitive regions, characterized by long runs of identical bases, frequently cause systematic sequencing and mapping errors. Strand bias, where a variant appears exclusively on forward or reverse sequencing reads, often signals technical artefacts rather than genuine biological variants. Incorrect alignments, particularly near insertions or deletions (indels), may lead to false-positive single nucleotide polymorphisms (SNPs). Additionally, extremely high sequencing coverage can indicate repetitive elements or duplicated genomic regions, complicating accurate variant calling. Differences between RNA-seq and DNA-seq data, such as splice junctions and RNA editing events, may also produce apparent variants that do not reflect underlying genomic DNA sequence changes. Finally, variability in experimental conditions can result in non-reproducible calls, emphasizing the importance of validating and replicating findings to ensure reliability.
+
+### 7. Advanced Topics in Variant Calling
+
+**Somatic variant calling** specifically aims to identify genetic variants present in tumor cells by comparing sequences from tumor samples against matched normal tissues. The primary objective is detecting mutations that may drive cancer progression. Because tumors are heterogeneous, subclonal variants—mutations present in only a subset of cells—often exhibit widely varying allele fractions, complicating their detection and interpretation. Specialized bioinformatics pipelines such as Mutect2 and Strelka2 have been developed to address these complexities and accurately distinguish true somatic mutations from background noise.
+
+**Indel calling presents unique challenges**, notably due to elevated sequencing error rates in regions such as microsatellites and homopolymers, where accurate base calling is particularly difficult. Additionally, indels can be represented in multiple valid ways by different alignment tools, leading to inconsistencies in their annotation and interpretation. As a result, complex indel regions often suffer from low reproducibility, with significant discrepancies observed across different variant callers. Users are encouraged to validate indel calls rigorously, especially in clinical or sensitive research contexts.
+
+**Emerging approaches in variant calling** are addressing these limitations. Local de novo assembly methods, implemented in tools like GATK’s HaplotypeCaller, Scalpel, and Octopus, reconstruct local genomic haplotypes directly from sequencing reads, helping resolve complex variants more effectively. Additionally, newer methods employ variation graphs—data structures that represent multiple known variants simultaneously—to improve alignment accuracy and variant calling performance, particularly in regions of high genetic complexity or variability. These innovative approaches promise to significantly enhance the accuracy and comprehensiveness of genomic analyses moving forward.
+
+### 8. Assessing and Benchmarking Variant Calls
+
+The **transition/transversion (Ts/Tv) ratio** is a critical metric used to assess the quality of variant calls. Transitions (Ts)—base substitutions within purines (A↔G) or pyrimidines (C↔T)—occur more frequently than transversions (Tv), substitutions between purines and pyrimidines. For high-quality SNP datasets in humans, a Ts/Tv ratio of approximately 2 to 3 is typically expected; deviations from this range can indicate underlying errors in variant calling.
+
+Another key consideration is the concept of a **callable genome**, as certain regions of the genome are inherently difficult to analyze due to repetitive sequences, structural complexities, or extreme GC content. Not all genomic regions are equally accessible or "callable," and thus it is beneficial to utilize established benchmark sets, such as the Genome in a Bottle project, which define high-confidence genomic regions suitable for accurate variant detection and performance assessment.
+
+When evaluating variant-calling performance, metrics such as **precision and recall** become essential. Precision represents the proportion of called variants that are correct (true positives), while recall, also known as sensitivity, measures the proportion of true variants correctly identified. To accurately compute these metrics, benchmarking tools like hap.py or vcfeval are routinely employed, allowing researchers to systematically assess and optimize variant-calling workflows for reliability and accuracy.
+
+### 9. Functional Annotation and Variant Consequences
+
+Functional annotation of genetic variants is an essential step in understanding their potential biological impacts. Annotation tools such as **BCFtools/csq**, **Ensembl Variant Effect Predictor (VEP)**, and **ANNOVAR** are commonly utilized to systematically determine the genomic context of variants, categorizing them as coding, intronic, untranslated region (UTR), or intergenic. These tools further predict the functional consequences of variants, distinguishing between synonymous changes, which do not alter the amino acid sequence, and non-synonymous or missense mutations, which result in amino acid substitutions. More severe mutations include nonsense variants, which introduce premature stop codons, and frameshift variants, which disrupt the reading frame of the protein. Variant pathogenicity is often classified into categories such as pathogenic, likely pathogenic, benign, likely benign, or variants of uncertain significance (VUS). These classifications integrate population frequency data, computational prediction models, family-based segregation analyses, and results from functional assays to provide meaningful insights into the clinical or biological relevance of each variant.
+
+### 10. Population-Level Variant Data
+
+Population-level variant datasets provide critical resources for interpreting genetic variation in a global context. The **1000 Genomes Project**, for instance, encompasses genomic data from over 2,500 individuals representing 26 distinct populations worldwide, with an average sequencing coverage of approximately 7–8X. This extensive collection offers researchers a comprehensive snapshot of human genetic diversity, aiding studies in population genetics, evolutionary biology, and clinical genomics.
+
+Complementary to the 1000 Genomes Project, resources like **HapMap**, **HGDP-CEPH**, and **gnomAD** further enrich our understanding of global genetic variation. The International HapMap Project, although now archived, was an early effort aimed at cataloging common single nucleotide polymorphisms (SNPs) across diverse human populations. The HGDP-CEPH panel provides valuable genomic data from a broad array of worldwide populations, offering insights into human evolutionary history and population structure. The Genome Aggregation Database (gnomAD) expands upon these earlier efforts by compiling allele frequency data from tens of thousands of sequenced individuals, greatly enhancing our ability to interpret genetic variants, understand their functional significance, and accurately determine their frequencies across different populations.
+
+### 11. References and Additional Resources
+
+Olson, N.D., et al. (2023) Nature Reviews Genetics 24:464–483.
+
+The 1000 Genomes Project Consortium. (2015) Nature 526:68–74.
+
+Cann, H.M., et al. (2002) Science 296:261–262. (HGDP-CEPH)
+
+Ensembl Variation documentation: https://www.ensembl.org/info/docs/variation/index.html
+
+BCFtools: <https://github.com/samtools/bcftools>
+
+VEP (Variant Effect Predictor): <https://github.com/willmclaren/ensembl-vep>
+
+gnomAD: <https://gnomad.broadinstitute.org/about>
+
+For course-related inquiries, contact: qasim.ayub\@monash.edu
