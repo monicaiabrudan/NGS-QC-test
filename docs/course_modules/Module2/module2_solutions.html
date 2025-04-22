@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Overview – NGS Bioinformatics course</title>
+<title>Solutions – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,13 +128,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#duration" id="toc-duration" class="nav-link active" data-scroll-target="#duration">Duration</a></li>
-  <li><a href="#key-topics" id="toc-key-topics" class="nav-link" data-scroll-target="#key-topics">Key topics</a></li>
-  <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a></li>
-  <li><a href="#manual-and-practical-execises" id="toc-manual-and-practical-execises" class="nav-link" data-scroll-target="#manual-and-practical-execises">Manual and practical execises</a></li>
-  <li><a href="#presentation-slides" id="toc-presentation-slides" class="nav-link" data-scroll-target="#presentation-slides">Presentation slides</a></li>
-  <li><a href="#lecture-notes-or-scripts" id="toc-lecture-notes-or-scripts" class="nav-link" data-scroll-target="#lecture-notes-or-scripts">Lecture notes or scripts</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#read-alignment" id="toc-read-alignment" class="nav-link active" data-scroll-target="#read-alignment">1 Read Alignment</a></li>
+  <li><a href="#performing-read-alignment" id="toc-performing-read-alignment" class="nav-link" data-scroll-target="#performing-read-alignment">2 Performing Read Alignment</a></li>
+  <li><a href="#alignment-visualisation" id="toc-alignment-visualisation" class="nav-link" data-scroll-target="#alignment-visualisation">3 Alignment Visualisation</a></li>
+  <li><a href="#alignment-workflows" id="toc-alignment-workflows" class="nav-link" data-scroll-target="#alignment-workflows">3.1 Alignment workflows</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">3.2 Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -143,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview</h1>
+<h1 class="title">Solutions</h1>
 </div>
 
 
@@ -160,44 +158,68 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Content by</p>
-<section id="duration" class="level1">
-<h1>Duration</h1>
-<p>4 hours</p>
+<section id="read-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="read-alignment">1 Read Alignment</h3>
+<p>There are no questions in this section.</p>
 </section>
-<section id="key-topics" class="level1">
-<h1>Key topics</h1>
-<p>In this module, learners will look at:</p>
-<ul>
-<li><p>Read alignment theory and tools</p></li>
-<li><p>Challenges in alignment and quality assessment</p></li>
-<li><p>Data processing and scalability</p></li>
-</ul>
+<section id="performing-read-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="performing-read-alignment">2 Performing Read Alignment</h3>
+<p>1. 145441459</p>
+<p>2. The sam is ~ 157M and the bam is ~ 25M</p>
+<p>3. 67,461 (17.2%) or 359 + (33551 * 2)</p>
+<p>4. 392,820</p>
+<p>5. 391603/392820 (99.7%)</p>
+<p>6. 389410</p>
+<p>7. 0</p>
+<p>8. 419 (mean) 113.9 (standard deviation)</p>
+<p>9. 7,853 (2.0%)</p>
+<p>10. First/Forward read</p>
 </section>
-<section id="activities" class="level1">
-<h1>Activities</h1>
-<ul>
-<li><p>Lecture: 1h</p></li>
-<li><p>Practical exercises: 2.5h</p></li>
-<li><p>Quiz: 0.5h</p></li>
-</ul>
+<section id="alignment-visualisation" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-visualisation">3 Alignment Visualisation</h3>
+<p>1. This exercise is just asking you to explore the genome and become familiar with navigating in IGV.</p>
+<p>2. 23X-57X</p>
+<p>3. There is a 1bp insertion (at “T)” at position 87,483,966. This is supported by 9 reads.</p>
+<p>There is a 28bp deletion at position 87,483,966. This is supported by 3 reads.</p>
+<p>The third mutation is a bit harder to spot, because it’s bigger than the read length (so no single read will span it). Look first at the coverage track, and notice a sharp coverage drop between chr7:87,483,833 and chr7:87,484,169. That suggests that one of the two alleles have been deleted across that position. Notice also the soft-clipping of some reads “entering” chr7:87,483,833 from the left, and the same softclipping of reads entering chr7:87,484,169 from the right. This soft-clipping shows up as reads being partly multi-coloured. That’s happening because the physical genome between those points has been excised for one allele, causing the mis-alignment when we attempt to align some reads to the reference genome. That mis-alignment causes the bwa aligner to “give up” and mark a part of the read as soft-clipped.</p>
+<p>4. This mouse was bred from a zygote which was mutagenised with Crispr-Cas9, targeted at the Tyr locus. You are watching the zygote DNA-repair machinery panicking and grabbing at straws when trying to repair double-stranded DNA breaks. In the process, it makes mistakes, and those mistakes are propagated into the mouse genome: different zygote cells received different mutations, which is why some reads reflect different mutations to others. Specifically - The CRISPR-Cas9 has acted on the zygote at this locus to create Non-Homologous-End-Join-based damage around 87,483,960: that resulted in a subclonal 1bp insertion and a 28bp deletion. Also, a related DNA repair process has resulted in the a 336bp deletion across the same area.</p>
 </section>
-<section id="manual-and-practical-execises" class="level1">
-<h1>Manual and practical execises</h1>
-<p><a href="../../course_modules/Module2/module2_manual.html">Module manual</a></p>
-<p><a href="../../course_modules/Module2/module2_solutions.html">Solutions</a></p>
+<section id="alignment-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-workflows">3.1 Alignment workflows</h3>
+<p>1. -M marks shorter split hits as secondary and -R adds the read group to the header of the BAM file</p>
+<p>2. -b means create a BAM as output and -S indicates that the input files is a SAM file. The -S option is now ignored by samtools as it can now autodetect the input file type.</p>
+<p>3. 397506</p>
+<p>4. 303036/397506 (76.2%)</p>
+<p>5. 282478</p>
+<p>6. 2239</p>
+<p>7. 275.9 (mean) and 47.7 (standard deviation)</p>
+<p>8. 23,789 (7.9%)</p>
+<p>9. First</p>
+<p>10.</p>
+<p><code>bwa mem -M -R ”@RG\tID:lane2\tSM:60A_Sc_DBVPG6044” ../../../../ref/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa.gz s_7_1.fastq.gz s_7_2.fastq.gz | samtools view -bS - | samtools sort -T temp -O bam -o lane1.sorted.bam -</code></p>
+<p>~22M</p>
+<p>Merge: ~/course_data/read_alignment/data/Exercise2/60A_Sc_DBVPG6044/library1$ picard</p>
+<p>MergeSamFiles -I lane1/lane1.sorted.bam -I lane2/lane1.sorted.bam -O library1.bam</p>
+<p>Markdup: ~/course_data/read_alignment/data/Exercise2/60A_Sc_DBVPG6044/library1$ picard</p>
+<p>MarkDuplicates -I library1.bam -O library1.markdup.bam -M library1.metrics.txt</p>
+<p>11. 12399 or 3115 + (4642 * 2) = unpaired read dups + (paired read dups *2)</p>
+<p>12. 2.5%</p>
 </section>
-<section id="presentation-slides" class="level1">
-<h1>Presentation slides</h1>
-<p>(PPT/PDF, to be generated from the module manual)</p>
-</section>
-<section id="lecture-notes-or-scripts" class="level1">
-<h1>Lecture notes or scripts</h1>
-<p>Pre-recorded lecture</p>
-<p>Virtual machine</p>
-</section>
-<section id="datasets" class="level1">
-<h1>Datasets</h1>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">3.2 Exercises</h3>
+<p>1. No answer needed</p>
+<p>2. The reference base is C</p>
+<p>3. No (the reads call T)</p>
+<p>4. The reference base is G and all reads agree</p>
+<p>5. No answer</p>
+<p>6. An insertion</p>
+<p>7. No answer</p>
+<p>8. A deletion. This is unlikely to be a true variant and may be due to misalignment due the run of T’s in the flanking region.</p>
+<p>9. The following command procuces a cram file which should be ~29MB in size.</p>
+<p><code>samtools view -C -T ../../../ref/Saccharomyces_cerevisiae.R64-1-1.dna.toplevel.fa -o library1.markdup.cram library1.markdup.bam</code></p>
+<p>-C means create a CRAM file as output</p>
+<p>-T is the reference file to use for the compression</p>
+<p>-o is the name of CRAM file to create</p>
 
 
 </section>

@@ -27,9 +27,11 @@ In this module, learners will look at:
 
 -   Quiz: 0.5h
 
-# Manual
+# Manual and practical execises
 
 [Module manual](module2_manual.qmd)
+
+[Solutions](module2_solutions.qmd)
 
 # Presentation slides
 
@@ -38,8 +40,6 @@ In this module, learners will look at:
 # Lecture notes or scripts
 
 Pre-recorded lecture
-
-# Practical exercises
 
 Virtual machine
 
