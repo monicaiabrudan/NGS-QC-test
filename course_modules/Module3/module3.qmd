@@ -5,6 +5,10 @@ format: html
 
 Content by Qasim Ayub, qasim.ayub\@monash.edu
 
+# Module Title
+
+**Variant calling**
+
 # Duration
 
 3h
