@@ -19,6 +19,8 @@ website:
             text: "Variant calling"
           - href: course_modules/Module4/module4.qmd
             text: "Structural Variation Calling"
+          - href: course_modules/Module5/module5.qmd
+            text: "Genome assembly"
             
             
 

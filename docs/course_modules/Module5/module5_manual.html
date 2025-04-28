@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>module5_manual – NGS Bioinformatics course</title>
+<title>Manual – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,6 +113,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../course_modules/Module4/module4.html">
  <span class="dropdown-text">Structural Variation Calling</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../course_modules/Module5/module5.html">
+ <span class="dropdown-text">Genome assembly</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -127,15 +131,35 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-of-genome-assembly" id="toc-overview-of-genome-assembly" class="nav-link active" data-scroll-target="#overview-of-genome-assembly">1. Overview of Genome Assembly</a></li>
+  <li><a href="#challenges-in-assembly-the-jigsaw-puzzle-analogy" id="toc-challenges-in-assembly-the-jigsaw-puzzle-analogy" class="nav-link" data-scroll-target="#challenges-in-assembly-the-jigsaw-puzzle-analogy">2. Challenges in Assembly (The Jigsaw Puzzle Analogy)</a></li>
+  <li><a href="#key-considerations" id="toc-key-considerations" class="nav-link" data-scroll-target="#key-considerations">3. Key Considerations</a></li>
+  <li><a href="#basic-terminology" id="toc-basic-terminology" class="nav-link" data-scroll-target="#basic-terminology">4. Basic Terminology</a></li>
+  <li><a href="#sequencing-technologies" id="toc-sequencing-technologies" class="nav-link" data-scroll-target="#sequencing-technologies">5. Sequencing Technologies</a></li>
+  <li><a href="#long-range-technologies-comparison" id="toc-long-range-technologies-comparison" class="nav-link" data-scroll-target="#long-range-technologies-comparison">6. Long-Range Technologies Comparison</a></li>
+  <li><a href="#example-project-workflow" id="toc-example-project-workflow" class="nav-link" data-scroll-target="#example-project-workflow">7. Example Project Workflow</a></li>
+  <li><a href="#assembly-methods" id="toc-assembly-methods" class="nav-link" data-scroll-target="#assembly-methods">8. Assembly Methods</a></li>
+  <li><a href="#common-hurdles" id="toc-common-hurdles" class="nav-link" data-scroll-target="#common-hurdles">9. Common Hurdles</a></li>
+  <li><a href="#quality-metrics" id="toc-quality-metrics" class="nav-link" data-scroll-target="#quality-metrics">10. Quality Metrics</a></li>
+  <li><a href="#scaffolding-and-chromosome-assignment" id="toc-scaffolding-and-chromosome-assignment" class="nav-link" data-scroll-target="#scaffolding-and-chromosome-assignment">11. Scaffolding and Chromosome Assignment</a></li>
+  <li><a href="#diploid-assembly" id="toc-diploid-assembly" class="nav-link" data-scroll-target="#diploid-assembly">12. Diploid Assembly</a></li>
+  <li><a href="#assembly-quality-control" id="toc-assembly-quality-control" class="nav-link" data-scroll-target="#assembly-quality-control">13. Assembly Quality Control</a></li>
+  <li><a href="#specialized-assemblies" id="toc-specialized-assemblies" class="nav-link" data-scroll-target="#specialized-assemblies">14. Specialized Assemblies</a></li>
+  <li><a href="#large-genome-projects" id="toc-large-genome-projects" class="nav-link" data-scroll-target="#large-genome-projects">15. Large Genome Projects</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">module5_manual</h1>
+<h1 class="title">Manual</h1>
 </div>
 
 
@@ -152,8 +176,124 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="overview-of-genome-assembly" class="level1">
+<h1>1. Overview of Genome Assembly</h1>
+<p>Problem: Sequencing technologies produce only short DNA reads.<br>
+Goal: Reconstruct a complete genome from millions to billions of short fragments.<br>
+Methods:<br>
+- Clone-based sequencing: Select and sequence specific clones.<br>
+- Whole-genome shotgun sequencing: Fragment and sequence the entire genome.<br>
+- De novo assembly: Reconstruct the genome without a reference.</p>
+</section>
+<section id="challenges-in-assembly-the-jigsaw-puzzle-analogy" class="level1">
+<h1>2. Challenges in Assembly (The Jigsaw Puzzle Analogy)</h1>
+<p>Many small, damaged, and repetitive pieces make assembly harder.<br>
+Critical factors:<br>
+- Read length (longer is better)<br>
+- Error rates (fewer is better)<br>
+- Repetitive regions cause ambiguity.</p>
+</section>
+<section id="key-considerations" class="level1">
+<h1>3. Key Considerations</h1>
+<p>- Sequencing coverage<br>
+- Error rates<br>
+- Read length<br>
+- Genome uniqueness<br>
+- Genome size<br>
+- Heterozygosity and ploidy<br>
+- Computational resources (time and memory).</p>
+</section>
+<section id="basic-terminology" class="level1">
+<h1>4. Basic Terminology</h1>
+<p>- Contig: A contiguous stretch of sequence.<br>
+- Scaffold: Ordered set of contigs with gaps represented by Ns.</p>
+</section>
+<section id="sequencing-technologies" class="level1">
+<h1>5. Sequencing Technologies</h1>
+<p>PacBio Sequencing:<br>
+- Very long reads, detects base modifications.<br>
+- High error rate, expensive.<br>
+<br>
+Nanopore Sequencing:<br>
+- Portability, ultra-long reads.<br>
+- High error rates, systematic errors near homopolymers.<br>
+<br>
+Linked-Reads and Read Clouds:<br>
+- Bridges long repeats and improves assembly continuity.<br>
+<br>
+Hi-C Data:<br>
+- Captures chromatin conformation to assist chromosome-scale assembly.<br>
+<br>
+Optical Mapping:<br>
+- Labels and images long DNA fragments for structural scaffolding.</p>
+</section>
+<section id="long-range-technologies-comparison" class="level1">
+<h1>6. Long-Range Technologies Comparison</h1>
+<p>Platforms: PacBio, Nanopore, 10X Genomics, Hi-C, Optical mapping.<br>
+Each technology offers distinct advantages and bioinformatic challenges.</p>
+</section>
+<section id="example-project-workflow" class="level1">
+<h1>7. Example Project Workflow</h1>
+<p>Technologies are integrated sequentially for high-quality genome assembly.<br>
+Example: Vertebrate Genomes Project (VGP).</p>
+</section>
+<section id="assembly-methods" class="level1">
+<h1>8. Assembly Methods</h1>
+<p>Contig Generation:<br>
+- OLC (Overlap-Layout-Consensus): Good for long reads.<br>
+- de Bruijn Graphs (DBG): Good for short reads.</p>
+</section>
+<section id="common-hurdles" class="level1">
+<h1>9. Common Hurdles</h1>
+<p>- Heterozygosity<br>
+- Sequencing errors<br>
+- Repeats<br>
+- Low-complexity regions<br>
+- Base composition biases.</p>
+</section>
+<section id="quality-metrics" class="level1">
+<h1>10. Quality Metrics</h1>
+<p>- Total assembly length<br>
+- Number of contigs and scaffolds<br>
+- N50, NG50<br>
+- Gene content assessments.</p>
+</section>
+<section id="scaffolding-and-chromosome-assignment" class="level1">
+<h1>11. Scaffolding and Chromosome Assignment</h1>
+<p>Sources: Mate-pair libraries, Hi-C, Optical maps.<br>
+Tools like RACA help build chromosome-scale scaffolds.</p>
+</section>
+<section id="diploid-assembly" class="level1">
+<h1>12. Diploid Assembly</h1>
+<p>Problem: Standard assemblers assume haploidy.<br>
+Solutions:<br>
+- Falcon-Unzip: Haplotyping assembly.<br>
+- Purge Haplotigs: Removes haplotype duplications.<br>
+- Falcon-Phase: Phases haplotypes using Hi-C data.<br>
+- Trio Binning: Uses parental reads for haplotype separation.</p>
+</section>
+<section id="assembly-quality-control" class="level1">
+<h1>13. Assembly Quality Control</h1>
+<p>Gene Content: BUSCO analysis.<br>
+Base Accuracy: Realign reads to detect errors.<br>
+Structural Accuracy: Using known structural data and tools like QUAST, REAPR.</p>
+</section>
+<section id="specialized-assemblies" class="level1">
+<h1>14. Specialized Assemblies</h1>
+<p>Metagenomic Assembly:<br>
+- For mixed-organism samples (e.g., environmental DNA).<br>
+<br>
+Transcriptome Assembly:<br>
+- For RNA sequencing data.</p>
+</section>
+<section id="large-genome-projects" class="level1">
+<h1>15. Large Genome Projects</h1>
+<p>Tree of Life Project and Darwin Tree of Life: Massive efforts to sequence all eukaryotic life in Britain.<br>
+Achievements: New assemblies of Lepidoptera.<br>
+Highlight: Complete chromosome assemblies achieved, e.g., human X chromosome.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

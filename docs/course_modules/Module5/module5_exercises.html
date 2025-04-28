@@ -136,31 +136,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#variant-calling" id="toc-variant-calling" class="nav-link active" data-scroll-target="#variant-calling">1 Variant Calling</a></li>
+  <li><a href="#genome-assembly" id="toc-genome-assembly" class="nav-link active" data-scroll-target="#genome-assembly">1 Genome Assembly</a>
+  <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1.1 Introduction</a></li>
   <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">1.2 Learning outcomes</a></li>
   <li><a href="#tutorial-sections" id="toc-tutorial-sections" class="nav-link" data-scroll-target="#tutorial-sections">1.3 Tutorial sections</a></li>
   <li><a href="#authors" id="toc-authors" class="nav-link" data-scroll-target="#authors">1.4 Authors</a></li>
   <li><a href="#running-the-commands-from-this-tutorial" id="toc-running-the-commands-from-this-tutorial" class="nav-link" data-scroll-target="#running-the-commands-from-this-tutorial">1.5 Running the commands from this tutorial</a></li>
   <li><a href="#lets-get-started" id="toc-lets-get-started" class="nav-link" data-scroll-target="#lets-get-started">1.6 Let’s get started!</a></li>
-  <li><a href="#performing-variant-calling" id="toc-performing-variant-calling" class="nav-link" data-scroll-target="#performing-variant-calling">2 Performing Variant Calling</a></li>
-  <li><a href="#assessing-the-input-data" id="toc-assessing-the-input-data" class="nav-link" data-scroll-target="#assessing-the-input-data">2.1 Assessing the input data</a></li>
-  <li><a href="#generating-pileup" id="toc-generating-pileup" class="nav-link" data-scroll-target="#generating-pileup">2.2 Generating pileup</a></li>
-  <li><a href="#generating-genotype-likelihoods-and-calling-variants" id="toc-generating-genotype-likelihoods-and-calling-variants" class="nav-link" data-scroll-target="#generating-genotype-likelihoods-and-calling-variants">2.3 Generating genotype likelihoods and calling variants</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">2.2.1 Exercises</a></li>
-  <li><a href="#generating-genotype-likelihoods-and-calling-variants-1" id="toc-generating-genotype-likelihoods-and-calling-variants-1" class="nav-link" data-scroll-target="#generating-genotype-likelihoods-and-calling-variants-1">2.3 Generating genotype likelihoods and calling variants</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">2.4 Exercises</a></li>
-  <li><a href="#variant-filtering" id="toc-variant-filtering" class="nav-link" data-scroll-target="#variant-filtering">3 Variant Filtering</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2">3.1 Exercises</a></li>
-  <li><a href="#variant-normalization" id="toc-variant-normalization" class="nav-link" data-scroll-target="#variant-normalization">3.2 Variant normalization</a></li>
-  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3">4.1 Exercises</a></li>
-  <li><a href="#variant-visualisation" id="toc-variant-visualisation" class="nav-link" data-scroll-target="#variant-visualisation">5 Variant visualisation</a></li>
-  <li><a href="#load-the-reference-genome" id="toc-load-the-reference-genome" class="nav-link" data-scroll-target="#load-the-reference-genome">5.1 Load the reference genome</a></li>
-  <li><a href="#load-the-alignment" id="toc-load-the-alignment" class="nav-link" data-scroll-target="#load-the-alignment">5.2 Load the alignment</a></li>
-  <li><a href="#exercises-4" id="toc-exercises-4" class="nav-link" data-scroll-target="#exercises-4">5.3 Exercises</a></li>
-  <li><a href="#variant-annotation" id="toc-variant-annotation" class="nav-link" data-scroll-target="#variant-annotation">6 Variant annotation</a></li>
-  <li><a href="#bcftools-csq" id="toc-bcftools-csq" class="nav-link" data-scroll-target="#bcftools-csq">6.1 bcftools csq</a></li>
-  <li><a href="#exercises-5" id="toc-exercises-5" class="nav-link" data-scroll-target="#exercises-5">6.2 Exercises</a></li>
+  </ul></li>
+  <li><a href="#pacbio-genome-assembly" id="toc-pacbio-genome-assembly" class="nav-link" data-scroll-target="#pacbio-genome-assembly">2 PacBio Genome Assembly</a></li>
+  <li><a href="#assembly-algorithms" id="toc-assembly-algorithms" class="nav-link" data-scroll-target="#assembly-algorithms">3 Assembly algorithms</a>
+  <ul class="collapse">
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">3.1 Exercise</a></li>
+  <li><a href="#illumina-genome-assembly" id="toc-illumina-genome-assembly" class="nav-link" data-scroll-target="#illumina-genome-assembly">4 Illumina Genome Assembly</a></li>
+  <li><a href="#generating-an-illumina-assembly-with-velvet" id="toc-generating-an-illumina-assembly-with-velvet" class="nav-link" data-scroll-target="#generating-an-illumina-assembly-with-velvet">4.1 Generating an Illumina assembly with velvet</a></li>
+  <li><a href="#assembly-metrics" id="toc-assembly-metrics" class="nav-link" data-scroll-target="#assembly-metrics">4.2 Assembly metrics</a></li>
+  </ul></li>
+  <li><a href="#assembly-estimation" id="toc-assembly-estimation" class="nav-link" data-scroll-target="#assembly-estimation">5 Assembly estimation</a>
+  <ul class="collapse">
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">5.1 Exercises</a></li>
+  </ul></li>
+  <li><a href="#pacbio-genome-assembly-contd." id="toc-pacbio-genome-assembly-contd." class="nav-link" data-scroll-target="#pacbio-genome-assembly-contd.">6 PacBio Genome Assembly contd.</a>
+  <ul class="collapse">
+  <li><a href="#generating-pacbio-assemblies" id="toc-generating-pacbio-assemblies" class="nav-link" data-scroll-target="#generating-pacbio-assemblies">6.1 Generating pacbio assemblies</a></li>
+  <li><a href="#comparing-pacbio-assemblies" id="toc-comparing-pacbio-assemblies" class="nav-link" data-scroll-target="#comparing-pacbio-assemblies">6.2 Comparing pacbio assemblies</a></li>
+  <li><a href="#polishing-pacbio-assembly" id="toc-polishing-pacbio-assembly" class="nav-link" data-scroll-target="#polishing-pacbio-assembly">6.3 Polishing pacbio assembly</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -186,234 +188,244 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="variant-calling" class="level3">
-<h3 class="anchored" data-anchor-id="variant-calling">1 Variant Calling</h3>
-</section>
+<section id="genome-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="genome-assembly">1 Genome Assembly</h2>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">1.1 Introduction</h3>
-<p>Variant calling is the process of identifying differences between the reference genome and the samples that have been sequenced. These differences can be single nucleotide polymorphisms (SNPs), multi-nucleotide polymorphisms (MNPs) or small insertions and deletions (indels) and examples of each of these are shown below.</p>
-<p><img src="images/variant calling.png" class="img-fluid"></p>
-<p><em>Figure 1: SNPs and small insertions and deletions</em></p>
+<p>Genome assembly is the process of taking a large number of fragments of DNA and putting them back together to create a representation of the original DNA sequence from which they originated.</p>
 </section>
 <section id="learning-outcomes" class="level3">
 <h3 class="anchored" data-anchor-id="learning-outcomes">1.2 Learning outcomes</h3>
+<p>Many genomes contain large numbers of repeat sequences. Often these repeats are thousands of nucleotides long, and some occur in many different locations in the genome. This makes genome assembly a very difficult computational problem to solve. However, there are many genome assembly tools that exist that can produce long contiguous sequences (contigs) from sequencing reads. The assembly tool that you use will be determined by different factors, largely this will be the length of the sequencing reads and the sequencing technology used to produce the reads.</p>
+<p>In this practical we will assemble one chromosome of a malaria parasite: <em>Plasmodium falciparum</em>, the IT clone. We have sequenced the genome with both PacBio and Illumina and pre-filtered the reads to select only those reads from a single chromosome.</p>
 <p>On completion of the tutorial, you can expect to be able to:</p>
-<p>• Perform variant calling (SNPs and indels) using standard tools</p>
-<p>• Assess the quality/confidence of a variant call</p>
-<p>• Filter variant calls to remove low quality/confidence calls</p>
-<p>• Perform variant calling across multiple samples</p>
-<p>• Visualise variants using standard tools</p>
-<p>• Annotate variants with consequence calls</p>
+<p>• Describe the different approaches to genome assembly</p>
+<p>• Generate a genome assembly from Illumina data</p>
+<p>• Generate a genome assembly from PacBio data</p>
+<p>• Generate statistics to evaluate the quality of a genome assembly</p>
+<p>• Estimate the size of a genome assembly</p>
 </section>
 <section id="tutorial-sections" class="level3">
 <h3 class="anchored" data-anchor-id="tutorial-sections">1.3 Tutorial sections</h3>
 <p>This tutorial comprises the following sections:</p>
-<ol type="1">
-<li><p>Performing variant calling</p></li>
-<li><p>Filtering variants</p></li>
-<li><p>Multi-sample variant calling</p></li>
-<li><p>Visualising variants</p></li>
-</ol>
+<p>1. PacBio genome assembly</p>
+<p>2. Assembly algorithms</p>
+<p>3. Illumina genome assembly</p>
+<p>4. Genome assembly estimation</p>
+<p>5. PacBio genome assembly again</p>
 </section>
 <section id="authors" class="level3">
 <h3 class="anchored" data-anchor-id="authors">1.4 Authors</h3>
-<p>This tutorial was written by Jacqui Keane based on material from Thomas Keane and Petr Danecek.</p>
-<p>There is also an additional (optional) section: 5. Variant annotation</p>
+<p>This tutorial was written by Jacqui Keane based on material from Shane McCarthy and Thomas Otto.</p>
 </section>
 <section id="running-the-commands-from-this-tutorial" class="level3">
 <h3 class="anchored" data-anchor-id="running-the-commands-from-this-tutorial">1.5 Running the commands from this tutorial</h3>
 <p>You can follow this tutorial by typing all the commands you see into a terminal window. This is similar to the “Command Prompt” window on MS Windows systems, which allows the user to type DOS commands to manage files.</p>
-<p>To get started, open a new terminal on your computer and type the command below:</p>
-<p><code>cd ~/course_data/variant_calling/data</code></p>
-<p>Now you can follow the instructions in the tutorial from here.</p>
+<p>To get started, open a new terminal window and type the command below:</p>
+<p><code>cd ~/course_data/assembly/data</code></p>
 </section>
 <section id="lets-get-started" class="level3">
 <h3 class="anchored" data-anchor-id="lets-get-started">1.6 Let’s get started!</h3>
-<p>This tutorial assumes that you have samtools, bcftools and IGV installed on your computer. These are already installed on the VM you are using. To check that these are installed, you can run the following commands:</p>
-<p><code>samtools --help</code></p>
-<p><code>bcftools --help</code></p>
-<p><code>igv</code></p>
-<p>This should return the help message for samtools and bcftools. The final command should launch the genome viewer IGV. You can close the IGV software, we will use it later in this tutorial to visualise variants.</p>
-<p>To get started with the tutorial, go to to the first section: Performing variant calling</p>
+<p>This tutorial requires that you have <strong>canu, jellyfish, velvet, assembly-stats and wtdbg</strong> installed on your computer. These are already installed on the virtual machine you are using. To check that these are installed, run the following commands:</p>
+<p><code>canu</code></p>
+<p><code>jellyfish</code></p>
+<p><code>velvetg</code></p>
+<p><code>velveth</code></p>
+<p><code>assembly-stats</code></p>
+<p><code>wtdbg2</code></p>
+<p>This should return the help message for software <strong>canu, jellyfish, velvet, assembly-stats and wtdbg2</strong> respectively.</p>
+<p>If after this course you would like to download and install this software the instructions can be found at the links below, alternatively we recommend bioconda for the installation and management of your bioinformatics software.</p>
+<p>• <a href="https://canu.readthedocs.io/en/latest/">The canu website</a></p>
+<p>•<a href="https://github.com/gmarcais/Jellyfish">The jellyfish github page</a></p>
+<p>• <a href="https://www.ebi.ac.uk/~zerbino/velvet/">The velvet website</a></p>
+<p>• <a href="https://github.com/ruanjue/wtdbg2">The wtdbg2 github page</a></p>
+<p>To get started with the tutorial, go to the first section: Pacbio genome assembly.</p>
 </section>
-<section id="performing-variant-calling" class="level3">
-<h3 class="anchored" data-anchor-id="performing-variant-calling">2 Performing Variant Calling</h3>
-<p>When performing variant calling we need the aligned sequences in SAM, BAM or CRAM format and the reference genome that we want to call varants against.</p>
+</section>
+<section id="pacbio-genome-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="pacbio-genome-assembly">2 PacBio Genome Assembly</h2>
 <p>First, check you are in the correct directory.</p>
 <p><code>pwd</code></p>
-<p>It should display something like: <strong><em>/home/manager/course_data/variant_calling/data</em></strong></p>
+<p>It should display something like:</p>
+<p><em>/home/manager/course_data/assembly/data</em></p>
+<p>Now we are going to start the PacBio assembly using the <strong>canu</strong> program. It first corrects the reads and then uses the <strong>Celera</strong> assembler to merge the long reads into contigs. To see the contents of the directory, type:</p>
+<p><code>ls</code></p>
+<p>The pre-filtered PacBio reads are called <strong><em>PBReads.fastq.gz</em></strong> - take a look at the contents of this file.</p>
+<p><code>zless -S PBReads.fastq.gz</code></p>
+<p>What do you notice compared to the Illumina fastq files you have seen previously?</p>
+<p>Now we will start the assembly with canu (<a href="https://canu.readthedocs.io/" class="uri">https://canu.readthedocs.io/</a>).</p>
+<p>NOTE: This will take some time, so we will start it running now in the background and hopefully it will complete while we work on the other exercises.</p>
+<p><code>canu -p PB -d canu-assembly -s file.specs -pacbio-raw PBReads.fastq.gz &amp;&gt;canu_log.txt &amp;</code></p>
+<p>The <strong>-p</strong> option sets the prefix of output files to <strong>PB</strong>, while the <strong>-d</strong> option sets the output directory to canu-assembly/. The <strong>&amp;</strong> at the end will set this command running in the background while you work through the next sections of this practical.</p>
+<p>Before we move on, let’s just make sure the program is running. Use the top or better <strong>htop</strong> command to show you all processes running on your machine (type q to exit top). You should hopefully see processes associated with <strong>canu</strong> running (or maybe something called <strong>meryl</strong>). We can also check the <strong><em>canu_log.txt</em></strong> file where the <strong>canu</strong> logs will be written. If we see error messages in the file, then something has gone wrong.</p>
+<p><code>htop</code></p>
+<p><code>less canu_log.txt</code></p>
+<p>While the <strong>canu</strong> assembly is running, move on to the next section: Assembly algorithms.</p>
 </section>
-<section id="assessing-the-input-data" class="level3">
-<h3 class="anchored" data-anchor-id="assessing-the-input-data">2.1 Assessing the input data</h3>
-<p>To list the files in the current directory, type</p>
-<p><code>ls -lh</code></p>
-<p>The listing shows aligned data for two mouse strains <strong><em>A/J</em></strong> and <strong><em>NZO</em></strong> (<strong><em>A_J.bam</em></strong> and <strong><em>NZO.bam</em></strong>) and the chromosome 19 of the mouse reference genome (<strong><em>GRCm38_68.19.fa</em></strong>).</p>
-<p>Before performing variant calling, it is important to check the quality of the data that you will be working with. We have already seen how to do this in the QC and Data Formats and Read Alignment sessions. The commands would look like:</p>
-<p><code>samtools stats -r GRCm38_68.19.fa A_J.bam &gt; A_J.stats</code></p>
-<p><code>samtools stats -r GRCm38_68.19.fa NZO.bam &gt; NZO.stats</code></p>
-<p><code>plot-bamstats -r GRCm38_68.19.fa.gc -p A_J.graphs/ A_J.stats</code></p>
-<p><code>plot-bamstats -r GRCm38_68.19.fa.gc -p NZO.graphs/ NZO.stats</code></p>
-<p>You do not need to run these QC checks on this data and for this we will assume that QC has already been performed and the data is of good quality.</p>
+<section id="assembly-algorithms" class="level2">
+<h2 class="anchored" data-anchor-id="assembly-algorithms">3 Assembly algorithms</h2>
+<p>There are several approaches (algorithms) that can be used to generate a set of contiguous sequences (contigs) from a set of DNA fragments (reads). Two of the main approaches are:</p>
+<p>• Overlap Layout Consensus (OLC): This approach looks at all pairs x,y of all reads and determines if there is a sufficient overlap of the two reads. If there is, then it bundles the stretches of overlap graphs into contigs. Examples of assembly software that use this approach are Falcon (PacBio), Canu(Pacbio, ONT), mnimap/miniasm.</p>
+<p>• de Brujin graph (DBG): This approach builds a graph of all subsequences of lenght k (k-mers).</p>
+<p>Examples of assembly software that use this approach are <strong>velvet, ABySS, SPAdes, wtdbg2</strong>.</p>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">3.1 Exercise</h3>
+<p>Here we are going to build a de Brujin graph by hand from a set of short reads! Using the 6bp reads listed below, manually create the de Brujin graph and find the contig(s).</p>
+<p>Using a k-mer value of k=5 produces the following k-mers of length 5 from the reads above. To finish the graph, join k-mers that overlap by 4 bases.</p>
+<p>Questions:</p>
+<p><strong>1. What is the contig sequence?</strong></p>
+<p><strong>2. What was difficult here?</strong></p>
+<p>Now move on to the next section: Illumina genome assembly</p>
 </section>
-<section id="generating-pileup" class="level3">
-<h3 class="anchored" data-anchor-id="generating-pileup">2.2 Generating pileup</h3>
-<p>The command samtools mpileup prints the read bases that align to each position in the reference genome. Type the command:</p>
-<p><code>samtools mpileup -f GRCm38_68.19.fa A_J.bam | less -S</code></p>
-<p>Each line corresponds to a position on the genome.</p>
-<p>The columns are: chromosome, position, reference base, read depth, read bases (dot . and comma , indicate match on the forward and on the reverse strand; ACGTN and acgtn a mismatch on the forward and the reverse strand) and the final column is the base qualities encoded into characters.</p>
-<p>The caret symbol <strong>^</strong> marks the start of a read, the dollar sign <strong>$</strong> the end of a read, deleted bases are represented by asterisk <strong>*</strong>.</p>
+<section id="illumina-genome-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="illumina-genome-assembly">4 Illumina Genome Assembly</h3>
+<p>We are now going to use the assembler velvet <a href="https://www.ebi.ac.uk/~zerbino/velvet/"><em>https://www.ebi.ac.uk/~zerbino/velvet/</em></a> to assemble the Illumina reads. Our Illumina reads are from the same sample we used to generate the PacBio data.</p>
 </section>
-<section id="generating-genotype-likelihoods-and-calling-variants" class="level3">
-<h3 class="anchored" data-anchor-id="generating-genotype-likelihoods-and-calling-variants">2.3 Generating genotype likelihoods and calling variants</h3>
-<p>This output can be used for a simple consensus calling. One rarely needs this type of output. Instead, for a more sophisticated variant calling method, see the next section.</p>
+<section id="generating-an-illumina-assembly-with-velvet" class="level3">
+<h3 class="anchored" data-anchor-id="generating-an-illumina-assembly-with-velvet">4.1 Generating an Illumina assembly with velvet</h3>
+<p>Creating a genome assembly using velvet is a two stage process:</p>
+<p>• First, the command velveth is used to generate the k-mers from the input data</p>
+<p>• Second, the command velvetg is used to build the de Bruijn graph and find the optimal path through the graph</p>
+<p>To assemble the data, start with the command:</p>
+<p><code>velveth k.assembly.49 49 -shortPaired -fastq IT.Chr5_1.fastq IT.Chr5_2.fastq</code></p>
+<p>The input option k.assembly.49 is the name of the directory where the results are to be written.</p>
+<p>The vallue 49 is the k-mer size. The other options specify the type of the input data (<strong>-shortPaired</strong>) and <strong>-fastq</strong> is used to specify the fastq files that contain the sequencing reads.</p>
+<p>To see all possible options for velveth use:</p>
+<p><code>velveth</code></p>
+<p>Now use <strong>velvetg</strong> to build the graph and find the path through the graph (similar to what we did manually in the previous section):</p>
+<p><strong>velvetg k.assembly.49 -exp_cov auto -ins_length 350</strong></p>
+<p>The first parameter k.assembly.49 specifies the working directory as created with the velveth command. The second <strong>-exp_cov</strong> auto instructs velvet to find the median read coverage automatically rather than specifying it yourself. Finally, <strong>-ins_length</strong> specifies the insert size of the sequencing library used. There is a lot of output printed to the screen, but the most important information is the last line:</p>
+<p>Final graph has 1455 nodes and n50 of 7527, max 38045, total 1364551, using 700301/770774 reads. (Your exact result might differ depending on the velvet version used - don’t worry).</p>
+<p>This gives you a quick idea of the result.</p>
+<p>• 1455 nodes are in the final graph.</p>
+<p>• An n50 of 7527 means that 50% of the assembly is in contigs of at least 7527 bases, it is the median contig size. This number is most commonly used as an indicator of assembly quality.</p>
+<p>The higher, the better! (but not always!)</p>
+<p>• Max is the length of the longest contig.</p>
+<p>• Total is the size of the assembly, here 1346kb.</p>
+<p>• The last two numbers tell us how many reads were used from the 7.7 million pairs input data.</p>
+<p>To see all possible options for velvetg use: <code>velvetg</code></p>
+<p>Now let’s try to improve the quality of the assembly by varying some of the input parameters to velvet. Two parameters that can play a role in improving the assembly are <strong>-cov_cutoff</strong> and <strong>-min_contig_lgth</strong>.</p>
+<p>Using the <strong>-cov_cutoff</strong> parameter means that nodes with less than a specific k-mer count are removed from the graph.</p>
+<p>Using the <strong>-min_contig_lgth</strong> parameter means that contigs with less than a specific size are removed from the assembly.</p>
+<p>Try re-running the assembly with a kmer of 49 and using a <strong>-cov_cutoff</strong> of 5 and <strong>-min_contig_lgth</strong> of 200.</p>
+<p><code>velvetg k.assembly.49 -exp_cov auto -ins_length 350 -min_contig_lgth 200 -cov_cutoff 5</code></p>
+<p>Note as we are not changing the k-mer size, we do not need run the <strong>velveth</strong> command again.</p>
+<p>Generally, the k-mer size has the biggest impact on assembly results. Let us make a few other assemblies for different k-mer sizes i.e.&nbsp;55, 41. Here is the example for k-mer length of 55.</p>
+<p><strong>velveth k.assembly.55 55 -shortPaired -fastq IT.Chr5_1.fastq IT.Chr5_2.fastq</strong></p>
+<p><strong>velvetg k.assembly.55 -exp_cov auto -ins_length 350 -min_contig_lgth 200 -cov_cutoff 5</strong></p>
+<p>Note: If you find that you are having trouble running the velvet assemblies or if it is running for longer than 10-15 mins then quit the command (Ctrc-C). A pre-generated set of Illumina assemblies can be found at:</p>
+<p><code>ls ~/course_data/assembly/data/backup/illumina_assemblies</code></p>
 </section>
+<section id="assembly-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="assembly-metrics">4.2 Assembly metrics</h3>
+<p>All the assembly results are written into the directory you specified with the velvet commands, e.g.&nbsp;k.assembly.41, k.assembly.49, k.assembly.55. The final contigs are written to a file called <strong>contigs.fa</strong>. The <strong>stats.txt</strong> file holds some information about each contig, its length, the coverage, etc. The other files contain information for the assembler.</p>
+<p>Another way to get more assembly statistics is to use a program called assembly-stats. It displays the number of contigs, the mean size and a lot of other useful statistics about the assembly. These numbers can be used to assess the quality of your assemblies and help you pick the “best” one.</p>
+<p>Type:</p>
+<p><code>assembly-stats k.assembly*/*.fa</code></p>
+<p>Write down the results for each assembly made using different k-mer sizes. Which one looks the best?</p>
+<p><strong>Question: What is the best choice for k?</strong></p>
+<p>We want to choose the set of parameters that produce the assembly where the n50, average contig size and the largest contigs have the highest values, while contig number is the lowest.</p>
+<p>You will notice another statistic produced by assembly-stats is <strong>N_count</strong>, what does the <strong>N_count</strong> mean?</p>
+<p>As we know, DNA templates can be sequenced from both ends, resulting in mate pairs. Their outer distance is the insert size. Imagine mapping the reads back onto the assembled contigs. In some cases the two mates don’t map onto the same contig. We can use those mates to scaffold the two contigs e.g.&nbsp;orientate them to each other and put N’s between them, so that the insert size is correct, if enough mate pairs suggest that join. Velvet does this automatically (although you can turn it off).</p>
+<p>The number of mates you need to join two contigs is defined by the parameter <strong>-min_pair_count</strong>.</p>
+<p>Here is the description:</p>
+<p><strong>-min_pair_count &lt;integer&gt;</strong>: minimum number of paired end connections to justify the scaffolding of two long contigs (default: 5)</p>
+<p>Here is a schema:</p>
+<p>It might be worth mentioning, that incorrect scaffolding is the most common source of error in assembly (so called mis-assemblies). If you lower the min_pair_count too much, the likelihood of generating errors increases.</p>
+<p>Other errors are due to repeats. In a normal assembly one would expect that the repeats are all collapsed, if they are smaller than the read length. If the repeat unit is smaller than the insert size, than it is possible to scaffold over it, leaving the space for the repeats with N’s.</p>
+<p>To get the statistic for the contigs, rather than scaffolds (supercontigs), you can use seqtk to break the scaffold at any stretch of N’s with the following commands:</p>
+<p><code>seqtk cutN -n1 k.assembly.41/contigs.fa &gt; assembly.41.contigs.fasta</code></p>
+<p><code>assembly-stats assembly.41.contigs.fasta</code></p>
+<p><code>seqtk cutN -n1 k.assembly.49/contigs.fa &gt; assembly.49.contigs.fasta</code></p>
+<p><code>assembly-stats assembly.49.contigs.fasta</code></p>
+<p><code>seqtk cutN -n1 k.assembly.55/contigs.fa &gt; assembly.55.contigs.fasta</code></p>
+<p><code>assembly-stats assembly.55.contigs.fasta</code></p>
+<p><strong>Question: How does the contig N50 compare to the scaffold N50 for each of your assemblies?</strong></p>
+<p>Congratulations you have sucessfully created a genome assembly using Illumina sequence data. Now move on to the next section: Assembly estimation</p>
+</section>
+</section>
+<section id="assembly-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="assembly-estimation">5 Assembly estimation</h2>
+<p>Fortunately with this dataset, we have a known reference genome and therefore some expectations about the size and composition of the Plasmodium falciparum genome.</p>
+<p>But what if we are working with a new genome, one which has not been sequenced before? One approach is to look at k-mer distributions from the reads. This can be done using two pieces of software, jellyfish (https://github.com/gmarcais/Jellyfish) and <strong>Genomesope</strong> (<a href="http://qb.cshl.edu/genomescope/" class="uri">http://qb.cshl.edu/genomescope/</a>). Jellyfish is used to determine the distribution of k-mers in the dataset and then <strong>Genomescope</strong> is used to model the single copy k-mers as heterozygotes, while double copy k-mers will be the homozygous portions of the genome. It will also estimate the haploid genome size.</p>
+<p>Let’s check with our <em>Plasmodium falciparum</em> Illumina data that the k-mer distribution gives us what we expect. To get a distribution of 21-mers:</p>
+<p><code>jellyfish count -C -m 21 -s 1G -t 2 -o IT.jf &lt;(cat IT.Chr5_1.fastq IT.Chr5_2.fastq)</code></p>
+<p>This command will count canonical (-C) 21-mers (-m 21), using a hash with 1G elements (-s 1G) and 2 threads (-t 2). The output is written to IT.jf.</p>
+<p>To compute the histogram of the k-mer occurences, use</p>
+<p><code>jellyfish histo IT.jf &gt; IT.histo</code></p>
+<p>Look at the output:</p>
+<p><code>less IT.histo</code></p>
+<p>Now analyse the output with genomescope:</p>
+<p><code>Rscript genomescope.R IT.histo 21 76 IT.jf21</code></p>
+<p>Where 21 is the k-mer size, 76 is the read length of the input Illumina data and IT.jf21 is the directory to write the output to. To look at the output use:</p>
+<p><code>less IT.jf21/summary.txt</code></p>
+<p><code>firefox IT.jf21/plot.png &amp;</code></p>
+<p>You should see an image similar to the ones shown below. Notice the bump to right of the main peak. These are the repeated sequences.</p>
 <section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">2.2.1 Exercises</h3>
-<p>Look at the output from the mpileup command above and answer the following questions.</p>
-<p><strong>Q1</strong>: What is the read depth at position 10001994? (Rather than scrolling to the position, use the substring searching capabilities of less: press /, then type 10001994 followed by enter to find the position.)</p>
-<p><strong>Q2</strong>: What is the reference allele and the alternate allele at position 10001994?</p>
-<p><strong>Q3</strong>: How many reads call the reference allele at position 10001994 and how many reads call the alternate allele at position 10001994?</p>
+<h3 class="anchored" data-anchor-id="exercises">5.1 Exercises</h3>
+<p><strong>1. What is the predicted heterozygosity?</strong></p>
+<p><strong>2. What is the predicted genome size?</strong></p>
+<p><strong>3. Does this seem reasonable?</strong></p>
+<p>We have used jellyfish to pre-generate a set of k-mer histograms for a handful of other species. These histo files can be found in the data directory.</p>
+<p><strong><code>ls *.histo</code></strong></p>
+<p>Try running <strong>genomscope</strong> on these. The read length for all of the datasets is 150bp.</p>
+<p>fAnaTes1.jf21.histo: <strong>What is the bulge to the left of the main peak here?</strong></p>
+<p><code>Rscript genomescope.R fAnaTes1.jf21.histo 21 150 fAnaTes1.jf21</code></p>
+<p>f DreSAT1.jf21.histo: <strong>What is the striking feature of this genome?</strong></p>
+<p>fMasArm1.jf21.histo: <strong>You should see a nice tight diploid peak for this sample. It has very low heterozygosity - similar to human data.</strong></p>
+<p>fSalTru1.jf21.histo: <strong>This genome was actually haploid. How do we interpret the features in the genomescope profile?</strong></p>
+<p>Now let us go back to our PacBio assembly: PacBio assembly</p>
 </section>
-<section id="generating-genotype-likelihoods-and-calling-variants-1" class="level3">
-<h3 class="anchored" data-anchor-id="generating-genotype-likelihoods-and-calling-variants-1">2.3 Generating genotype likelihoods and calling variants</h3>
-<p>The <strong><em>bcftools mpileup</em></strong> command can be used to generate genotype likelihoods. (Beware: the command <strong>mpileup</strong> is present in both <strong>samtools</strong> and <strong>bcftools</strong>, but in both they do different things. While <strong>samtools mpileup</strong> produces the text pileup output seen in the previous exercise, <strong>bcftools mpileu</strong>p generates a VCF file with genotype likelihoods.)</p>
-<p>Run the following command (when done, press q to quit the viewing mode):</p>
-<p><code>bcftools mpileup -f GRCm38_68.19.fa A_J.bam | less -S</code></p>
-<p>This generates an intermediate output which contains genotype likelihoods and other raw information necessary for variant calling. This output is usually streamed directly to the caller like this</p>
-<p><code>bcftools mpileup -f GRCm38_68.19.fa A_J.bam | bcftools call -m | less -S</code></p>
-<p>The output above contains both variant and non-variant positions. Check the input/output options section of the bcftools call usage page and see if there is an option to print out only variant sites.</p>
-<p>Then construct a command to print out variant sites only:</p>
-<p>The INFO and FORMAT fields of each entry tells us something about the data at the position in the genome. It consists of a set of key-value pairs with the tags being explained in the header of the VCF file (see the ##INFO and ##FORMAT lines in the header).</p>
-<p>We can tell <strong>mpileup</strong> to add additional ##INFO and ##FORMAT information to the output. For example, we can ask it to add the FORMAT/AD tag which informs about the number of high-quality reads that support alleles listed in REF and ALT columns. The list of all available tags can be printed with the command:</p>
-<p><code>bcftools mpileup -a ?</code></p>
-<p>Now let’s run the variant calling again, this time adding the -a AD option. We will also add the -Ou option so that it streams a binary uncompressed BCF into call. This is to avoid the unnecessary CPU overhead of formatting the internal binary format to plain text VCF only to be immediately formatted back to the internal binary format again.</p>
-<p><code>bcftools mpileup -a AD -f GRCm38_68.19.fa A_J.bam -Ou | bcftools call -mv -o out.vcf</code></p>
 </section>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">2.4 Exercises</h3>
-<p>Look at the content of the VCF file produced above and answers the questions that follow.</p>
-<p><code>less -S out.vcf</code></p>
-<p><strong>Q1:</strong> What is the reference allele and the alternate allele at position 10001994?</p>
-<p><strong>Q2:</strong> What is the total raw read depth at position 10001994?</p>
-<p>Note: This number may be different from the values we obtained earlier, because some low quality reads or bases might have been filtered previously.</p>
-<p><strong>Q3:</strong> What is the number of high-quality reads supporting the SNP call at position 10001994? How many reads support the reference allele and how many support the alternate allele?</p>
-<p>Hint: Look up the AD tag in the FORMAT column: the first value gives the number of reads calling the reference allelle and the second gives the number of reads calling the alternate alleles.</p>
-<p><strong>Q4:</strong> What sort of event is happening at position 10003649?</p>
-<p>Congratulations, you have sucessfully called variants from some NGS data. Now continue to the next section of the tutorial: filtering variants.</p>
+<section id="pacbio-genome-assembly-contd." class="level2">
+<h2 class="anchored" data-anchor-id="pacbio-genome-assembly-contd.">6 PacBio Genome Assembly contd.</h2>
+<p>We have generated an assembly for the <em>Plasmodium falciparum</em> chromosome from our Illumina data.</p>
+<p>Now, let’s have a look at the PacBio assembly.</p>
+<section id="generating-pacbio-assemblies" class="level3">
+<h3 class="anchored" data-anchor-id="generating-pacbio-assemblies">6.1 Generating pacbio assemblies</h3>
+<p>The <strong>canu</strong> pacbio assembly should have hopefully finished by now (check the log less canu_log.txt).</p>
+<p>If it has not finished, you can find a pre-generated canu assembly at:</p>
+<p><code>ls ~/course_data/assembly/data/backup/pacbio_assemblies</code></p>
+<p>Now use the assembly-stats script to look at the assembly statistics.</p>
+<p><code>assembly-stats canu-assembly/PB.contigs.fasta</code></p>
+<p><strong>How does it compare to the Illumina assembly?</strong></p>
+<p>Another long read assembler based on de Bruijn graphs is wtdbg2 <a href="https://github.com/ruanjue/wtdbg2" class="uri">https://github.com/ruanjue/wtdbg2</a>. Let’s try to build a second assembly using this assembler and compare it to the assembly produced with <strong>canu</strong>.</p>
+<p><code>wtdbg2 -t2 -i PBReads.fastq.gz -o wtdbg</code></p>
+<p><code>wtpoa-cns -t2 -i wtdbg.ctg.lay.gz -fo wtdbg.ctg.lay.fasta</code></p>
+<p><code>assembly-stats wtdbg.ctg.lay.fasta</code></p>
 </section>
-<section id="variant-filtering" class="level3">
-<h3 class="anchored" data-anchor-id="variant-filtering">3 Variant Filtering</h3>
-<p>In the next series of commands we will learn how to extract information from VCFs and how to filter the raw calls. We will use the bcftools commands again. Most of the commands accept the -i, – include and -e, –exclude options <a href="https://samtools.github.io/bcftools/bcftools.html#" class="uri">https://samtools.github.io/bcftools/bcftools.html#</a> expressions which will be useful when filtering using fixed thresholds. We will estimate the quality of the callset by calculating the ratio of transitions and transversions <a href="https://en.wikipedia.org/wiki/Transversion" class="uri">https://en.wikipedia.org/wiki/Transversion</a>.</p>
-<p>When drafting commands, it is best to build them gradually. This prevents errors and allows you to verify that they work as expected. Let’s start with printing a simple list of positions from the VCF using the bcftools query command <a href="https://samtools.github.io/bcftools/bcftools.html#query" class="uri">https://samtools.github.io/bcftools/bcftools.html#query</a> and pipe through the head command to limit the printed output to the first few lines:</p>
-<p><code>bcftools query --format 'POS=%POS\n' out.vcf | head</code></p>
-<p>As you can see, the command expanded the formatting expression <strong><em>POS=%POS</em></strong>in the following way: for each VCF record the string POS= was copied verbatim, the string %POS was replaced by the VCF coordinate stored in the POS column, and then the newline character ended each line. (Without the newline character, positions from the entire VCF would be printed on a single line.)</p>
-<p>Now add the reference and the alternate allele to the output. They are stored in the REF and ALT column in the VCF, and let’s separate them by a comma:</p>
-<p><strong><code>bcftools query -f'%POS %REF,%ALT</code></strong><code>\n' out.vcf | head</code></p>
-<p>In the next step add the quality (%QUAL), genotype (%GT) and sequencing depth (%AD) to the output. Note that FORMAT tags must be enclosed within square brackets […] to iterate over all samples in the VCF. (Check the Extracting per-sample tags section in the manual https://samtools.github.io/bcftools/howtos/query.html for a more detailed explanation why the square brackets are needed.)</p>
-<p><code>bcftools query -f'%POS %QUAL [%GT %AD] %REF %ALT\n' out.vcf | head</code></p>
-<p>Now we are able to quickly extract important information from the VCFs. Now let’s filter rows with QUAL smaller than 30 by adding the filtering expression –exclude ‘QUAL&lt;30’ or –include ‘QUAL&gt;=30’ like this:</p>
-<p><code>bcftools query -f'%POS %QUAL [%GT %AD] %REF %ALT\n' -i'QUAL&gt;=30' out.vcf | head</code></p>
-<p>Now compare the result with the output from the previous command, were the low-quality lines removed?</p>
-<p>In the next step limit the output to SNPs and ignore indels by adding the type=“snp” condition to the filtering expression. Because both conditions must be valid at the same time, we request the AND logic using the &amp;&amp; operator:</p>
-<p><code>bcftools query -f'%POS %QUAL [%GT %AD] %REF %ALT\n' -i'QUAL&gt;=30 &amp;&amp; type="snp"'out.vcf | head</code></p>
+<section id="comparing-pacbio-assemblies" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-pacbio-assemblies">6.2 Comparing pacbio assemblies</h3>
+<p>How does the wtdbg2 assembly compare to the canu assembly? Both assemblies may be similar in contig number and N50, but are they really similar? Let’s map the Illumina reads to each assembly, call variants and compare.</p>
+<p><code>bwa index canu-assembly/PB.contigs.fasta</code></p>
+<p><code>samtools faidx canu-assembly/PB.contigs.fasta</code></p>
+<p><code>bwa mem -t2 canu-assembly/PB.contigs.fasta IT.Chr5_1.fastq IT.Chr5_2.fastq |samtools sort -@2 - | samtools mpileup -f canu-assembly/PB.contigs.fasta -ug- | bcftools call -mv &gt; canu.vcf</code></p>
+<p>Do the same for wtdbg.ctg.lay.fasta and then compare some basic statistics.</p>
+<p><code>bwa index wtdbg.ctg.lay.fasta</code></p>
+<p><code>samtools faidx wtdbg.ctg.lay.fasta</code></p>
 </section>
-<section id="exercises-2" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-2">3.1 Exercises</h3>
-<p><strong>Q1: Can you print SNPs with QUAL bigger than 30 and require at least 25 alternate reads in the AD tag?</strong></p>
-<p>Remember, the first value of the AD tag is the number of reference reads, the second is the number of alternate reads, therefore you will need to query the second value of the AD tag. The first value can be queried as AD[0] and the second as AD[1] (the allele indexes are zero-based). In case of FORMAT fields, also the queried sample must be selected as AD[sample:subfield] . Therefore add to the expression the condition AD[0:1] &gt;= 25 to select the first (and in our case the only one) sample or AD[*:1] &gt;= 25 to select any sample for which the condition is valid.</p>
-<p>Now we can filter our callset. In order to evaluate the quality, we will use bcftools stats to calculate the ratio of transitions vs transversions. We start by checking what is the ts/tv of the raw unfiltered callset. The stats command produces a text output, we extract the field of interest as follows:</p>
-<p><code>bcftools stats out.vcf | less</code></p>
-<p><code>bcftools stats out.vcf | grep TSTV</code></p>
-<p><code>bcftools stats out.vcf | grep TSTV | cut -f5</code></p>
-<p><strong>Q2: Calculate ts/tv of the set filtered as above by adding -i ‘QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25’ to the bcftools stats command.</strong></p>
-<p>(Here the asterisk followed by a colon tells the program to apply the filtering to all samples. At least one sample must pass in order for a site to pass.) After applying the filter, you should observe an increased ts/tv value.</p>
-<p><strong>Q3: Can you do the reverse and find out the ts/tv of the removed sites? Use the -e option instead of -i. The ts/tv of the removed low-quality sites should be lower.</strong></p>
-<p><strong>Q4: The test data come from an inbred homozygous mouse, therefore any heterozygous genotypes are most likely mapping and alignment artefacts. Can you find out what is the ts/tv of the heterozyous SNPs? Do you expect higher or lower ts/tv? Use the filtering expression -i ‘GT=“het”’ to select sites with heterozygous genotypes.</strong></p>
-<p>Another useful command is bcftools filter which allows to “soft filter” the VCF: instead of removing sites, it can annotate the FILTER column to indicate sites which fail. Apply the above filters (‘QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25’) to produce a final callset, adding also the –SnpGap and the –IndelGap option to filter variants in close proximity to indels:</p>
-<p><code>bcftools filter -s LowQual -i'QUAL&gt;=30 &amp;&amp; AD[*:1]&gt;=25' -g8 -G10 out.vcf -o out.flt.vcf</code></p>
-</section>
-<section id="variant-normalization" class="level3">
-<h3 class="anchored" data-anchor-id="variant-normalization">3.2 Variant normalization</h3>
-<p>The same indel variant can be represented in different ways. For example, consider the following 2bp deletion. Although the resulting sequence does not change, the deletion can be placed at two different positions within the short repeat:</p>
-<p>12345</p>
-<p>TTCTC</p>
-<p>POS=1 T–TC</p>
-<p>POS=3 TTC–</p>
-<p>In order to be able to compare indels between two datasets, we left-align such variants.</p>
-<p><strong>Q5: Use the bcftools norm command to normalize the filtered callset. Note that you will need to provide the –fasta-ref option. Check in the output how many indels were realigned.</strong></p>
-<p>Now continue to the next section of the tutorial: Multi-sample variant calling</p>
-<p><strong>4 Calling Variants Across Multiple Samples</strong></p>
-<p>In many types of experiments we sequence multiple samples and compare their genetic variation across samples. The single-sample variant calling we have done so far has the disadvantage of not providing information about reference genotypes. Because only variant sites are stored, we are not able to distinguish between records missing due to reference genotypes versus records missing due to lack of coverage.</p>
-<p>In this section we will call variants across two mouse samples.</p>
-<p>To begin, check that there are two BAM files in the directory.</p>
-<p><code>ls *.bam</code></p>
-<p>Now modify the variant calling command from the previous section to use both BAM files. Write the output to a BCF file called multi.bcf.</p>
-<p>Now index the file multi.bcf</p>
-<p>Filter the file multi.bcf using the same filters as the previous section and write the output to a BCF file called multi.filt.bcf.</p>
-<p>Now index the multi.filt.bcf file.</p>
-</section>
-<section id="exercises-3" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-3">4.1 Exercises</h3>
-<p><strong>Q1: What is the ts/tv of the raw calls and of the filtered set?</strong></p>
-<p><strong>Q2: What is the ts/tv of the removed sites?</strong></p>
-<p>Now continue to the next section of the tutorial: Visualising variants</p>
-</section>
-<section id="variant-visualisation" class="level3">
-<h3 class="anchored" data-anchor-id="variant-visualisation">5 Variant visualisation</h3>
-<p>It is often useful to visually inspect a SNP or indel of interest in order to assess the quality of the variant and interpret the genomic context of the variant. We can use the IGV tool to view some of the variant positions from the VCF file.</p>
-<p>Start IGV by typing:</p>
-<p><code>igv</code></p>
-</section>
-<section id="load-the-reference-genome" class="level3">
-<h3 class="anchored" data-anchor-id="load-the-reference-genome">5.1 Load the reference genome</h3>
-<p>Open the mouse reference genome”</p>
-<p>Go to ’ Genomes -&gt; Load Genome From Server… ’ and select “Mouse mm10”. This is a synonym for GRCm38, which is the current mouse assembly (reference genome)</p>
-</section>
-<section id="load-the-alignment" class="level3">
-<h3 class="anchored" data-anchor-id="load-the-alignment">5.2 Load the alignment</h3>
-<p>Load the alignment file for the sample A_J (A_J.bam).</p>
-<p>Go to ’ File -&gt; Load from File… ‘. Select the “A_J.bam” BAM file that you created in the previous section and click’ Open ’.</p>
-</section>
-<section id="exercises-4" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-4">5.3 Exercises</h3>
-<p>Use the IGV navigation bar, go to the region chr19:10,001,874-10,002,017 and inspect the SNP at position 10001946.</p>
-<p><strong>Q1: How many forward aligned reads support the SNP call?</strong></p>
-<p>Hint; Hover the mouse pointer over the coverage bar at the top (or click, depending on the IGV settings) to get this information.</p>
-<p><strong>Q2: Was this SNP called by bcftools?</strong></p>
-<p>Hint Use bcftools view -H -r chr19:10001946 multi.filt.bcf to verify</p>
-<p><strong>Q3: Did this SNP pass the filters?</strong></p>
-<p>Hint Look for this information in the BCF file</p>
-<p>Use the IGV navigation bar, go to the region chr19:10072443 and inspect the SNP at position 10072443.</p>
-<p><strong>Q4: Was this SNP called by bcftools?</strong></p>
-<p><strong>Q5: Did the SNP pass the filters?</strong></p>
-<p><strong>Q6: Does this look like a real SNP? Please explain why.</strong></p>
-<p>Now continue to the next section of the tutorial: Variant annotation</p>
-</section>
-<section id="variant-annotation" class="level3">
-<h3 class="anchored" data-anchor-id="variant-annotation">6 Variant annotation</h3>
-<p>Variant annotation is used to help researchers filter and prioritise functionally important variants for further study. There are several popular programs available for annotating variants. These include:</p>
-<p>• bcftools csq</p>
-<p>• Ensembl VEP (Variant Effect Predictor)</p>
-<p>• SnpEff</p>
-<p>These tools can be used to to predict the functional consequence of the variants on the protein (e.g.&nbsp;whether a variant is mis-sense, stop-gain, frameshift inducing etc).</p>
-</section>
-<section id="bcftools-csq" class="level3">
-<h3 class="anchored" data-anchor-id="bcftools-csq">6.1 bcftools csq</h3>
-<p>Here we will use the lightweight bcftools csq command to annotate the variants. Type the command:</p>
-<p><code>bcftools view -i 'FILTER="PASS"' multi.filt.bcf | bcftools csq -p m -f GRCm38_68.19.fa -g Mus_musculus.part.gff3.gz -Ob -o multi.filt.annot.bcf</code></p>
-<p>The command takes VCF as input, the -f option specifies the reference file that the data was aligned</p>
-<p>too and the -g option specifies the GFF file that contains the gene models for the reference. Because our data is not phased, we provide the -p option (which does not actually phase the data, but tells the program to make an assumption about the phase). The -Ob option ensures the command produces compressed BCF as output.</p>
-<p>Now index the BCF file:</p>
-<p><code>bcftools index multi.filt.annot.bcf</code></p>
-</section>
-<section id="exercises-5" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-5">6.2 Exercises</h3>
-<p><strong>Q1 Use the bcftools query -f ‘%BCSQ’ command to extract the consequence at position 19:10088937.</strong></p>
-<p><strong>Q2 What is the functional annotation at this site?</strong></p>
-<p><strong>Q3 What is the amino acid change?</strong></p>
-<p>Congratulations you have reached the end of the variant calling tutorial. For the answers to the exercises in this tutorial please visit answers.</p>
+<section id="polishing-pacbio-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="polishing-pacbio-assembly">6.3 Polishing pacbio assembly</h3>
+<p><code>bwa mem -t2 wtdbg.ctg.lay.fasta IT.Chr5_1.fastq IT.Chr5_2.fastq | samtools sort-@2 - | samtools mpileup -f wtdbg.ctg.lay.fasta -ug - | bcftools call -mv &gt;wtdbg.vcf</code></p>
+<p><code>bcftools stats canu.vcf | grep ^SN</code></p>
+<p><code>bcftools stats wtdbg.vcf | grep ^SN</code></p>
+<p><strong>Question: What do you notice in terms of the number of SNP and indel calls?</strong></p>
+<p>The wtdbg2 assembly has more variants due to having more errors. This is mainly due to a lack of polishing or error correction - something that the canu assembler performs, but the wtdbg2 assembler does not.</p>
+<p>Correcting errors is an important step in making an assembly, especially from noisy long ready data. Not polishing an assembly can lead to genes not being identified due to insertion and deletion errors in the assembly sequence. To polish a genome assembly with Illumina data we use bcftools consensus to change homozygous differences between the assembly and the Illumina data to match the Illumina data</p>
+<p>Run the following steps to polish the <strong>canu</strong> assembly</p>
+<p><code>bgzip -c canu.vcf &gt; canu.vcf.gz</code></p>
+<p><code>tabix canu.vcf.gz</code></p>
+<p><code>bcftools consensus -i'QUAL&gt;1 &amp;&amp; (GT="AA" || GT="Aa")' -Hla -f canu-assembly/PB.contigs.fasta canu.vcf.gz &gt; canu-assembly/PB.contigs.polished.fasta</code></p>
+<p>Run the following steps to polish the `wtdbg2` assembly</p>
+<p><code>bgzip -c wtdbg.vcf &gt; wtdbg.vcf.gz</code></p>
+<p><code>tabix wtdbg.vcf.gz</code></p>
+<p><code>bcftools consensus -i'QUAL&gt;1 &amp;&amp; (GT="AA" || GT="Aa")' -Hla -f wtdbg.ctg.lay.fasta wtdbg.vcf.gz &gt; wtdbg.contigs.polished.fasta</code></p>
+<p>Finally, align and call variants like before (<code>bwa index/bwa mem/samtools-sort/mpileup/bcftools</code> call) using the polished assemblies as the reference this time.</p>
+<p><strong>When running this analysis on these polished genomes, do we still get variants? More or less than with the raw canu and wtdbg2 assemblies? Why?</strong></p>
+<p>Congratulations, you have reached the end of the Genome Assembly tutorial.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

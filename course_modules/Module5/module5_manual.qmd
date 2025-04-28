@@ -1,4 +1,120 @@
 ---
-title: "module5_manual"
+title: "Manual"
 format: html
 ---
+
+# 1. Overview of Genome Assembly
+
+Problem: Sequencing technologies produce only short DNA reads.\
+Goal: Reconstruct a complete genome from millions to billions of short fragments.\
+Methods:\
+ - Clone-based sequencing: Select and sequence specific clones.\
+ - Whole-genome shotgun sequencing: Fragment and sequence the entire genome.\
+ - De novo assembly: Reconstruct the genome without a reference.
+
+# 2. Challenges in Assembly (The Jigsaw Puzzle Analogy)
+
+Many small, damaged, and repetitive pieces make assembly harder.\
+Critical factors:\
+ - Read length (longer is better)\
+ - Error rates (fewer is better)\
+ - Repetitive regions cause ambiguity.
+
+# 3. Key Considerations
+
+\- Sequencing coverage\
+ - Error rates\
+ - Read length\
+ - Genome uniqueness\
+ - Genome size\
+ - Heterozygosity and ploidy\
+ - Computational resources (time and memory).
+
+# 4. Basic Terminology
+
+\- Contig: A contiguous stretch of sequence.\
+ - Scaffold: Ordered set of contigs with gaps represented by Ns.
+
+# 5. Sequencing Technologies
+
+PacBio Sequencing:\
+ - Very long reads, detects base modifications.\
+ - High error rate, expensive.\
+\
+Nanopore Sequencing:\
+ - Portability, ultra-long reads.\
+ - High error rates, systematic errors near homopolymers.\
+\
+Linked-Reads and Read Clouds:\
+ - Bridges long repeats and improves assembly continuity.\
+\
+Hi-C Data:\
+ - Captures chromatin conformation to assist chromosome-scale assembly.\
+\
+Optical Mapping:\
+ - Labels and images long DNA fragments for structural scaffolding.
+
+# 6. Long-Range Technologies Comparison
+
+Platforms: PacBio, Nanopore, 10X Genomics, Hi-C, Optical mapping.\
+Each technology offers distinct advantages and bioinformatic challenges.
+
+# 7. Example Project Workflow
+
+Technologies are integrated sequentially for high-quality genome assembly.\
+Example: Vertebrate Genomes Project (VGP).
+
+# 8. Assembly Methods
+
+Contig Generation:\
+ - OLC (Overlap-Layout-Consensus): Good for long reads.\
+ - de Bruijn Graphs (DBG): Good for short reads.
+
+# 9. Common Hurdles
+
+\- Heterozygosity\
+ - Sequencing errors\
+ - Repeats\
+ - Low-complexity regions\
+ - Base composition biases.
+
+# 10. Quality Metrics
+
+\- Total assembly length\
+ - Number of contigs and scaffolds\
+ - N50, NG50\
+ - Gene content assessments.
+
+# 11. Scaffolding and Chromosome Assignment
+
+Sources: Mate-pair libraries, Hi-C, Optical maps.\
+Tools like RACA help build chromosome-scale scaffolds.
+
+# 12. Diploid Assembly
+
+Problem: Standard assemblers assume haploidy.\
+Solutions:\
+ - Falcon-Unzip: Haplotyping assembly.\
+ - Purge Haplotigs: Removes haplotype duplications.\
+ - Falcon-Phase: Phases haplotypes using Hi-C data.\
+ - Trio Binning: Uses parental reads for haplotype separation.
+
+# 13. Assembly Quality Control
+
+Gene Content: BUSCO analysis.\
+Base Accuracy: Realign reads to detect errors.\
+Structural Accuracy: Using known structural data and tools like QUAST, REAPR.
+
+# 14. Specialized Assemblies
+
+Metagenomic Assembly:\
+ - For mixed-organism samples (e.g., environmental DNA).\
+\
+Transcriptome Assembly:\
+ - For RNA sequencing data.
+
+# 15. Large Genome Projects
+
+Tree of Life Project and Darwin Tree of Life: Massive efforts to sequence all eukaryotic life in Britain.\
+Achievements: New assemblies of Lepidoptera.\
+Highlight: Complete chromosome assemblies achieved, e.g., human X chromosome.
