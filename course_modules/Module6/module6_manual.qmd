@@ -1,4 +1,112 @@
 ---
-title: "module6_manual"
+title: "Manual"
 format: html
 ---
+
+Differential Expression using RNA-Seq
+
+Instructor: Vivek Iyer
+
+Source Material: Based extensively on slides by Victoria Offord (Wellcome Sanger Institute)
+
+Date: 7 June 2024
+
+# 1. Learning Objectives
+
+·       Design an RNA-Seq experiment appropriately.
+
+·       Understand the RNA-Seq data processing pipeline.
+
+·       Map reads to a genome and a transcriptome.
+
+·       Visualize RNA-Seq data.
+
+·       Quantify transcript expression.
+
+·       Perform quality control (QC) of RNA-Seq data.
+
+·       Interpret differential gene expression (DGE) results.
+
+# 2. Introduction and Context
+
+·       RNA-Seq enables the sequencing of messenger RNA (mRNA), offering a 'snapshot' of the transcriptome under specific conditions.
+
+# 3. Fundamental Concepts
+
+·       The Central Dogma: DNA → (transcription) → Pre-mRNA → (splicing, capping, tailing) → mRNA → (translation) → Protein.
+
+·       RNA-Seq targets stable mRNA, easier to capture than proteins.
+
+# 4. RNA-Seq Experimental Design
+
+·       Good design is critical to answer biological questions effectively.
+
+·       Key Design Aspects:
+
+·       - Library Preparation: Enrich for mRNA or deplete rRNA.
+
+·       - Stranded vs. Unstranded Libraries: Resolve overlapping transcripts.
+
+·       - Sequencing Depth: Standard \~30 million paired-end reads/sample.
+
+·       - Replicates: Biological replicates are essential.
+
+# 5. RNA-Seq Data Analysis Pipeline
+
+·       There is no 'one-size-fits-all' pipeline.
+
+·       Step 1: Mapping Reads: To the Genome (e.g., HISAT2) and to the Transcriptome (e.g., Kallisto).
+
+·       Step 2: Read Quantification.
+
+·       Step 3: Normalization: Correct for sequencing depth and gene length biases.
+
+·       Step 4: QC and Differential Expression: Detect issues, interpret results.
+
+# 6. Quality Control (QC)
+
+·       Sample QC: Sequencing depth, alignment rate, PCA clustering.
+
+·       Flagging outliers is crucial to prevent false positives/negatives.
+
+# 7. Differential Gene Expression Analysis
+
+·       Tools: Sleuth, DESeq2, EdgeR, limma-voom.
+
+·       Important Concepts: Size factors, linear modeling, multiple testing correction.
+
+# 8. Interpreting Your Results
+
+·       Have a hypothesis? Test it.
+
+·       Perform GO term/pathway enrichment analysis.
+
+·       Explore key genes manually.
+
+·       Visualize with volcano plots to prioritize genes.
+
+# 9. Practical Exercise
+
+·       Organism: Plasmodium chabaudi (rodent malaria parasite).
+
+·       Compare transcriptomes between mosquito-transmitted (MT) and serial blood passage (SBP) parasites.
+
+·       Biological Question: Is the parasite's transcriptome different after mosquito passage?
+
+# Appendix: Key Tools Mentioned
+
++-------------------+------------------------------------+
+| Tool              | Purpose                            |
++-------------------+------------------------------------+
+| HISAT2            | Splice-aware genome alignment      |
++-------------------+------------------------------------+
+| Kallisto          | Fast transcriptome pseudoalignment |
++-------------------+------------------------------------+
+| IGV               | Visualization                      |
++-------------------+------------------------------------+
+| Sleuth            | DGE and QC analysis                |
++-------------------+------------------------------------+
+| DESeq2, EdgeR     | Alternative DGE analysis           |
++-------------------+------------------------------------+
+| Power calculators | Estimate sample size               |
++-------------------+------------------------------------+

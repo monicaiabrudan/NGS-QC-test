@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>module6_manual – NGS Bioinformatics course</title>
+<title>Manual – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,6 +117,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../course_modules/Module5/module5.html">
  <span class="dropdown-text">Genome assembly</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../course_modules/Module6/module6.html">
+ <span class="dropdown-text">RNA-seq</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -131,15 +135,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">1. Learning Objectives</a></li>
+  <li><a href="#introduction-and-context" id="toc-introduction-and-context" class="nav-link" data-scroll-target="#introduction-and-context">2. Introduction and Context</a></li>
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link" data-scroll-target="#fundamental-concepts">3. Fundamental Concepts</a></li>
+  <li><a href="#rna-seq-experimental-design" id="toc-rna-seq-experimental-design" class="nav-link" data-scroll-target="#rna-seq-experimental-design">4. RNA-Seq Experimental Design</a></li>
+  <li><a href="#rna-seq-data-analysis-pipeline" id="toc-rna-seq-data-analysis-pipeline" class="nav-link" data-scroll-target="#rna-seq-data-analysis-pipeline">5. RNA-Seq Data Analysis Pipeline</a></li>
+  <li><a href="#quality-control-qc" id="toc-quality-control-qc" class="nav-link" data-scroll-target="#quality-control-qc">6. Quality Control (QC)</a></li>
+  <li><a href="#differential-gene-expression-analysis" id="toc-differential-gene-expression-analysis" class="nav-link" data-scroll-target="#differential-gene-expression-analysis">7. Differential Gene Expression Analysis</a></li>
+  <li><a href="#interpreting-your-results" id="toc-interpreting-your-results" class="nav-link" data-scroll-target="#interpreting-your-results">8. Interpreting Your Results</a></li>
+  <li><a href="#practical-exercise" id="toc-practical-exercise" class="nav-link" data-scroll-target="#practical-exercise">9. Practical Exercise</a></li>
+  <li><a href="#appendix-key-tools-mentioned" id="toc-appendix-key-tools-mentioned" class="nav-link" data-scroll-target="#appendix-key-tools-mentioned">Appendix: Key Tools Mentioned</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">module6_manual</h1>
+<h1 class="title">Manual</h1>
 </div>
 
 
@@ -156,8 +175,110 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Differential Expression using RNA-Seq</p>
+<p>Instructor: Vivek Iyer</p>
+<p>Source Material: Based extensively on slides by Victoria Offord (Wellcome Sanger Institute)</p>
+<p>Date: 7 June 2024</p>
+<section id="learning-objectives" class="level1">
+<h1>1. Learning Objectives</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design an RNA-Seq experiment appropriately.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Understand the RNA-Seq data processing pipeline.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Map reads to a genome and a transcriptome.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visualize RNA-Seq data.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quantify transcript expression.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perform quality control (QC) of RNA-Seq data.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interpret differential gene expression (DGE) results.</p>
+</section>
+<section id="introduction-and-context" class="level1">
+<h1>2. Introduction and Context</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RNA-Seq enables the sequencing of messenger RNA (mRNA), offering a ‘snapshot’ of the transcriptome under specific conditions.</p>
+</section>
+<section id="fundamental-concepts" class="level1">
+<h1>3. Fundamental Concepts</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The Central Dogma: DNA → (transcription) → Pre-mRNA → (splicing, capping, tailing) → mRNA → (translation) → Protein.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RNA-Seq targets stable mRNA, easier to capture than proteins.</p>
+</section>
+<section id="rna-seq-experimental-design" class="level1">
+<h1>4. RNA-Seq Experimental Design</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Good design is critical to answer biological questions effectively.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Key Design Aspects:</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Library Preparation: Enrich for mRNA or deplete rRNA.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Stranded vs.&nbsp;Unstranded Libraries: Resolve overlapping transcripts.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Sequencing Depth: Standard ~30 million paired-end reads/sample.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Replicates: Biological replicates are essential.</p>
+</section>
+<section id="rna-seq-data-analysis-pipeline" class="level1">
+<h1>5. RNA-Seq Data Analysis Pipeline</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There is no ‘one-size-fits-all’ pipeline.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step 1: Mapping Reads: To the Genome (e.g., HISAT2) and to the Transcriptome (e.g., Kallisto).</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step 2: Read Quantification.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step 3: Normalization: Correct for sequencing depth and gene length biases.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Step 4: QC and Differential Expression: Detect issues, interpret results.</p>
+</section>
+<section id="quality-control-qc" class="level1">
+<h1>6. Quality Control (QC)</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sample QC: Sequencing depth, alignment rate, PCA clustering.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Flagging outliers is crucial to prevent false positives/negatives.</p>
+</section>
+<section id="differential-gene-expression-analysis" class="level1">
+<h1>7. Differential Gene Expression Analysis</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tools: Sleuth, DESeq2, EdgeR, limma-voom.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Important Concepts: Size factors, linear modeling, multiple testing correction.</p>
+</section>
+<section id="interpreting-your-results" class="level1">
+<h1>8. Interpreting Your Results</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Have a hypothesis? Test it.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Perform GO term/pathway enrichment analysis.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Explore key genes manually.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Visualize with volcano plots to prioritize genes.</p>
+</section>
+<section id="practical-exercise" class="level1">
+<h1>9. Practical Exercise</h1>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Organism: Plasmodium chabaudi (rodent malaria parasite).</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Compare transcriptomes between mosquito-transmitted (MT) and serial blood passage (SBP) parasites.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Biological Question: Is the parasite’s transcriptome different after mosquito passage?</p>
+</section>
+<section id="appendix-key-tools-mentioned" class="level1">
+<h1>Appendix: Key Tools Mentioned</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 51%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Tool</td>
+<td>Purpose</td>
+</tr>
+<tr class="even">
+<td>HISAT2</td>
+<td>Splice-aware genome alignment</td>
+</tr>
+<tr class="odd">
+<td>Kallisto</td>
+<td>Fast transcriptome pseudoalignment</td>
+</tr>
+<tr class="even">
+<td>IGV</td>
+<td>Visualization</td>
+</tr>
+<tr class="odd">
+<td>Sleuth</td>
+<td>DGE and QC analysis</td>
+</tr>
+<tr class="even">
+<td>DESeq2, EdgeR</td>
+<td>Alternative DGE analysis</td>
+</tr>
+<tr class="odd">
+<td>Power calculators</td>
+<td>Estimate sample size</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,4 +1,50 @@
 ---
-title: "module6"
+title: "Overview"
 format: html
 ---
+
+# Module Title
+
+RNA-Seq
+
+# Duration
+
+3 hours
+
+# Key topics
+
+# Activities
+
+-   Lecture: 1 hour
+
+-   Practical exercises: 1.5 hours
+
+-   Assessment quiz: 0.5 hours
+
+# Manual
+
+[Module manual](module6_manual.qmd)
+
+[Exercises](module6_exercises.qmd)
+
+[Solutions](module6_solutions.qmd)
+
+# Presentation slides
+
+(PPT/PDF, to be generated from the module manual. Instructions on how to that will be added here.)
+
+# Lecture recording, notes and scripts
+
+# Practical exercises
+
+### Virtual Machine
+
+Command line walk through.
+
+# Datasets
+
+# Assessment quiz
+
+[Questions](module6_assessment.qmd)
+
+Solution

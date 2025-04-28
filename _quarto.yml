@@ -21,6 +21,8 @@ website:
             text: "Structural Variation Calling"
           - href: course_modules/Module5/module5.qmd
             text: "Genome assembly"
+          - href: course_modules/Module6/module6.qmd
+            text: "RNA-seq"
             
             
 
