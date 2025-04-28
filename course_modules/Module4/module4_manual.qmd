@@ -1,4 +1,208 @@
 ---
-title: "module4_manual"
+title: "Manual"
 format: html
 ---
+
+**Structural Variation Detection and Interpretation Manual**\
+
+**Instructor:** Thomas Keane, EMBL-EBI
+
+------------------------------------------------------------------------
+
+## 1 Introduction to Genomic Structural Variation
+
+### 1.1 What is Structural Variation?
+
+Structural variations (SVs) refer to large-scale alterations of the chromosome structure. These rearrangements contribute to genetic diversity and evolution, leading to new gene formation, changes in gene function, and phenotypic diversity. SVs are often implicated in Mendelian diseases, complex traits such as behavior, and other genomic disorders.
+
+**Types of SVs:**
+
+**Insertions**
+
+**Deletions**
+
+**Copy number variations (CNVs)**
+
+**Inversions**
+
+**Translocations**
+
+**Complex events** (combinations of above)
+
+A **breakpoint** is defined as a pair of bases that are adjacent in the experimental genome but not in the reference genome.
+
+![Genomic Structural Variation](attachment:image1){alt="Genomic Structural Variation"}
+
+## 
+2 Methods for Detecting Structural Variations
+
+## 2.1 Experimental Techniques
+
+-   **Chromosome Banding:** Staining of chromosomes to observe large deletions, duplications, or translocations.
+
+    **FISH (Fluorescence In Situ Hybridization):** Uses fluorescent probes to visualize chromosomal segments.
+
+    **Microarrays:**
+
+    -   *Array CGH:* Detects copy number differences.
+
+        *SNP Arrays:* Identify changes in allelic ratios.
+
+    **Whole Genome Sequencing (WGS):** Detection of breakpoints via discordant paired-end reads.
+
+    **Mate-pair Sequencing:** Large insert libraries to detect breakpoints within repetitive regions.
+
+    **Third-generation Sequencing:** Long-read sequencing technologies (e.g., PacBio, Oxford Nanopore) to detect SVs by aligning large DNA fragments.
+
+### 3: SV Types and Analysis by NGS
+
+### 3.1 Retrotransposition
+
+Transposons are DNA elements that move within the genome, heavily influencing genome organization and evolution.
+
+**Classes:**
+
+-   Class 1: RNA-mediated (e.g., L1, Alu)
+
+    Class 2: DNA-mediated
+
+    **Impact:** Disruption of gene expression and reorganization of the genome.
+
+### 3.2 Evidence for SV Detection
+
+**Sources of Evidence:**
+
+-   **Read Pairs:** Anomalies in expected distance or orientation.
+
+    **Split Reads:** Reads that map discontinuously across a breakpoint.
+
+    **Read Depth:** Changes in sequencing coverage indicating duplications or deletions.
+
+![Sources of Evidence for SV Detection](attachment:image2){alt="Sources of Evidence for SV Detection"}
+
+## 4 SV Detection Tools
+
+### 4.1 Breakdancer
+
+Input: BAM file
+
+Detects: Deletions, insertions, inversions, translocations
+
+Method: Cluster anomalous read pairs
+
+### 4.2 Lumpy
+
+Integrates multiple alignment signals (read pairs, split reads, depth)
+
+Clusters and integrates evidence probabilistically
+
+### 4.3 Sniffles
+
+Designed for long reads
+
+Handles complex SVs and noisy data
+
+### 
+5 VCF Format for SVs
+
+**VCF Fields:**
+
+-   ALT: Alternative allele information
+
+    INFO: Additional annotations (e.g., CIEND)
+
+    FORMAT: Genotype information per sample
+
+    **Exercise:** Write a VCF entry for an Alu insertion at chromosome 7, position 125467, of 258bp length with a breakpoint confidence interval of +/-20bp.
+
+## 6: Visualization of Structural Variants
+
+Visualization is crucial due to the complexity of SVs. IGV (Integrative Genomics Viewer) is a popular tool.
+
+**Tips for Viewing in IGV:**
+
+-   Deletions: Squished view
+
+    Insertions: Group alignments by read strand
+
+    Soft clipped bases: Turn on for breakpoint visualization
+
+![IGV Example - Deletion](attachment:image3){alt="IGV Example - Deletion"}
+
+## 7: Long-read Sequencing and SVs
+
+## 7.1 Platforms
+
+-   Oxford Nanopore
+
+    Pacific Biosciences
+
+**Advantages:** Ability to span breakpoints with single reads.
+
+**Challenges:**
+
+-   High error rate (5-20%)
+
+    Complex alignments
+
+    **Solution:**
+
+Use aligners like NGMLR designed for long reads.
+
+### 7.2 SV Detection
+
+Sniffles: Detects simple and complex SVs using long-read data.
+
+## 8: Complex Structural Variants
+
+**Examples:**
+
+-   Del+Ins (deletion with insertion)
+
+    Inv+Del (inversion with deletion)
+
+    Inversions within gains
+
+    Long reads greatly aid in identifying complex SV structures.
+
+-   
+
+![Complex SV Example](attachment:image4){alt="Complex SV Example"}
+
+## 9: Evaluating SV Call Quality
+
+## 9.1 Sensitivity and Specificity
+
+**Definitions:**
+
+**Sensitivity:** Ability to detect true positives
+
+**Specificity:** Ability to avoid false positives
+
+**Validation Strategies:**
+
+Compare against known SV datasets
+
+PCR validation
+
+Use of ROC curves
+
+10: Practical Exercises
+
+## 10.1 Hands-on Exercises
+
+Analyze VCF files output by Lumpy
+
+Use Breakdancer to detect SVs on yeast data
+
+Use Sniffles for PacBio data
+
+Compare SVs using BEDtools
+
+### 10.2 Practice Questions
+
+-   What information does CIEND in VCF describe?
+
+    How do mate-pair libraries improve SV detection?
+
+    Name two visualization challenges specific to SVs.

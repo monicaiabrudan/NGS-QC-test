@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>module4_manual – NGS Bioinformatics course</title>
+<title>Manual – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,6 +109,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../course_modules/Module3/module3.html">
  <span class="dropdown-text">Variant calling</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../course_modules/Module4/module4.html">
+ <span class="dropdown-text">Structural Variation Calling</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -123,15 +127,51 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-genomic-structural-variation" id="toc-introduction-to-genomic-structural-variation" class="nav-link active" data-scroll-target="#introduction-to-genomic-structural-variation">1 Introduction to Genomic Structural Variation</a>
+  <ul class="collapse">
+  <li><a href="#what-is-structural-variation" id="toc-what-is-structural-variation" class="nav-link" data-scroll-target="#what-is-structural-variation">1.1 What is Structural Variation?</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#experimental-techniques" id="toc-experimental-techniques" class="nav-link" data-scroll-target="#experimental-techniques">2.1 Experimental Techniques</a>
+  <ul class="collapse">
+  <li><a href="#sv-types-and-analysis-by-ngs" id="toc-sv-types-and-analysis-by-ngs" class="nav-link" data-scroll-target="#sv-types-and-analysis-by-ngs">3: SV Types and Analysis by NGS</a></li>
+  <li><a href="#retrotransposition" id="toc-retrotransposition" class="nav-link" data-scroll-target="#retrotransposition">3.1 Retrotransposition</a></li>
+  <li><a href="#evidence-for-sv-detection" id="toc-evidence-for-sv-detection" class="nav-link" data-scroll-target="#evidence-for-sv-detection">3.2 Evidence for SV Detection</a></li>
+  </ul></li>
+  <li><a href="#sv-detection-tools" id="toc-sv-detection-tools" class="nav-link" data-scroll-target="#sv-detection-tools">4 SV Detection Tools</a>
+  <ul class="collapse">
+  <li><a href="#breakdancer" id="toc-breakdancer" class="nav-link" data-scroll-target="#breakdancer">4.1 Breakdancer</a></li>
+  <li><a href="#lumpy" id="toc-lumpy" class="nav-link" data-scroll-target="#lumpy">4.2 Lumpy</a></li>
+  <li><a href="#sniffles" id="toc-sniffles" class="nav-link" data-scroll-target="#sniffles">4.3 Sniffles</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  </ul></li>
+  <li><a href="#visualization-of-structural-variants" id="toc-visualization-of-structural-variants" class="nav-link" data-scroll-target="#visualization-of-structural-variants">6: Visualization of Structural Variants</a></li>
+  <li><a href="#long-read-sequencing-and-svs" id="toc-long-read-sequencing-and-svs" class="nav-link" data-scroll-target="#long-read-sequencing-and-svs">7: Long-read Sequencing and SVs</a></li>
+  <li><a href="#platforms" id="toc-platforms" class="nav-link" data-scroll-target="#platforms">7.1 Platforms</a>
+  <ul class="collapse">
+  <li><a href="#sv-detection" id="toc-sv-detection" class="nav-link" data-scroll-target="#sv-detection">7.2 SV Detection</a></li>
+  </ul></li>
+  <li><a href="#complex-structural-variants" id="toc-complex-structural-variants" class="nav-link" data-scroll-target="#complex-structural-variants">8: Complex Structural Variants</a></li>
+  <li><a href="#evaluating-sv-call-quality" id="toc-evaluating-sv-call-quality" class="nav-link" data-scroll-target="#evaluating-sv-call-quality">9: Evaluating SV Call Quality</a></li>
+  <li><a href="#sensitivity-and-specificity" id="toc-sensitivity-and-specificity" class="nav-link" data-scroll-target="#sensitivity-and-specificity">9.1 Sensitivity and Specificity</a></li>
+  <li><a href="#hands-on-exercises" id="toc-hands-on-exercises" class="nav-link" data-scroll-target="#hands-on-exercises">10.1 Hands-on Exercises</a>
+  <ul class="collapse">
+  <li><a href="#practice-questions" id="toc-practice-questions" class="nav-link" data-scroll-target="#practice-questions">10.2 Practice Questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">module4_manual</h1>
+<h1 class="title">Manual</h1>
 </div>
 
 
@@ -148,8 +188,194 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><strong>Structural Variation Detection and Interpretation Manual</strong><br>
+</p>
+<p><strong>Instructor:</strong> Thomas Keane, EMBL-EBI</p>
+<hr>
+<section id="introduction-to-genomic-structural-variation" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-genomic-structural-variation">1 Introduction to Genomic Structural Variation</h2>
+<section id="what-is-structural-variation" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-structural-variation">1.1 What is Structural Variation?</h3>
+<p>Structural variations (SVs) refer to large-scale alterations of the chromosome structure. These rearrangements contribute to genetic diversity and evolution, leading to new gene formation, changes in gene function, and phenotypic diversity. SVs are often implicated in Mendelian diseases, complex traits such as behavior, and other genomic disorders.</p>
+<p><strong>Types of SVs:</strong></p>
+<p><strong>Insertions</strong></p>
+<p><strong>Deletions</strong></p>
+<p><strong>Copy number variations (CNVs)</strong></p>
+<p><strong>Inversions</strong></p>
+<p><strong>Translocations</strong></p>
+<p><strong>Complex events</strong> (combinations of above)</p>
+<p>A <strong>breakpoint</strong> is defined as a pair of bases that are adjacent in the experimental genome but not in the reference genome.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image1.png" class="img-fluid figure-img"></p>
+<figcaption>Genomic Structural Variation</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>2 Methods for Detecting Structural Variations</p>
+</section>
+<section id="experimental-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="experimental-techniques">2.1 Experimental Techniques</h2>
+<ul>
+<li><p><strong>Chromosome Banding:</strong> Staining of chromosomes to observe large deletions, duplications, or translocations.</p>
+<p><strong>FISH (Fluorescence In Situ Hybridization):</strong> Uses fluorescent probes to visualize chromosomal segments.</p>
+<p><strong>Microarrays:</strong></p>
+<ul>
+<li><p><em>Array CGH:</em> Detects copy number differences.</p>
+<p><em>SNP Arrays:</em> Identify changes in allelic ratios.</p></li>
+</ul>
+<p><strong>Whole Genome Sequencing (WGS):</strong> Detection of breakpoints via discordant paired-end reads.</p>
+<p><strong>Mate-pair Sequencing:</strong> Large insert libraries to detect breakpoints within repetitive regions.</p>
+<p><strong>Third-generation Sequencing:</strong> Long-read sequencing technologies (e.g., PacBio, Oxford Nanopore) to detect SVs by aligning large DNA fragments.</p></li>
+</ul>
+<section id="sv-types-and-analysis-by-ngs" class="level3">
+<h3 class="anchored" data-anchor-id="sv-types-and-analysis-by-ngs">3: SV Types and Analysis by NGS</h3>
+</section>
+<section id="retrotransposition" class="level3">
+<h3 class="anchored" data-anchor-id="retrotransposition">3.1 Retrotransposition</h3>
+<p>Transposons are DNA elements that move within the genome, heavily influencing genome organization and evolution.</p>
+<p><strong>Classes:</strong></p>
+<ul>
+<li><p>Class 1: RNA-mediated (e.g., L1, Alu)</p>
+<p>Class 2: DNA-mediated</p>
+<p><strong>Impact:</strong> Disruption of gene expression and reorganization of the genome.</p></li>
+</ul>
+</section>
+<section id="evidence-for-sv-detection" class="level3">
+<h3 class="anchored" data-anchor-id="evidence-for-sv-detection">3.2 Evidence for SV Detection</h3>
+<p><strong>Sources of Evidence:</strong></p>
+<ul>
+<li><p><strong>Read Pairs:</strong> Anomalies in expected distance or orientation.</p>
+<p><strong>Split Reads:</strong> Reads that map discontinuously across a breakpoint.</p>
+<p><strong>Read Depth:</strong> Changes in sequencing coverage indicating duplications or deletions.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image2.png" class="img-fluid figure-img"></p>
+<figcaption>Sources of Evidence for SV Detection</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sv-detection-tools" class="level2">
+<h2 class="anchored" data-anchor-id="sv-detection-tools">4 SV Detection Tools</h2>
+<section id="breakdancer" class="level3">
+<h3 class="anchored" data-anchor-id="breakdancer">4.1 Breakdancer</h3>
+<p>Input: BAM file</p>
+<p>Detects: Deletions, insertions, inversions, translocations</p>
+<p>Method: Cluster anomalous read pairs</p>
+</section>
+<section id="lumpy" class="level3">
+<h3 class="anchored" data-anchor-id="lumpy">4.2 Lumpy</h3>
+<p>Integrates multiple alignment signals (read pairs, split reads, depth)</p>
+<p>Clusters and integrates evidence probabilistically</p>
+</section>
+<section id="sniffles" class="level3">
+<h3 class="anchored" data-anchor-id="sniffles">4.3 Sniffles</h3>
+<p>Designed for long reads</p>
+<p>Handles complex SVs and noisy data</p>
+</section>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1"></h3>
+<p>5 VCF Format for SVs</p>
+<p><strong>VCF Fields:</strong></p>
+<ul>
+<li><p>ALT: Alternative allele information</p>
+<p>INFO: Additional annotations (e.g., CIEND)</p>
+<p>FORMAT: Genotype information per sample</p>
+<p><strong>Exercise:</strong> Write a VCF entry for an Alu insertion at chromosome 7, position 125467, of 258bp length with a breakpoint confidence interval of +/-20bp.</p></li>
+</ul>
+</section>
+</section>
+<section id="visualization-of-structural-variants" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-of-structural-variants">6: Visualization of Structural Variants</h2>
+<p>Visualization is crucial due to the complexity of SVs. IGV (Integrative Genomics Viewer) is a popular tool.</p>
+<p><strong>Tips for Viewing in IGV:</strong></p>
+<ul>
+<li><p>Deletions: Squished view</p>
+<p>Insertions: Group alignments by read strand</p>
+<p>Soft clipped bases: Turn on for breakpoint visualization</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image3.png" class="img-fluid figure-img"></p>
+<figcaption>IGV Example - Deletion</figcaption>
+</figure>
+</div>
+</section>
+<section id="long-read-sequencing-and-svs" class="level2">
+<h2 class="anchored" data-anchor-id="long-read-sequencing-and-svs">7: Long-read Sequencing and SVs</h2>
+</section>
+<section id="platforms" class="level2">
+<h2 class="anchored" data-anchor-id="platforms">7.1 Platforms</h2>
+<ul>
+<li><p>Oxford Nanopore</p>
+<p>Pacific Biosciences</p></li>
+</ul>
+<p><strong>Advantages:</strong> Ability to span breakpoints with single reads.</p>
+<p><strong>Challenges:</strong></p>
+<ul>
+<li><p>High error rate (5-20%)</p>
+<p>Complex alignments</p>
+<p><strong>Solution:</strong></p></li>
+</ul>
+<p>Use aligners like NGMLR designed for long reads.</p>
+<section id="sv-detection" class="level3">
+<h3 class="anchored" data-anchor-id="sv-detection">7.2 SV Detection</h3>
+<p>Sniffles: Detects simple and complex SVs using long-read data.</p>
+</section>
+</section>
+<section id="complex-structural-variants" class="level2">
+<h2 class="anchored" data-anchor-id="complex-structural-variants">8: Complex Structural Variants</h2>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><p>Del+Ins (deletion with insertion)</p>
+<p>Inv+Del (inversion with deletion)</p>
+<p>Inversions within gains</p>
+<p>Long reads greatly aid in identifying complex SV structures.</p></li>
+<li></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image4.png" class="img-fluid figure-img"></p>
+<figcaption>Complex SV Example</figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluating-sv-call-quality" class="level2">
+<h2 class="anchored" data-anchor-id="evaluating-sv-call-quality">9: Evaluating SV Call Quality</h2>
+</section>
+<section id="sensitivity-and-specificity" class="level2">
+<h2 class="anchored" data-anchor-id="sensitivity-and-specificity">9.1 Sensitivity and Specificity</h2>
+<p><strong>Definitions:</strong></p>
+<p><strong>Sensitivity:</strong> Ability to detect true positives</p>
+<p><strong>Specificity:</strong> Ability to avoid false positives</p>
+<p><strong>Validation Strategies:</strong></p>
+<p>Compare against known SV datasets</p>
+<p>PCR validation</p>
+<p>Use of ROC curves</p>
+<p>10: Practical Exercises</p>
+</section>
+<section id="hands-on-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="hands-on-exercises">10.1 Hands-on Exercises</h2>
+<p>Analyze VCF files output by Lumpy</p>
+<p>Use Breakdancer to detect SVs on yeast data</p>
+<p>Use Sniffles for PacBio data</p>
+<p>Compare SVs using BEDtools</p>
+<section id="practice-questions" class="level3">
+<h3 class="anchored" data-anchor-id="practice-questions">10.2 Practice Questions</h3>
+<ul>
+<li><p>What information does CIEND in VCF describe?</p>
+<p>How do mate-pair libraries improve SV detection?</p>
+<p>Name two visualization challenges specific to SVs.</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

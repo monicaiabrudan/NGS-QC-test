@@ -17,6 +17,10 @@ website:
             text: "Reads alignment"
           - href: course_modules/Module3/module3.qmd
             text: "Variant calling"
+          - href: course_modules/Module4/module4.qmd
+            text: "Structural Variation Calling"
+            
+            
 
   page-navigation: true 
   page-footer: 

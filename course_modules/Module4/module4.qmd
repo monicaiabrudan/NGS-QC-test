@@ -5,7 +5,7 @@ format: html
 
 # Module Title
 
-**NGS Data formats and QC**
+Structural Variation Calling
 
 # Duration
 
@@ -25,6 +25,10 @@ format: html
 
 [Module manual](module4_manual.qmd)
 
+[Exercises](module4_exercises.qmd)
+
+[Solutions](module4_solutions.qmd)
+
 # Presentation slides
 
 (PPT/PDF, to be generated from the module manual. Instructions on how to that will be added here.)
@@ -42,3 +46,5 @@ Command line walk through.
 # Assessment quiz
 
 [Questions](module4_assessment.qmd)
+
+Solution
