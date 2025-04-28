@@ -24,7 +24,17 @@ website:
   search:
     location: navbar
     type: textbox
-    
+
+output:
+  html_document:
+    highlight: pygments
+    css: "_extensions/styles.css"
+    toc: true
+    toc_float:
+      collapsed: false
+    includes:
+      after_body: _extensions/footer.html
+      
  # sidebar:
  #   style: "docked"
 #    search: true

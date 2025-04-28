@@ -2,4 +2,3 @@
 title: "module6_manual"
 format: html
 ---
-
