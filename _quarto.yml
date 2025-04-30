@@ -25,7 +25,39 @@ website:
             text: "RNA-seq"
           - href: course_modules/Module7/module7.qmd
             text: "CHiP-Seq"
-            
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "File formats"
+        contents:
+          - course_modules/Module1/module1_manual.qmd
+          - course_modules/Module1/module1_exercises.qmd
+      - section: "Read alignment"
+        contents:
+          - course_modules/Module2/module2_manual.qmd
+          - course_modules/Module2/module2_exercises.qmd
+      - section: "Variant calling"
+        contents:
+          - course_modules/Module3/module3_manual.qmd
+          - course_modules/Module3/module3_exercises.qmd
+      - section: "Structural Variation Calling"
+        contents:
+          - course_modules/Module4/module4_manual.qmd
+          - course_modules/Module4/module4_exercises.qmd
+      - section: "Genome Assembly"
+        contents:
+          - course_modules/Module5/module5_manual.qmd
+          - course_modules/Module5/module5_exercises.qmd
+      - section: "RNA-Seq"
+        contents:
+          - course_modules/Module6/module6_manual.qmd
+          - course_modules/Module6/module6_exercises.qmd
+      - section: "CHiP-Seq"
+        contents:
+          - course_modules/Module7/module7_manual.qmd
+          - course_modules/Module7/module7_exercises.qmd
             
 
   page-navigation: true 
@@ -45,27 +77,7 @@ output:
     includes:
       after_body: _extensions/footer.html
       
- # sidebar:
- #   style: "docked"
-#    search: true
- #   collapse-level: 1
-  #  contents:
-   #   - section: "File formats"
-    #    contents:
-#          - course_modules/Module1/module1.qmd
-#          - course_modules/Module1/module1_manual.qmd
-#          - course_modules/Module1/module1_assessment.qmd
-#      - section: "Read alignment"
-#        contents:
-#          - course_modules/Module2/module2.qmd
-#          - course_modules/Module2/module2_manual.qmd
-#          - course_modules/Module2/module2_assessment.qmd
-#      - section: "Variant calling"
- #       contents:
-#          - course_modules/Module3/module3.qmd
-#          - course_modules/Module3/module3_manual.qmd
-#          - course_modules/Module3/module3_assessment.qmd
- 
+
 format:
   html:
     theme:
