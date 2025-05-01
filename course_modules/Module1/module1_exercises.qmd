@@ -2,4 +2,3 @@
 title: "Exercises"
 format: html
 ---
-
