@@ -189,8 +189,7 @@ The higher, the better! (but not always!)
 
 • The last two numbers tell us how many reads were used from the 7.7 million pairs input data.
 
-To see all possible options for velvetg use:
-`velvetg`
+To see all possible options for velvetg use: `velvetg`
 
 Now let’s try to improve the quality of the assembly by varying some of the input parameters to velvet. Two parameters that can play a role in improving the assembly are **-cov_cutoff** and **-min_contig_lgth**.
 
