@@ -111,7 +111,7 @@ A key type of large-scale variation is **Copy Number Variants (CNVs)**, which in
 ### **SNPs vs STRs**
 
 | **SNPs** | STRs |
-|------------------------------------|------------------------------------|
+|--------------------------------|----------------------------------------|
 | Usually biallelic; Seldom recurrent. | Multiallelic |
 | Low mutation rate: 1-1.25 x 10-8 /bp/generation. | Higher mutation rate: 2 x 10-4 – 1.3 x 10-2 /marker/generation. |
 | \~ 3,000,000 in humans | \~500,000 in humans |
@@ -193,37 +193,155 @@ To determine: 1. the most likely genotype g ∈ {RR, RA, AA} given the observed 
 
 ![](images/formula4.png){width="266"}
 
-### 5. Steps in Variant Detection
+### **Genotype likelihoods**
 
-### 6. Common Sources of Error
+**Genotype likelihoods** are used to determine which of the possible genotypes—**homozygous reference (RR)**, **heterozygous (RA)**, or **homozygous alternate (AA)**—best explains the observed sequencing data. These likelihoods are calculated from sequence alignments and account for various sources of error, including **base calling errors**, **mapping inaccuracies**, **random sampling fluctuations**, and **local misalignments**, such as those corrected by **base alignment quality (BAQ)**. Alongside these likelihoods, **prior probabilities** estimate how likely a variant is to occur at a given site in the genome, often assuming **Hardy-Weinberg equilibrium**
 
-### 7. Advanced Topics in Variant Calling
+![](images/Hardy-Weinberg%20equilibrium.png){width="317"}
 
-**Somatic variant calling** specifically aims to identify genetic variants present in tumor cells by comparing sequences from tumor samples against matched normal tissues. The primary objective is detecting mutations that may drive cancer progression. Because tumors are heterogeneous, subclonal variants—mutations present in only a subset of cells—often exhibit widely varying allele fractions, complicating their detection and interpretation. Specialized bioinformatics pipelines such as Mutect2 and Strelka2 have been developed to address these complexities and accurately distinguish true somatic mutations from background noise.
+to model expected genotype frequencies based on allele frequency (f). These priors can also incorporate **population-level genetic diversity**. The combination of genotype likelihood and prior probability enables more accurate and confident genotype calling, as represented by the Bayesian formula
 
-**Indel calling presents unique challenges**, notably due to elevated sequencing error rates in regions such as microsatellites and homopolymers, where accurate base calling is particularly difficult. Additionally, indels can be represented in multiple valid ways by different alignment tools, leading to inconsistencies in their annotation and interpretation. As a result, complex indel regions often suffer from low reproducibility, with significant discrepancies observed across different variant callers. Users are encouraged to validate indel calls rigorously, especially in clinical or sensitive research contexts.
+![](images/formula1.png){width="296"}
 
-**Emerging approaches in variant calling** are addressing these limitations. Local de novo assembly methods, implemented in tools like GATK’s HaplotypeCaller, Scalpel, and Octopus, reconstruct local genomic haplotypes directly from sequencing reads, helping resolve complex variants more effectively. Additionally, newer methods employ variation graphs—data structures that represent multiple known variants simultaneously—to improve alignment accuracy and variant calling performance, particularly in regions of high genetic complexity or variability. These innovative approaches promise to significantly enhance the accuracy and comprehensiveness of genomic analyses moving forward.
+### **Errors in variant calling**
 
-### 8. Assessing and Benchmarking Variant Calls
+**Errors in variant calling** can arise from various sources, with **homopolymers** and **tandem repeats** being among the most problematic. These repetitive sequence regions are prone to **systematic sequencing errors**, where the sequencing technology struggles to accurately count the number of repeated bases. Additionally, **mapping errors** often occur in these regions, as reads may align incorrectly due to the repetitive nature of the DNA. These challenges can lead to **false-positive** or **false-negative variant calls**, underscoring the importance of using robust alignment algorithms and applying appropriate quality filters during variant analysis.
 
-The **transition/transversion (Ts/Tv) ratio** is a critical metric used to assess the quality of variant calls. Transitions (Ts)—base substitutions within purines (A↔G) or pyrimidines (C↔T)—occur more frequently than transversions (Tv), substitutions between purines and pyrimidines. For high-quality SNP datasets in humans, a Ts/Tv ratio of approximately 2 to 3 is typically expected; deviations from this range can indicate underlying errors in variant calling.
+![**This figure illustrates different types of tandem repeats based on the unit size of the repeating DNA sequence. Homopolymers (unit size = 1) consist of a single nucleotide repeated multiple times, such as a stretch of adenines (A). Dinucleotide repeats (unit size = 2) involve two nucleotides, like AC, repeating in tandem. Trinucleotide repeats (unit size = 3) contain three nucleotides, such as ACG, repeated in sequence. The final category, tandem repeats, represents a general case with any repeat unit size (N), encompassing more complex and variable repeat structures.**](images/errors.png)
 
-Another key consideration is the concept of a **callable genome**, as certain regions of the genome are inherently difficult to analyze due to repetitive sequences, structural complexities, or extreme GC content. Not all genomic regions are equally accessible or "callable," and thus it is beneficial to utilize established benchmark sets, such as the Genome in a Bottle project, which define high-confidence genomic regions suitable for accurate variant detection and performance assessment.
+### Variant calling workflows
 
-When evaluating variant-calling performance, metrics such as **precision and recall** become essential. Precision represents the proportion of called variants that are correct (true positives), while recall, also known as sensitivity, measures the proportion of true variants correctly identified. To accurately compute these metrics, benchmarking tools like hap.py or vcfeval are routinely employed, allowing researchers to systematically assess and optimize variant-calling workflows for reliability and accuracy.
+![**Variant calling workflows**](images/variant%20calling%20workflows%20copy.png)
 
-### 9. Functional Annotation and Variant Consequences
+There are two major approaches to **variant calling**: **mapping-based** and **assembly-based**, each using either a **linear reference genome** or a **pangenome**. In mapping-based calling, raw sequencing reads are aligned directly to a reference genome. When using a **linear reference**, reads corresponding to novel insertions (e.g., sequence B) may remain **unmapped**, leading to **missed variants**. In contrast, mapping to a **pangenome**—which incorporates known genomic diversity—allows these sequences to align correctly, improving variant detection. In assembly-based calling, the genome is first assembled de novo and then aligned to either a linear or pangenome reference. This method can more accurately detect complex variants, such as insertions, by comparing **assembled contigs** to the reference. Overall, pangenome and assembly-based strategies enhance the sensitivity and completeness of variant discovery, especially in regions not well represented by a single linear reference.
 
-Functional annotation of genetic variants is an essential step in understanding their potential biological impacts. Annotation tools such as **BCFtools/csq**, **Ensembl Variant Effect Predictor (VEP)**, and **ANNOVAR** are commonly utilized to systematically determine the genomic context of variants, categorizing them as coding, intronic, untranslated region (UTR), or intergenic. These tools further predict the functional consequences of variants, distinguishing between synonymous changes, which do not alter the amino acid sequence, and non-synonymous or missense mutations, which result in amino acid substitutions. More severe mutations include nonsense variants, which introduce premature stop codons, and frameshift variants, which disrupt the reading frame of the protein. Variant pathogenicity is often classified into categories such as pathogenic, likely pathogenic, benign, likely benign, or variants of uncertain significance (VUS). These classifications integrate population frequency data, computational prediction models, family-based segregation analyses, and results from functional assays to provide meaningful insights into the clinical or biological relevance of each variant.
+### **Factors to Consider in Variant Calling**
 
-### 10. Population-Level Variant Data
+**Variant calling** is a complex process influenced by several technical and biological factors, and not all detected variants are real. Therefore, a **filtering step** is essential to eliminate **false positives**, which can arise from multiple sources. These include **contamination**, **PCR amplification errors**, and **sequencing artifacts**, especially in **homopolymer regions**. **Mapping errors** can occur in **repetitive or structurally variable regions**, and **alignment issues** often result in **false SNPs near indels** or **ambiguous indel placements**. Additionally, the concept of the **callable genome** is important—only certain regions of the genome can be confidently assessed. For example, the **Genome in a Bottle (GIAB)** project defines high-confidence regions that cover about **89% of the reference genome**, focusing on shorter, well-characterized intervals. These limitations must be considered when interpreting variant calls to ensure reliable genomic analysis.
 
-Population-level variant datasets provide critical resources for interpreting genetic variation in a global context. The **1000 Genomes Project**, for instance, encompasses genomic data from over 2,500 individuals representing 26 distinct populations worldwide, with an average sequencing coverage of approximately 7–8X. This extensive collection offers researchers a comprehensive snapshot of human genetic diversity, aiding studies in population genetics, evolutionary biology, and clinical genomics.
+### **Estimating the quality of called SNPs**
 
-Complementary to the 1000 Genomes Project, resources like **HapMap**, **HGDP-CEPH**, and **gnomAD** further enrich our understanding of global genetic variation. The International HapMap Project, although now archived, was an early effort aimed at cataloging common single nucleotide polymorphisms (SNPs) across diverse human populations. The HGDP-CEPH panel provides valuable genomic data from a broad array of worldwide populations, offering insights into human evolutionary history and population structure. The Genome Aggregation Database (gnomAD) expands upon these earlier efforts by compiling allele frequency data from tens of thousands of sequenced individuals, greatly enhancing our ability to interpret genetic variants, understand their functional significance, and accurately determine their frequencies across different populations.
+One common method for **estimating the quality of called SNPs** is by calculating the **transitions-to-transversions (Ts/Tv) ratio**. **Transitions** are substitutions between purines (A↔G) or between pyrimidines (C↔T), while **transversions** are substitutions between a purine and a pyrimidine (e.g., A↔C, G↔T). Transitions occur **2 to 3 times more frequently** than transversions in the genome. Therefore, a **high Ts/Tv ratio** is generally indicative of a **high-quality SNP dataset**, whereas a low ratio may suggest an excess of false-positive calls due to sequencing or alignment errors.
 
-### 11. References and Additional Resources
+![**This image shows substitution patterns in random, normal, and ancient DNA. Normal DNA displays a strong bias for transitions (A↔G, C↔T), while ancient DNA shows even stronger C→T and G→A transitions due to damage. In contrast, random data shows uniform substitution frequencies, lacking the biological patterns seen in real samples.**](images/transitions1.png){width="125"}
+
+![**This image illustrates transitions (purine↔purine or pyrimidine↔pyrimidine, in blue) and transversions (purine↔pyrimidine, in red) among DNA bases. Transitions occur between A↔G and C↔T, while transversions involve exchanges like A↔C or G↔T. Base structures of adenine, guanine, cytosine, and thymine are also shown, categorised as purines or pyrimidines.**](images/transitions2.png){width="209"}
+
+### **Indel calling** challenges
+
+![**Indel calling challenges. This image highlights challenges in indel calling, showing multiple read alignments around a potential deletion. Inconsistent gaps and alignment shifts illustrate the ambiguity in representing indels, especially in repetitive regions.**](images/indel%20calling%20challenges.png){width="398"}
+
+**Indel calling** presents significant challenges due to both biological and technical factors. Sequencing errors are more frequent in **microsatellite regions**, which are highly repetitive and prone to polymerase slippage. Furthermore, **low reproducibility** across variant callers—such as HapCaller, SOAPindel, and Scalpel—has been observed, with only **37.1% agreement** reported in a comparative study by Narzisi et al. (2014). One major difficulty lies in the **mapping and alignment of reads containing indels**, as aligners may favor aligning mismatches over introducing gaps, leading to incorrect or inconsistent representations. Additionally, **indel representation can be ambiguous**, complicating downstream analyses and standardization across tools.
+
+### Maximum depth
+
+![**Maximum depth**](images/maximum%20depth.png)
+
+The **thousandfold increase in sequencing depth** at certain genomic regions, as shown by the sharp spike in this plot, is often due to **alignment artifacts** or **repetitive sequences**. Common causes include:
+
+-   **Collapsed repeats** – Reads from multiple identical or nearly identical regions in the genome map to a single location, artificially inflating coverage.
+
+-   **Segmental duplications** – Highly similar duplicated sequences can confuse the aligner, leading to read pileups at one preferred site.
+
+-   **Low-complexity regions** – Simple repetitive motifs (e.g., homopolymers) can attract misaligned reads.
+
+-   **Mapping bias** – Aligners may preferentially map ambiguous reads to specific locations.
+
+These high-coverage anomalies are **not biologically meaningful** and must be carefully filtered during variant analysis to avoid false positives.
+
+### Mapping errors
+
+![**An example of mapping errors**](images/mapping%20error.png)
+
+The image above compares **RNA-Seq (top panel)** and **DNA-Seq (bottom panel)** data from the same sample, aligned to the reference genome. The **novel SNVs (single nucleotide variants)** seen only in the **RNA-Seq reads** (e.g., consistent A\>G or T\>C changes not present in the DNA) likely represent **RNA editing events**, rather than true genomic mutations.
+
+-   **RNA editing** can introduce sequence changes **post-transcriptionally** that are **not encoded in the DNA**.
+
+-   The **DNA-Seq panel** shows the **reference sequence** without these changes, confirming the absence of true genomic variation at those sites.
+
+-   These mismatches are **reproducible across multiple RNA reads**, strengthening the case that they are **biological modifications** rather than sequencing errors.
+
+Thus, these SNVs are best explained by **post-transcriptional RNA editing**, a common and functionally important phenomenon in some tissues and genes.
+
+### Strand bias
+
+![**Example of a strand bias**](images/strand%20bias.png)
+
+The image above shows a pileup of sequencing reads at a genomic locus, with a focus on a potential variant call. Here are key observations:
+
+-   The supposed variant (e.g., a C base differing from reference) appears only in the top strand of aligned reads.
+
+-   The alternate allele is supported exclusively by reads on one side of the coverage (left side), suggesting strand or positional bias.
+
+This is not a reliable or valid variant call. The variant lacks strand balance, shows positional bias, and may be the result of mapping artifacts or low-complexity sequence effects. Proper variant filtering would likely exclude this candidate.
+
+### Variant Distance Bias
+
+Variant Distance Bias measures whether alternate alleles (variants) tend to cluster near the start or end of reads, or within a small region of the read, rather than being randomly distributed. A high VDB score (low bias) means variants are scattered randomly; a low VDB score indicates positional clustering, which is often a hallmark of artifacts.
+
+![Variant distance bias](images/variant%20distance%20bias.png) In the image above, in both RNA-seq replicates, the alternate allele (T) appears clustered at the start of the reads (left side of the alignments). In contrast, the DNA reads show no such variant and match the reference (C).
+
+The clustering of T bases suggests strong positional bias, which would trigger low VDB scores if passed through a variant caller like GATK or bcftools.
+
+This non-random distribution of variants across the read length is a classic red flag. While in this case, the clustering is due to a true biological RNA editing event, in general, low VDB scores can indicate:
+
+-   Technical artifacts (e.g., primer bias, reverse transcription errors)
+
+-   Systematic sequencing or alignment issues
+
+-   Or, real post-transcriptional modifications like RNA editing
+
+### False SNPs Caused by Incorrect Alignment
+
+![**False SNPs. All the mismatches are clustered near an indel (a large gap in the alignment: -----), suggesting misalignment. The true variation is likely an indel, and the SNPs are artifacts of how the aligner tried to force the reads to match the reference. Using tools that perform local indel realignment or apply Base Alignment Quality (BAQ)) would likely correct these false mismatches.**](images/real%20SNPs.png)
+
+False SNPs can arise from incorrect alignments, especially in regions with insertions, deletions, or low complexity. These alignment artifacts occur when sequencing reads are incorrectly matched to the reference genome, causing mismatches that appear as false single SNP. While multiple sequence alignment could reduce such errors by considering the context of all reads, it is computationally intensive and not practical for large-scale data. Instead, a more efficient approach is to apply Base Alignment Quality (BAQ), which adjusts the quality scores of bases that are likely misaligned. By downgrading the confidence of questionable base calls, BAQ helps prevent spurious SNP calls during variant analysis.
+
+### The future of variant calling
+
+The future of variant calling is shifting toward more sophisticated methods that overcome the limitations of traditional, alignment-based approaches. Current tools rely heavily on aligners that process one read at a time and focus on individual sites, often missing the broader context of local haplotypes and linked variants. Emerging approaches like local de novo assembly-based variant callers (e.g., GATK HaplotypeCaller, Scalpel, Octopus) reconstruct short regions of the genome directly from reads, enabling simultaneous detection of SNPs, indels, MNPs, and small structural variants, while reducing false positives caused by misalignment. Additionally, variation graphs, which allow reads to align to a graph representation of multiple reference paths rather than a single linear genome, promise improved sensitivity and accuracy, particularly in complex or polymorphic regions.
+
+### **Functional annotation**
+
+Functional annotation is a critical step in variant interpretation, where additional biological context is added to variants stored in a VCF file. VCFs can include INFO tags (per variant site) and FORMAT tags (per sample) that describe features such as whether a variant is in a coding region, intron, or UTR, and predict the functional consequence—for example, whether the variant is synonymous, missense, or causes a start codon loss. While many tools exist for annotating VCF files, only a few are haplotype-aware, meaning they consider the combined effects of variants on the same haplotype. Notable tools include [BCFtools/csq](https://samtools.github.io/bcftools/howtos/csq-calling.html) and [VEP Haplosaurus](https://www.ensembl.org/info/docs/tools/vep/haplo/index.html), which provide richer, more accurate annotations by evaluating variant effects in their haplotypic context, particularly in complex coding regions where combinations of variants can alter protein function.
+
+![**Haplotype-aware annotation. A. A scenario where two variants appear to cause harmful amino acid changes (red), but only when interpreted individually. When considered together as part of the same haplotype, they restore the correct codon, resulting in a synonymous or tolerated amino acid change (green) B. A more complex example, where individual variants appear highly disruptive, altering the amino acid sequence across a large region. A haplotype-aware approach reveals that the combined variant effect is much less damaging than previously thought. C. A variant near an intron-exon boundary. Interpreting this variant alone gives misleading results (e.g., introducing a premature stop codon). When all nearby variants are considered together in context, the predicted effect is a benign amino acid substitution.**](images/haplotype-aware%20annotation.png)
+
+You can read more about the typical variant calling process in the following article: Olson, N.D., Wagner, J., Dwarshuis, N. *et al.* Variant calling and benchmarking in an era of complete human genome sequences. *Nat Rev Genet* **24**, 464–483 (2023). [https://doi.org/10.1038/s41576-023-00590-0](https://www.nature.com/articles/s41576-023-00590-0)
+
+### SNPs in Ensembl - Types
+
+<https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html>
+
+|  |  |  |  |  |
+|-------------------|---------------------------|----------|--------|----------|
+| SO Term | SO Description | SO Accession | Display Term | IMPACT |
+| transcript_ablation | A feature ablation whereby the deleted region includes a transcript feature | SO:0001893 | Transcript ablation | HIGH |
+| splice_acceptor_variant | A splice variant that changes the 2 base region at the 3' end of an intron | SO:0001574 | Splice acceptor variant | HIGH |
+| splice_donor_variant | A splice variant that changes the 2 base region at the 5' end of an intron | SO:0001575 | Splice donor variant | HIGH |
+| stop_gained | A sequence variant resulting in a premature stop codon | SO:0001587 | Stop gained | HIGH |
+| frameshift_variant | A sequence variant causing a disruption of the translational reading frame | SO:0001589 | Frameshift variant | HIGH |
+| stop_lost | A sequence variant whereby the stop codon is changed resulting in the extension of the translated product | SO:0001578 | Stop lost | HIGH |
+| start_lost | A sequence variant whereby the start codon is changed | SO:0002012 | Start lost | HIGH |
+| transcript_amplification | A feature amplification of a region containing a transcript | SO:0001889 | Transcript amplification | HIGH |
+| inframe_insertion | An inframe non-disruptive insertion of bases into the coding sequence | SO:0001821 | Inframe insertion | MODERATE |
+| inframe_deletion | An inframe non-disruptive deletion of bases from the coding sequence | SO:0001822 | Inframe deletion | MODERATE |
+| missense_variant | A sequence variant that changes one or more amino acids in a protein | SO:0001583 | Missense variant | MODERATE |
+| protein_altering_variant | A sequence variant that is predicted to change the protein sequence | SO:0001818 | Protein altering variant | MODERATE |
+| splice_region_variant | A sequence variant in which a change has occurred within the region of the splice site | SO:0001630 | Splice region variant | LOW |
+| synonymous_variant | A sequence variant where there is no resulting change to the encoded amino acid | SO:0001819 | Synonymous variant | LOW |
+| 5_prime_UTR_variant | A UTR variant of the 5' untranslated region | SO:0001623 | 5' UTR variant | MODIFIER |
+| 3_prime_UTR_variant | A UTR variant of the 3' untranslated region | SO:0001624 | 3' UTR variant | MODIFIER |
+| intron_variant | A sequence variant occurring within an intron | SO:0001627 | Intron variant | MODIFIER |
+| upstream_gene_variant | A sequence variant located upstream of a gene | SO:0001631 | Upstream gene variant | MODIFIER |
+| downstream_gene_variant | A sequence variant located downstream of a gene | SO:0001632 | Downstream gene variant | MODIFIER |
+| intergenic_variant | A sequence variant located in the intergenic region | SO:0001628 | Intergenic variant | MODIFIER |
+
+### **Variant pathogenicity**
+
+Variant pathogenicity refers to the classification of genetic variants based on their potential to cause disease. Variants are typically categorized into five main groups. Pathogenic variants are known to cause disease, while likely pathogenic variants are suspected to be harmful but lack full evidence. On the opposite end, benign variants are considered non-disease causing, and likely benign variants are those unlikely to be associated with disease. The most ambiguous category is Variants of Uncertain Significance (VUS), which lack sufficient evidence for classification or show conflicting features of both pathogenic and benign variants. These classifications are essential for clinical decision-making and genetic counseling.
+
+### References and Additional Resources
 
 Olson, N.D., et al. (2023) Nature Reviews Genetics 24:464–483.
 
