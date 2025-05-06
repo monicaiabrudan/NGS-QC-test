@@ -17,27 +17,13 @@ Content by **Eric Dawson (**Bioinformatics Scientist (Genomics / AI) - Nvidia) *
 
 In this module, learners will look at data formats in detail. At the end of the theory, there is a mandatory to test their knowledge.
 
-**FASTQ**
+**FASTQ:** Unaligned read sequences with base qualities
 
-• Unaligned read sequences with base qualities
+**SAM/BAM:** Unaligned or aligned reads, text and binary formats
 
-**SAM/BAM**
+**CRAM:** Better compression than BAM
 
-• Unaligned or aligned reads
-
-• Text and binary formats
-
-**CRAM**
-
-• Better compression than BAM
-
-**VCF/BCF**
-
-• Flexible variant call format
-
-• Arbitrary types of sequence variation
-
-• SNPs, indels, structural variations
+**VCF/BCF:** Flexible variant call format; SNPs, indels, structural variations
 
 # Activities
 
@@ -85,6 +71,8 @@ Command line walk through.
 
 Practice files for this module can be found on [Github](https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data).
 
-# Assessment quiz
+# Check you knowledge quiz
 
 [Questions](module1_assessment.qmd)
+
+# Summary of this module
