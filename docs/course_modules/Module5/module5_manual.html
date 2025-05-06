@@ -349,7 +349,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#pseudochromosome-assignment" id="toc-pseudochromosome-assignment" class="nav-link" data-scroll-target="#pseudochromosome-assignment"><strong>(Pseudo)chromosome assignment</strong></a></li>
   <li><a href="#diploid-assembly" id="toc-diploid-assembly" class="nav-link" data-scroll-target="#diploid-assembly">Diploid assembly</a></li>
   <li><a href="#heterozygosity-and-allelic-duplication" id="toc-heterozygosity-and-allelic-duplication" class="nav-link" data-scroll-target="#heterozygosity-and-allelic-duplication">Heterozygosity and allelic duplication</a></li>
-  <li><a href="#haplotype-duplication" id="toc-haplotype-duplication" class="nav-link" data-scroll-target="#haplotype-duplication">H<strong>aplotype duplication</strong></a></li>
+  <li><a href="#haplotype-duplication" id="toc-haplotype-duplication" class="nav-link" data-scroll-target="#haplotype-duplication"><strong>Haplotype duplication</strong></a></li>
+  <li><a href="#falcon-phase" id="toc-falcon-phase" class="nav-link" data-scroll-target="#falcon-phase"><strong>FALCON-Phase</strong></a></li>
+  <li><a href="#genome-assembly-quality-control-qc" id="toc-genome-assembly-quality-control-qc" class="nav-link" data-scroll-target="#genome-assembly-quality-control-qc"><strong>Genome assembly quality control (QC)</strong></a></li>
+  <li><a href="#busco" id="toc-busco" class="nav-link" data-scroll-target="#busco"><strong>BUSCO</strong></a></li>
+  <li><a href="#metagenomic-assembly" id="toc-metagenomic-assembly" class="nav-link" data-scroll-target="#metagenomic-assembly"><strong>Metagenomic assembly</strong></a></li>
+  <li><a href="#transcriptome-assembly" id="toc-transcriptome-assembly" class="nav-link" data-scroll-target="#transcriptome-assembly"><strong>Transcriptome assembly</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -491,10 +496,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="haplotype-duplication" class="level3">
-<h3 class="anchored" data-anchor-id="haplotype-duplication">H<strong>aplotype duplication</strong></h3>
+<h3 class="anchored" data-anchor-id="haplotype-duplication"><strong>Haplotype duplication</strong></h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/haplotype duplication.png" class="img-fluid figure-img"></p>
+<p><img src="images/haplotype duplication.png" class="img-fluid figure-img" width="478"></p>
 <figcaption><strong>Haplotype duplication</strong></figcaption>
 </figure>
 </div>
@@ -502,11 +507,38 @@ ul.task-list li input[type="checkbox"] {
 <p>References:</p>
 <ul>
 <li>Roach MJ, Schmidt SA, Borneman AR. (2018). <em>Purge Haplotigs: Synteny Reduction for Third-gen Diploid Genome Assemblies</em>. <a href="https://doi.org/10.1186/s13059-018-1564-6" class="uri">https://doi.org/10.1186/s13059-018-1564-6</a></li>
-</ul>
-<!-- -->
-<ul>
 <li>Guan D et al.&nbsp;(2020). <em>Identifying and removing haplotypic duplication in primary genome assemblies</em>. <em>Bioinformatics</em>, 36(9), 2896–2898. <a href="https://doi.org/10.1093/bioinformatics/btaa025" class="uri">https://doi.org/10.1093/bioinformatics/btaa025</a></li>
 </ul>
+</section>
+<section id="falcon-phase" class="level3">
+<h3 class="anchored" data-anchor-id="falcon-phase"><strong>FALCON-Phase</strong></h3>
+<p>FALCON-Phase is a genome phasing tool designed to resolve diploid genomes by combining long-read sequencing data (e.g., from PacBio) with Hi-C chromatin contact data. While tools like FALCON-Unzip can separate haplotypes locally using SNP information from long reads, FALCON-Phase extends phasing over longer genomic distances by using Hi-C’s long-range linkage information. The process involves several steps: (1) FALCON-Unzip generates primary contigs and associated haplotigs; (2) haplotigs are aligned back to their positions on the primary contig; (3) the sequence is “minced” into phased blocks; (4) Hi-C reads are mapped to these blocks; (5) a phasing algorithm determines which haplotigs belong to each haplotype based on contact patterns; and (6) the tool emits two phased haplotigs—phase 0 and phase 1—representing the maternal and paternal chromosomes. This process improves the accuracy and completeness of haplotype-resolved assemblies, particularly in regions of high heterozygosity.</p>
+<p>Reference:&nbsp;Kronenberg ZN et al.&nbsp;(2021). Extended haplotype-phasing of long-read de novo genome assemblies using Hi-C. <a href="https://www.nature.com/articles/s41467-020-20536-y" class="uri">https://www.nature.com/articles/s41467-020-20536-y</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FALCON-Phase.png" class="img-fluid figure-img" width="410"></p>
+<figcaption><strong>FALCON-Phase</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="genome-assembly-quality-control-qc" class="level3">
+<h3 class="anchored" data-anchor-id="genome-assembly-quality-control-qc"><strong>Genome assembly quality control (QC)</strong></h3>
+<p>Genome assembly quality control (QC) is a critical step in ensuring the accuracy, completeness, and usability of assembled genomes. One important metric is base accuracy, which can be assessed by realigning reads from the same species and identifying SNPs and indels—with indels often being more frequent in PacBio and Nanopore assemblies. Tools like KAT can evaluate k-mer completeness using Illumina data to estimate how much of the expected sequence content is present in the assembly. Local structural accuracy can be assessed using external evidence, such as read alignment patterns (via tools like REAPR or QUAST) or through known physical linkages like PCR-validated adjacencies. Another key QC aspect is gene content, which involves verifying the order and orientation of genes and exons, especially for well-characterized genes such as housekeeping genes.</p>
+</section>
+<section id="busco" class="level3">
+<h3 class="anchored" data-anchor-id="busco"><strong>BUSCO</strong></h3>
+<p>BUSCO (Benchmarking Universal Single-Copy Orthologs) is a widely used tool for evaluating the completeness of genome assemblies, transcriptomes, and gene annotations. It works by identifying a set of evolutionarily conserved genes that are expected to be present as single copies in nearly all species within a specific clade. BUSCO scans the input dataset to detect these orthologs and classifies them as Complete (C), Duplicated (D), Fragmented (F), or Missing (M). A high percentage of complete single-copy genes indicates a high-quality and complete assembly. The BUSCO pipeline combines tBLASTn, Augustus gene prediction, and HMMER3 profile searches to accurately locate and classify each ortholog, and can be run on genome assemblies, transcriptome data, or gene sets. It has become a standard benchmark for genome quality assessment in both de novo assembly and annotation pipelines.</p>
+<p>Reference: Simão FA, Waterhouse RM, Ioannidis P, Kriventseva EV, Zdobnov EM. (2015). BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Bioinformatics, 31(19), 3210–3212. <a href="https://doi.org/10.1093/bioinformatics/btv351" class="uri">https://doi.org/10.1093/bioinformatics/btv351</a></p>
+</section>
+<section id="metagenomic-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="metagenomic-assembly"><strong>Metagenomic assembly</strong></h3>
+<p>Metagenomic assembly involves reconstructing genomic sequences from DNA extracted from complex environmental samples, typically containing multiple uncultured microbial species. Unlike traditional genome assembly, metagenomic assembly must address the challenge of mixed organisms with varying abundance levels, making it difficult to distinguish low-abundance genomes from sequencing errors or contaminants. Additionally, sequence divergence across species and strain-level variation adds complexity to assembly and binning. The typical output is a collection of contigs with associated coverage information, which provides a simplified yet informative representation of the community’s genetic content. However, assembling complete genomes is often difficult, and scaffolding approaches must be carefully selected or adapted to avoid chimeric assemblies. Some recent methods integrate abundance profiles, sequence composition, and differential coverage across samples to improve binning and contig linkage. New strategies are discussed by Ayling et al.&nbsp;(2019), who review tools and frameworks designed specifically for short-read metagenomic assembly and highlight the need for scalable, hybrid approaches.<br>
+</p>
+<p>Reference: Ayling M, Clark MD, Leggett RM. (2019). New approaches for metagenome assembly with short reads. Brief Bioinform. <a href="https://doi.org/10.1093/bib/bbz020" class="uri">https://doi.org/10.1093/bib/bbz020</a></p>
+</section>
+<section id="transcriptome-assembly" class="level3">
+<h3 class="anchored" data-anchor-id="transcriptome-assembly"><strong>Transcriptome assembly</strong></h3>
+<p>Transcriptome assembly focuses on reconstructing expressed RNA sequences (cDNA) from a biological sample, rather than the entire genome. This form of assembly is complicated by the fact that, like in metagenomics, there is no single linear reference sequence—instead, it must handle a diverse and dynamic set of transcripts. The varying abundance of transcripts, along with alternative splicing, results in complex branching structures during assembly. Transcriptome assemblers must distinguish true isoforms from assembly errors and resolve exon skipping, intron retention, and other splicing events to accurately reconstruct full-length transcripts. De novo transcriptome assembly tools, such as Trinity, address this by using k-mer graphs to represent transcript variation. The resulting transcript contigs can then be quantified, annotated, and used for downstream analyses like differential expression, even in species lacking a reference genome.</p>
 
 
 </section>
