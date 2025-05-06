@@ -369,6 +369,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#functional-annotation" id="toc-functional-annotation" class="nav-link" data-scroll-target="#functional-annotation"><strong>Functional annotation</strong></a></li>
   <li><a href="#snps-in-ensembl---types" id="toc-snps-in-ensembl---types" class="nav-link" data-scroll-target="#snps-in-ensembl---types">SNPs in Ensembl - Types</a></li>
   <li><a href="#variant-pathogenicity" id="toc-variant-pathogenicity" class="nav-link" data-scroll-target="#variant-pathogenicity"><strong>Variant pathogenicity</strong></a></li>
+  </ul></li>
+  <li><a href="#human-population-specific-variation" id="toc-human-population-specific-variation" class="nav-link" data-scroll-target="#human-population-specific-variation"><strong>Human Population Specific Variation</strong></a>
+  <ul class="collapse">
+  <li><a href="#genomes-project" id="toc-genomes-project" class="nav-link" data-scroll-target="#genomes-project"><strong>1000 Genomes Project</strong></a></li>
+  <li><a href="#gnomad" id="toc-gnomad" class="nav-link" data-scroll-target="#gnomad"><strong>gnomAD</strong></a></li>
+  <li><a href="#ensembl-variation" id="toc-ensembl-variation" class="nav-link" data-scroll-target="#ensembl-variation"><strong>Ensembl Variation</strong></a></li>
   <li><a href="#references-and-additional-resources" id="toc-references-and-additional-resources" class="nav-link" data-scroll-target="#references-and-additional-resources">References and Additional Resources</a></li>
   </ul></li>
   </ul>
@@ -811,11 +817,11 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html" class="uri">https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html</a></p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 36%">
-<col style="width: 13%">
-<col style="width: 10%">
-<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 34%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -971,6 +977,75 @@ ul.task-list li input[type="checkbox"] {
 <section id="variant-pathogenicity" class="level3">
 <h3 class="anchored" data-anchor-id="variant-pathogenicity"><strong>Variant pathogenicity</strong></h3>
 <p>Variant pathogenicity refers to the classification of genetic variants based on their potential to cause disease. Variants are typically categorized into five main groups. Pathogenic variants are known to cause disease, while likely pathogenic variants are suspected to be harmful but lack full evidence. On the opposite end, benign variants are considered non-disease causing, and likely benign variants are those unlikely to be associated with disease. The most ambiguous category is Variants of Uncertain Significance (VUS), which lack sufficient evidence for classification or show conflicting features of both pathogenic and benign variants. These classifications are essential for clinical decision-making and genetic counseling.</p>
+<p><strong>Classification of Disease Variants (ACMG/AMP Guidelines)</strong></p>
+<p>(Richards S, Aziz N, Bale S, et al.&nbsp;(2015). Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation. <em>Genetics in Medicine</em>, 17(5), 405–424. <a href="https://doi.org/10.1038/gim.2015.30" class="uri">https://doi.org/10.1038/gim.2015.30</a>)</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 35%">
+<col style="width: 19%">
+<col style="width: 22%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Category</td>
+<td>Description</td>
+<td>Interpretation</td>
+<td>Clinical Actionability</td>
+</tr>
+<tr class="even">
+<td>Pathogenic</td>
+<td>Strong evidence supports a disease-causing role.</td>
+<td>Disease-causing</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Likely Pathogenic</td>
+<td>Evidence suggests the variant is likely to cause disease.</td>
+<td>Probably disease-causing</td>
+<td>Often</td>
+</tr>
+<tr class="even">
+<td>Uncertain Significance (VUS)</td>
+<td>Limited/conflicting evidence; cannot classify as pathogenic or benign.</td>
+<td>Unknown effect</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Likely Benign</td>
+<td>Evidence indicates it is probably not disease-causing.</td>
+<td>Probably benign</td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Benign</td>
+<td>Strong evidence shows the variant is not associated with disease.</td>
+<td>Not disease-causing</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="human-population-specific-variation" class="level2">
+<h2 class="anchored" data-anchor-id="human-population-specific-variation"><strong>Human Population Specific Variation</strong></h2>
+<section id="genomes-project" class="level3">
+<h3 class="anchored" data-anchor-id="genomes-project"><strong>1000 Genomes Project</strong></h3>
+<p><strong>(<a href="http://www.internationalgenome.org/" class="uri">http://www.internationalgenome.org/</a>):</strong><br>
+</p>
+<p>This global collaboration catalogs human genetic variation across diverse populations. It provides open-access data on common and rare variants, supporting studies in population genetics, ancestry, and disease. The project has greatly advanced our understanding of population-specific variation by sequencing individuals from over 25 populations.</p>
+</section>
+<section id="gnomad" class="level3">
+<h3 class="anchored" data-anchor-id="gnomad"><strong>gnomAD</strong></h3>
+<p><strong>(<a href="https://gnomad.broadinstitute.org/" class="uri">https://gnomad.broadinstitute.org/</a>):</strong><br>
+</p>
+<p>The Genome Aggregation Database (gnomAD) aggregates and harmonizes exome and genome sequencing data from over 140,000 individuals. It provides allele frequencies across populations, helping researchers filter out common variants in rare disease studies and identify population-specific variation, making it a crucial reference for clinical and research genomics.</p>
+</section>
+<section id="ensembl-variation" class="level3">
+<h3 class="anchored" data-anchor-id="ensembl-variation"><strong>Ensembl Variation</strong></h3>
+<p><strong>(<a href="https://grch37.ensembl.org/info/genome/variation/index.html" class="uri">https://grch37.ensembl.org/info/genome/variation/index.html</a>):</strong><br>
+</p>
+<p>Ensembl Variation provides access to annotated genetic variants across species, with a focus on human data. It integrates information from projects like dbSNP and 1000 Genomes, offering functional annotations, allele frequencies, and phenotype associations, helping researchers explore the genomic context and population distribution of variants.</p>
 </section>
 <section id="references-and-additional-resources" class="level3">
 <h3 class="anchored" data-anchor-id="references-and-additional-resources">References and Additional Resources</h3>

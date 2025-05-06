@@ -314,7 +314,7 @@ You can read more about the typical variant calling process in the following art
 <https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html>
 
 |  |  |  |  |  |
-|-------------------|---------------------------|----------|--------|----------|
+|------------|-------------------------|------------|------------|------------|
 | SO Term | SO Description | SO Accession | Display Term | IMPACT |
 | transcript_ablation | A feature ablation whereby the deleted region includes a transcript feature | SO:0001893 | Transcript ablation | HIGH |
 | splice_acceptor_variant | A splice variant that changes the 2 base region at the 3' end of an intron | SO:0001574 | Splice acceptor variant | HIGH |
@@ -340,6 +340,39 @@ You can read more about the typical variant calling process in the following art
 ### **Variant pathogenicity**
 
 Variant pathogenicity refers to the classification of genetic variants based on their potential to cause disease. Variants are typically categorized into five main groups. Pathogenic variants are known to cause disease, while likely pathogenic variants are suspected to be harmful but lack full evidence. On the opposite end, benign variants are considered non-disease causing, and likely benign variants are those unlikely to be associated with disease. The most ambiguous category is Variants of Uncertain Significance (VUS), which lack sufficient evidence for classification or show conflicting features of both pathogenic and benign variants. These classifications are essential for clinical decision-making and genetic counseling.
+
+**Classification of Disease Variants (ACMG/AMP Guidelines)**
+
+(Richards S, Aziz N, Bale S, et al. (2015). Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation. *Genetics in Medicine*, 17(5), 405–424. <https://doi.org/10.1038/gim.2015.30>)
+
+|  |  |  |  |
+|----------------|-------------------------|--------------|----------------|
+| Category | Description | Interpretation | Clinical Actionability |
+| Pathogenic | Strong evidence supports a disease-causing role. | Disease-causing | Yes |
+| Likely Pathogenic | Evidence suggests the variant is likely to cause disease. | Probably disease-causing | Often |
+| Uncertain Significance (VUS) | Limited/conflicting evidence; cannot classify as pathogenic or benign. | Unknown effect | No |
+| Likely Benign | Evidence indicates it is probably not disease-causing. | Probably benign | No |
+| Benign | Strong evidence shows the variant is not associated with disease. | Not disease-causing | No |
+
+## **Human Population Specific Variation**
+
+### **1000 Genomes Project**
+
+**(<http://www.internationalgenome.org/>):**\
+
+This global collaboration catalogs human genetic variation across diverse populations. It provides open-access data on common and rare variants, supporting studies in population genetics, ancestry, and disease. The project has greatly advanced our understanding of population-specific variation by sequencing individuals from over 25 populations.
+
+### **gnomAD**
+
+**(<https://gnomad.broadinstitute.org/>):**\
+
+The Genome Aggregation Database (gnomAD) aggregates and harmonizes exome and genome sequencing data from over 140,000 individuals. It provides allele frequencies across populations, helping researchers filter out common variants in rare disease studies and identify population-specific variation, making it a crucial reference for clinical and research genomics.
+
+### **Ensembl Variation** 
+
+**(<https://grch37.ensembl.org/info/genome/variation/index.html>):**\
+
+Ensembl Variation provides access to annotated genetic variants across species, with a focus on human data. It integrates information from projects like dbSNP and 1000 Genomes, offering functional annotations, allele frequencies, and phenotype associations, helping researchers explore the genomic context and population distribution of variants.
 
 ### References and Additional Resources
 
