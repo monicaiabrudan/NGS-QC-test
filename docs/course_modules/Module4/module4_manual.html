@@ -341,6 +341,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sv-types-and-ngs-paired-end-sequencing" id="toc-sv-types-and-ngs-paired-end-sequencing" class="nav-link" data-scroll-target="#sv-types-and-ngs-paired-end-sequencing">SV types and NGS paired-end sequencing</a></li>
   <li><a href="#retrotransposition" id="toc-retrotransposition" class="nav-link" data-scroll-target="#retrotransposition"><strong>Retrotransposition</strong></a></li>
   <li><a href="#sources-of-evidence" id="toc-sources-of-evidence" class="nav-link" data-scroll-target="#sources-of-evidence">Sources of evidence</a></li>
+  <li><a href="#breakdancer" id="toc-breakdancer" class="nav-link" data-scroll-target="#breakdancer"><strong>BreakDancer</strong></a></li>
+  <li><a href="#lumpy" id="toc-lumpy" class="nav-link" data-scroll-target="#lumpy"><strong>LUMPY</strong></a></li>
+  <li><a href="#structural-variation-visualisation" id="toc-structural-variation-visualisation" class="nav-link" data-scroll-target="#structural-variation-visualisation">Structural variation visualisation</a></li>
+  <li><a href="#structural-variants-and-long-read-sequencing" id="toc-structural-variants-and-long-read-sequencing" class="nav-link" data-scroll-target="#structural-variants-and-long-read-sequencing">Structural variants and long read sequencing</a></li>
+  <li><a href="#ngmlr-next-generation-mapping-and-long-read-aligner" id="toc-ngmlr-next-generation-mapping-and-long-read-aligner" class="nav-link" data-scroll-target="#ngmlr-next-generation-mapping-and-long-read-aligner"><strong>NGMLR (Next-Generation Mapping and Long Read aligner)</strong></a></li>
+  <li><a href="#sniffles" id="toc-sniffles" class="nav-link" data-scroll-target="#sniffles"><strong>Sniffles</strong></a></li>
+  <li><a href="#evaluating-structural-variant-sv-calls" id="toc-evaluating-structural-variant-sv-calls" class="nav-link" data-scroll-target="#evaluating-structural-variant-sv-calls"><strong>Evaluating structural variant (SV) calls</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -430,6 +437,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sources-of-evidence" class="level3">
 <h3 class="anchored" data-anchor-id="sources-of-evidence">Sources of evidence</h3>
+<section id="fragment-size" class="level4">
+<h4 class="anchored" data-anchor-id="fragment-size">Fragment size</h4>
 <p>Paired-end sequencing provides a valuable source of evidence for detecting various types of structural variations (SVs), including large insertions, deletions, inversions, and translocations. In this approach, both ends of a DNA fragment are sequenced, generating read pairs with a known orientation and expected insert size. When read pairs deviate from these expectations—such as mapping farther apart or closer together than expected, aligning in unexpected orientations, or when one mate is missing—it can signal the presence of an SV. For example, a deletion will cause read pairs to map with increased distance, while inversions or translocations may lead to reads mapping in reversed orientations or to different chromosomes. Thus, read pair analysis is a fundamental strategy for identifying structural rearrangements in genomic data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -437,6 +446,113 @@ ul.task-list li input[type="checkbox"] {
 <figcaption><strong>The ~200 bp spread reflects variation in library preparation and fragment size, and deviations from this expected range can indicate potential structural variants such as insertions or deletions.</strong></figcaption>
 </figure>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fragment size qc.png" class="img-fluid figure-img" width="659"></p>
+<figcaption><strong>Fragment size QC</strong></figcaption>
+</figure>
+</div>
+<p>Fragment size quality control (QC) is a key method for detecting potential structural variation (SV) in sequencing data. The figure above shows insert size distributions from two BAM files. The left panel displays a tight, unimodal distribution centered around ~450 bp, typical of a well-prepared library with consistent fragment size. In contrast, the right panel shows a bimodal distribution, with an unexpected secondary peak at ~150–200 bp. This deviation suggests the presence of aberrant fragment sizes, which may reflect insertions, deletions, or other SVs. Unusual peaks, broader distributions, or multiple modes in insert size profiles are often early indicators of structural rearrangements, contamination, or library preparation artifacts, highlighting the importance of insert size QC in NGS workflows.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fragment size2.png" class="img-fluid figure-img" width="635"></p>
+<figcaption><strong>Fragment size QC. The DBA/1J library shows a broader distribution (~450 bp range), centered at 176 bp, whereas DBA/2J has a tighter distribution (~250 bp range), centered at 328 bp. This difference in fragment size range impacts structural variant (SV) detection sensitivity. SV callers typically define discordant read pairs—used to detect SVs—based on deviations outside the expected insert size range. In DBA/1J, the wider distribution means fewer read pairs fall outside this threshold, especially for variants in the 300–500 bp range, resulting in lower SV detection sensitivity compared to DBA/2J, where the narrower insert size window more readily flags such events as discordant.</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="split-reads" class="level4">
+<h4 class="anchored" data-anchor-id="split-reads">Split reads</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/split reads.png" class="img-fluid figure-img" width="653"></p>
+<figcaption><strong>Split reads</strong></figcaption>
+</figure>
+</div>
+<p>Split-read alignments provide powerful evidence for identifying structural variation (SV), particularly for pinpointing breakpoints at base-pair resolution. A split read occurs when a single sequencing read spans a structural variant junction and thus aligns in two separate parts to different positions on the reference genome. In the figure, reads at the breakpoint do not align continuously but are soft-clipped or partially aligned, indicating a disruption in the reference sequence. These reads suggest the presence of an insertion, deletion, or other rearrangement. However, due to sequencing and alignment inaccuracies, the precise breakpoint may not always be clear, resulting in slight ambiguity in breakpoint localization.</p>
+</section>
+<section id="read-depth" class="level4">
+<h4 class="anchored" data-anchor-id="read-depth">Read depth</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/read depth.png" class="img-fluid figure-img" width="483"></p>
+<figcaption><strong>Read depth. Plot of sequencing depth across a one-megabase region of A/J chromosome 17, highlighting both a 3-fold copy number gain between 30.6–31.1 Mb and a copy number loss at 31.3 Mb. The solid black line above the plot indicates the gain, while the line below indicates the loss. (B) A plot of heterozygous SNP rate across the same region reveals a high density of apparent heterozygous SNPs in the copy number gain region, consistent with misaligned paralogous reads. Adapted from Simpson et al.&nbsp;(2009), Bioinformatics, 25(12):1461–1462. <a href="https://doi.org/10.1093/bioinformatics/btp161" class="uri">https://doi.org/10.1093/bioinformatics/btp161</a></strong></figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="breakdancer" class="level3">
+<h3 class="anchored" data-anchor-id="breakdancer"><strong>BreakDancer</strong></h3>
+<p>BreakDancer is a structural variant (SV) caller that uses paired-end read information to detect a wide range of SV types, including deletions, insertions, inversions, as well as intra- and interchromosomal translocations. It takes a BAM file as input and begins by analyzing a subset of reads to estimate the mean and standard deviation of the fragment size for each sequencing library. The algorithm then systematically scans each chromosome to identify anomalous read pairs—those that deviate in orientation or insert size from expected values. These anomalies are grouped into interconnected clusters, which are then classified into SV types. The final output is a text file, listing one SV event per line, including its type, coordinates, and supporting evidence. Users can apply filters based on the minimum number of supporting reads, quality score, or SV type to refine the call set for downstream analysis.</p>
+</section>
+<section id="lumpy" class="level3">
+<h3 class="anchored" data-anchor-id="lumpy"><strong>LUMPY</strong></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lumpy.png" class="img-fluid figure-img" width="558"></p>
+<figcaption><strong>LUMPY</strong></figcaption>
+</figure>
+</div>
+<p>LUMPY is a flexible and probabilistic structural variant (SV) caller that integrates multiple sources of alignment evidence—including read pairs, split reads, read depth, and even user-supplied data—into a unified discovery process (Layer et al., 2014). It is designed with modular components, each responsible for parsing and mapping a specific type of alignment evidence to breakpoint intervals. These intervals represent genomic positions where structural rearrangements likely occur. LUMPY identifies clusters of overlapping evidence and calculates the probability of each SV event based on the combined support from all evidence types. This integrative approach allows LUMPY to detect a wide variety of SVs with high sensitivity and specificity, outperforming tools that rely on a single evidence type.</p>
+<p>Reference: Layer RM, Chiang C, Quinlan AR, Hall IM. (2014). LUMPY: a probabilistic framework for structural variant discovery. Genome Biology, 15(6):R84. <a href="https://doi.org/10.1186/gb-2014-15-6-r84" class="uri">https://doi.org/10.1186/gb-2014-15-6-r84</a></p>
+<p>Github: <a href="https://github.com/arq5x/lumpy-sv" class="uri">https://github.com/arq5x/lumpy-sv</a></p>
+</section>
+<section id="structural-variation-visualisation" class="level3">
+<h3 class="anchored" data-anchor-id="structural-variation-visualisation">Structural variation visualisation</h3>
+<p>Structural variant (SV) visualisation is inherently more complex than viewing single nucleotide polymorphisms (SNPs) or small indels due to the larger genomic span and complex read patterns involved. Visualising SVs often requires inspection of several hundred to thousands of base pairs to identify features such as discordant read pairs, split reads, and soft-clipped bases, which help in refining breakpoint positions and understanding the SV type. Interpreting these patterns is essential not only for confirming variant calls but also for identifying potential alignment artifacts or false positives. Among the available NGS visualisation tools, IGV (Integrative Genomics Viewer) from the Broad Institute is widely used due to its intuitive interface and powerful display features. IGV requires a BAM file with aligned reads and the corresponding reference genome in FASTA format. To effectively interpret different SV types, viewing settings in IGV—such as coloring by read strand, showing soft clips, or displaying insert size—should be tailored appropriately, often guided by best practice notes or visual examples.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/deletion.png" class="img-fluid figure-img" width="691"></p>
+<figcaption><strong>A deletion, as shown in IGV. A complex deletion likely affecting exonic or coding sequence. It is characterized by a drop in coverage, split and discordant read pairs, and mismatches at the breakpoint, indicative of precise breakpoint resolution.</strong></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/repeat element deletion.png" class="img-fluid figure-img" width="691"></p>
+<figcaption><strong>A repeat element deletion, as shown in IGV. A deletion of a repetitive element, which appears as a clean drop in coverage without evident mismatches or split reads. This is typical of repetitive regions where reads fail to align due to the absence of unique sequence anchors, making it harder to define precise breakpoints.</strong></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insertion.png" class="img-fluid figure-img" width="716"></p>
+<figcaption><strong>Insertion, as viewed in IGV. The insertion is supported by split reads (multi-colored bars) and soft-clipped bases at the breakpoint, as well as a local region of increased coverage, suggesting additional sequence not present in the reference genome. The alignment pattern indicates that sequencing reads span across a novel insertion site, with some reads mapping partially on either side of the breakpoint and others failing to align due to sequence not present in the reference. These features are characteristic of insertions detected in short-read sequencing data.</strong></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tandem duplication event.png" class="img-fluid figure-img" width="711"></p>
+<figcaption><strong>Tandem duplication event, as shown in IGV. The duplicated region is marked by a dramatic increase in read coverage and a large number of discordant read pairs (red horizontal bars), which align abnormally across the duplication breakpoints. This pileup of overlapping reads and split alignments indicates the presence of a duplicated segment, typical of copy number gain events. The duplication spans approximately 4.4 kb, and the read alignment patterns suggest a complex rearrangement with possible breakpoint uncertainty.</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="structural-variants-and-long-read-sequencing" class="level3">
+<h3 class="anchored" data-anchor-id="structural-variants-and-long-read-sequencing">Structural variants and long read sequencing</h3>
+<p>Long-read sequencing technologies, such as those from Oxford Nanopore and Pacific Biosciences, enable the sequencing of single DNA molecules spanning 10–20 kilobases or more—lengths that routinely exceed the size of most transposable elements and common repeats. This makes long-read platforms particularly powerful for structural variant (SV) detection, as individual reads can often span entire SVs, including both breakpoints, allowing for highly accurate identification and characterization of complex rearrangements that short reads often miss. However, these benefits come with new challenges: long reads typically have higher error rates (ranging from 5% to 20%), which can introduce alignment artifacts and complicate downstream variant calling. As a result, specialized alignment algorithms and error correction tools are required to fully harness the potential of long-read data for SV analysis.</p>
+</section>
+<section id="ngmlr-next-generation-mapping-and-long-read-aligner" class="level3">
+<h3 class="anchored" data-anchor-id="ngmlr-next-generation-mapping-and-long-read-aligner"><strong>NGMLR (Next-Generation Mapping and Long Read aligner)</strong></h3>
+<p>NGMLR (Next-Generation Mapping and Long Read aligner) is a specialized aligner designed to accurately map long, error-prone reads—such as those from PacBio and Oxford Nanopore platforms—while preserving structural variant (SV) signals. Unlike traditional aligners, NGMLR uses a convex gap-cost scoring model, which penalizes the extension of long insertions and deletions less severely than short ones. This scoring approach is well-suited to long-read data because it reduces the likelihood of breaking large SVs into multiple small errors, thereby improving alignment accuracy across large structural events such as insertions, deletions, and inversions. NGMLR has been shown to improve the sensitivity and precision of SV detection when paired with long-read SV callers like Sniffles.</p>
+<p>Reference: Sedlazeck FJ, Rescheneder P, Smolka M, Fang H, Nattestad M, von Haeseler A, Schatz MC. (2018). Accurate detection of complex structural variations using single-molecule sequencing. Nature Methods, 15(6), 461–468. <a href="https://doi.org/10.1038/s41592-018-0001-7" class="uri">https://doi.org/10.1038/s41592-018-0001-7</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/deletion inversion aligners.png" class="img-fluid figure-img" width="650"></p>
+<figcaption><strong>Bwa mem and NGMLR. In both SV types, NGMLR clearly produces cleaner and more interpretable alignments. For the deletion, BWA-MEM results in a fragmented alignment with a large unaligned gap and scattered mismatches, whereas NGMLR shows continuous reads spanning the breakpoint with characteristic split-read signals, allowing clear delineation of the event. Similarly, in the inversion panel, BWA-MEM displays heavy mismatching and alignment ambiguity, while NGMLR provides a more structured alignment with clear orientation changes that indicate the inversion boundaries. This highlights NGMLR’s superior ability to handle large indels and complex structural variants, thanks to its convex gap scoring model.</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="sniffles" class="level3">
+<h3 class="anchored" data-anchor-id="sniffles"><strong>Sniffles</strong></h3>
+<p>Sniffles is a structural variant (SV) caller specifically designed to detect SVs from long-read sequencing data generated by platforms such as PacBio and Oxford Nanopore. It leverages long-read alignments to accurately identify a wide range of SV types, including insertions, deletions, inversions, duplications, and translocations. Sniffles uses a multi-evidence approach, integrating split-read, read pair, and read depth signals to increase the accuracy of SV detection, even in repetitive or complex regions. It is widely used in long-read genomics pipelines due to its speed, scalability, and high sensitivity.</p>
+<p>Reference: Sedlazeck FJ, Rescheneder P, Smolka M, et al.&nbsp;(2018). Accurate detection of complex structural variations using single-molecule sequencing. Nature Methods, 15(6), 461–468. <a href="https://doi.org/10.1038/s41592-018-0001-7" class="uri">https://doi.org/10.1038/s41592-018-0001-7</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Complex SVs - Long reads.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Complex SVs. Long-read (NGMLR) and short-read (Illumina, aligned with BWA-MEM) sequencing alignments over a 3,078 bp inversion. In the NGMLR track, long reads span the entire inversion, allowing clear detection through split alignments and changes in orientation (shown by color changes across reads), which directly reveal the inverted sequence boundaries. The ability of long reads to map across complex regions results in clean, high-confidence SV evidence. In contrast, the Illumina reads below show increased mapping ambiguity, incomplete coverage, and clusters of mismatches at the inversion breakpoints. Due to the short length of reads and the repetitive nature of the inverted region, short-read alignments fail to span the inversion, making it difficult to resolve the event accurately.</strong></figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluating-structural-variant-sv-calls" class="level3">
+<h3 class="anchored" data-anchor-id="evaluating-structural-variant-sv-calls"><strong>Evaluating structural variant (SV) calls</strong></h3>
+<p>Evaluating structural variant (SV) calls is essential to ensure the reliability of genomic analyses, and involves balancing sensitivity (true positive rate) and specificity (true negative rate). High-quality SV detection aims to minimize both false positives and false negatives. To assess sensitivity, researchers compare called SVs to a set of known or validated variants, often from benchmark datasets or previously characterized samples. For specificity, a subset of SV calls—typically chosen at random—can be experimentally validated using independent methods such as PCR or long-read sequencing. Receiver operating characteristic (ROC) curves are useful tools for visualizing the trade-off between sensitivity and specificity as SV calling parameters are adjusted, helping optimize performance and improve confidence in variant interpretation.</p>
 
 
 </section>
