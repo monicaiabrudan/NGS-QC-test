@@ -3,206 +3,66 @@ title: "Manual"
 format: html
 ---
 
-**Structural Variation Detection and Interpretation Manual**\
+**Structural Variation Detection and Interpretation Manual**
 
 **Instructor:** Thomas Keane, EMBL-EBI
 
 ------------------------------------------------------------------------
 
-## 1 Introduction to Genomic Structural Variation
+## Learning outcomes
 
-### 1.1 What is Structural Variation?
+-   Understand the background and theory of structural variation
 
-Structural variations (SVs) refer to large-scale alterations of the chromosome structure. These rearrangements contribute to genetic diversity and evolution, leading to new gene formation, changes in gene function, and phenotypic diversity. SVs are often implicated in Mendelian diseases, complex traits such as behavior, and other genomic disorders.
+-   Call structural variants using standard tools
 
-**Types of SVs:**
+-   Visualise structural variants using standard tools
 
-**Insertions**
+-   Call structural variants from long read data
 
-**Deletions**
+-   Use bedtools to do regional comparisons over genomic coordinates
 
-**Copy number variations (CNVs)**
+## Genomic structural variation
 
-**Inversions**
+Genomic structural variation (SV) refers to any rearrangement of chromosome structure and includes alterations such as insertions, deletions, inversions, translocations, and copy number changes. These variations contribute significantly to genetic diversity, evolution, gene function, and phenotypic variation, and they can involve rare variants with large biological effects. Structural variants are also frequent causes of disease, known as genomic disorders, and are associated with both Mendelian conditions and complex traits, including behaviors. For example, an increase in gene dosage due to elevated copy number can have a direct impact on phenotype or disease. Some SVs are complex events, involving multiple types of variation in close proximity. A key concept in SV analysis is the breakpoint, defined as a pair of bases that are adjacent in a sequenced sample genome but not in the reference genome. Detecting structural variation involves a variety of experimental techniques, each with strengths in resolving different SV types and sizes.
 
-**Translocations**
+## Methods for detecting Structural Variants
 
-**Complex events** (combinations of above)
+### Experimental approaches
 
-A **breakpoint** is defined as a pair of bases that are adjacent in the experimental genome but not in the reference genome.
+Structural variant (SV) detection can be performed using a range of experimental approaches. Chromosome banding is a classical cytogenetic technique where stained chromosomes from dividing cells are examined under a microscope to detect large-scale abnormalities, such as deletions, duplications, or translocations, based on altered banding patterns. Fluorescence in situ hybridization (FISH) uses fluorescently labeled DNA probes to identify specific loci on chromosomes in both metaphase and interphase cells. It is particularly useful for confirming the presence, absence, or relocation of genomic regions, and can be used alongside data from microarrays or sequencing to validate findings. Microarrays, including array comparative genomic hybridisation (array CGH) and SNP arrays, detect copy number variations (CNVs) and allelic imbalances by comparing hybridization intensities between test and reference genomes. However, microarrays do not provide precise information about SV breakpoints or structural organization.
 
-![Genomic Structural Variation](attachment:image1){alt="Genomic Structural Variation"}
+### **Sequencing-based approaches**
 
-## 
-2 Methods for Detecting Structural Variations
+Sequencing-based approaches offer higher resolution for detecting structural variants. Whole-genome sequencing (WGS) allows the identification of SVs by analyzing paired-end reads with discordant alignments, which signal breakpoints in the genome. This method is capable of detecting both copy-number and copy-neutral SVs. Third-generation sequencing technologies, such as those from PacBio or Oxford Nanopore, generate long reads (several kilobases in length), which can span complex or repetitive regions, enabling more accurate detection and mapping of SVs. Long-read sequencing is particularly effective for identifying complex rearrangements and resolving ambiguous alignments that are challenging for short-read platforms. These sequencing approaches have become essential for comprehensive SV discovery and characterization.
 
-## 2.1 Experimental Techniques
+Fiber-FISH (fluorescence in situ hybridization on DNA fibers) is a high-resolution cytogenetic technique used to visualize the physical arrangement and organization of genomic regions along stretched DNA molecules. By using color-coded fluorescent probes that hybridize to specific sequences, Fiber-FISH enables direct visualization of structural variation, such as insertions, deletions, duplications, or gene order changes across individuals or strains.
 
--   **Chromosome Banding:** Staining of chromosomes to observe large deletions, duplications, or translocations.
+![**Example of fiberFISH. In the example shown, DNA from different mouse strains is analyzed across a segment of chromosome 10 (Chr10:21.1–21.7 Mb). The C57BL/6J reference genome is shown at the top with genes such as Raet1e, H60b, and Raet1d labeled. Five fosmid probes are used, each assigned a distinct color (e.g., DIG = red, Bio = blue, DNP = green), to span the region of interest. The lower panels display Fiber-FISH results for various strains. For instance, PWK/EiJ shows a markedly different signal pattern from the reference, suggesting rearrangements or copy number differences in the Raet1 region. Similarly, the A/J and NOD/ShiLtJ strains display additional segments such as Raet1b and Raet1a, and duplicated probe signals (e.g., repeated blue and red signals), indicating complex structural variation. Fiber-FISH provides a clear, direct visualization of such differences, complementing sequencing-based SV detection.**](images/fiberFISH.png){width="537"}
 
-    **FISH (Fluorescence In Situ Hybridization):** Uses fluorescent probes to visualize chromosomal segments.
+![**Structural variation types,** Schematic representation of different types of structural variation. (A) Normal chromosomes. (B) Intrachromosomal SVs include inversion, terminal deletion, interstitial deletion, and interstitial duplication. (C) Interchromosomal SVs include balanced and unbalanced translocations, where segments are exchanged or rearranged between chromosomes.[Human Structural Variation: Mechanisms of Chromosome Rearrangements, Weckselblatt, Brooke et al., Trends in Genetics, Volume 31, Issue 10, 587 - 599](https://www.cell.com/trends/genetics/fulltext/S0168-9525(15)00110-9)](images/SV types.png){width="530"}
 
-    **Microarrays:**
+### SV types and NGS paired-end sequencing
 
-    -   *Array CGH:* Detects copy number differences.
+Different types of **structural variation (SV)**—**deletion, insertion, inversion, and translocation**—can be detected using **next-generation sequencing (NGS) paired-end reads**. In paired-end sequencing, each DNA fragment is sequenced from both ends, producing two reads with an expected **orientation and insert size**. SVs disrupt these expectations in predictable ways. For example, a **deletion** results in paired reads mapping farther apart than expected, while an **insertion** causes them to map closer together. In an **inversion**, read pairs may map with incorrect orientation (e.g., both pointing in the same direction), and in a **translocation**, each read may map to different chromosomes or distant loci. These abnormal mapping patterns serve as key indicators for identifying SVs in genome sequencing data.
 
-        *SNP Arrays:* Identify changes in allelic ratios.
+![](images/SV types and NGS paired-end sequencing-02.png){width="747"}
 
-    **Whole Genome Sequencing (WGS):** Detection of breakpoints via discordant paired-end reads.
+### **Retrotransposition**
 
-    **Mate-pair Sequencing:** Large insert libraries to detect breakpoints within repetitive regions.
+Retrotransposition refers to the movement of transposable elements (TEs)—segments of DNA capable of changing their position within the genome. These elements possess a minimal "genome" that allows them to replicate and relocate, often leaving behind molecular relics of ancient viral infections. TEs are a dominant feature of mammalian genomes, comprising 38–45% of rodent and primate genomes, and contributing significantly to genome size. They are classified into Class 1 elements, which move via an RNA intermediate (e.g., LINEs and SINEs), and Class 2 elements, which move via a DNA intermediate. Retrotransposons are potent mutagens, capable of disrupting gene expression, triggering genome rearrangements, and driving evolutionary change through mechanisms such as transduction of flanking sequences. These elements are also species-specific: in humans, common families include Alu, L1, and SVA, while in mice, SINE, LINE, and ERV elements are prevalent.
 
-    **Third-generation Sequencing:** Long-read sequencing technologies (e.g., PacBio, Oxford Nanopore) to detect SVs by aligning large DNA fragments.
+![**Structural features and activity of retrotransposons and DNA transposons. (A) Schematic representations of major human retrotransposon families—Alu, SVA, L1, and HERV—highlight their internal components and approximate sizes. (B) Diagram of the MARINER DNA transposon and a conceptual illustration of germline and somatic retrotransposition in humans. Adapted from Genomics Inform. 2012 Dec;10(4):226–233.**](images/retrotransposons.png){width="500"}
 
-### 3: SV Types and Analysis by NGS
+In the figure above, Panel (A) displays **Class I retrotransposons**, which mobilize via an RNA intermediate. **Alu elements (\~300 bp)** are primate-specific SINEs made of two similar monomers with a poly(A) tail and target site duplications (TSDs). **SVA (\~2 kb)** is a composite element combining features of SINEs, VNTRs, and Alu-like sequences. **L1 (\~6 kb)** is an autonomous LINE element with two open reading frames (ORF1 and ORF2) that encode proteins for reverse transcription and integration. **HERV (\~10 kb)** are endogenous retroviruses with coding potential for structural (GAG), enzymatic (POL), and envelope (ENV) proteins, flanked by long terminal repeats (LTRs).
 
-### 3.1 Retrotransposition
+Panel (B) shows a **Class II DNA transposon** (MARINER, \~1 kb) with a DNA-binding domain and a DDE catalytic domain flanked by inverted repeats (IRs). The lower image illustrates **retrotransposition events**:
 
-Transposons are DNA elements that move within the genome, heavily influencing genome organization and evolution.
+-   **Germline retrotransposition**, such as Alu and L1 mobilization, contributes to genomic diversity across human populations.
 
-**Classes:**
+-   **Somatic retrotransposition** can occur in specific tissues, such as tumors, where elements like L1 insert into new locations, potentially disrupting gene regulation and contributing to cancer development.
 
--   Class 1: RNA-mediated (e.g., L1, Alu)
+### Sources of evidence
 
-    Class 2: DNA-mediated
+Paired-end sequencing provides a valuable source of evidence for detecting various types of structural variations (SVs), including large insertions, deletions, inversions, and translocations. In this approach, both ends of a DNA fragment are sequenced, generating read pairs with a known orientation and expected insert size. When read pairs deviate from these expectations—such as mapping farther apart or closer together than expected, aligning in unexpected orientations, or when one mate is missing—it can signal the presence of an SV. For example, a deletion will cause read pairs to map with increased distance, while inversions or translocations may lead to reads mapping in reversed orientations or to different chromosomes. Thus, read pair analysis is a fundamental strategy for identifying structural rearrangements in genomic data.
 
-    **Impact:** Disruption of gene expression and reorganization of the genome.
-
-### 3.2 Evidence for SV Detection
-
-**Sources of Evidence:**
-
--   **Read Pairs:** Anomalies in expected distance or orientation.
-
-    **Split Reads:** Reads that map discontinuously across a breakpoint.
-
-    **Read Depth:** Changes in sequencing coverage indicating duplications or deletions.
-
-![Sources of Evidence for SV Detection](attachment:image2){alt="Sources of Evidence for SV Detection"}
-
-## 4 SV Detection Tools
-
-### 4.1 Breakdancer
-
-Input: BAM file
-
-Detects: Deletions, insertions, inversions, translocations
-
-Method: Cluster anomalous read pairs
-
-### 4.2 Lumpy
-
-Integrates multiple alignment signals (read pairs, split reads, depth)
-
-Clusters and integrates evidence probabilistically
-
-### 4.3 Sniffles
-
-Designed for long reads
-
-Handles complex SVs and noisy data
-
-### 
-5 VCF Format for SVs
-
-**VCF Fields:**
-
--   ALT: Alternative allele information
-
-    INFO: Additional annotations (e.g., CIEND)
-
-    FORMAT: Genotype information per sample
-
-    **Exercise:** Write a VCF entry for an Alu insertion at chromosome 7, position 125467, of 258bp length with a breakpoint confidence interval of +/-20bp.
-
-## 6: Visualization of Structural Variants
-
-Visualization is crucial due to the complexity of SVs. IGV (Integrative Genomics Viewer) is a popular tool.
-
-**Tips for Viewing in IGV:**
-
--   Deletions: Squished view
-
-    Insertions: Group alignments by read strand
-
-    Soft clipped bases: Turn on for breakpoint visualization
-
-![IGV Example - Deletion](attachment:image3){alt="IGV Example - Deletion"}
-
-## 7: Long-read Sequencing and SVs
-
-## 7.1 Platforms
-
--   Oxford Nanopore
-
-    Pacific Biosciences
-
-**Advantages:** Ability to span breakpoints with single reads.
-
-**Challenges:**
-
--   High error rate (5-20%)
-
-    Complex alignments
-
-    **Solution:**
-
-Use aligners like NGMLR designed for long reads.
-
-### 7.2 SV Detection
-
-Sniffles: Detects simple and complex SVs using long-read data.
-
-## 8: Complex Structural Variants
-
-**Examples:**
-
--   Del+Ins (deletion with insertion)
-
-    Inv+Del (inversion with deletion)
-
-    Inversions within gains
-
-    Long reads greatly aid in identifying complex SV structures.
-
--   
-
-![Complex SV Example](attachment:image4){alt="Complex SV Example"}
-
-## 9: Evaluating SV Call Quality
-
-## 9.1 Sensitivity and Specificity
-
-**Definitions:**
-
-**Sensitivity:** Ability to detect true positives
-
-**Specificity:** Ability to avoid false positives
-
-**Validation Strategies:**
-
-Compare against known SV datasets
-
-PCR validation
-
-Use of ROC curves
-
-10: Practical Exercises
-
-## 10.1 Hands-on Exercises
-
-Analyze VCF files output by Lumpy
-
-Use Breakdancer to detect SVs on yeast data
-
-Use Sniffles for PacBio data
-
-Compare SVs using BEDtools
-
-### 10.2 Practice Questions
-
--   What information does CIEND in VCF describe?
-
-    How do mate-pair libraries improve SV detection?
-
-    Name two visualization challenges specific to SVs.
+![**The \~200 bp spread reflects variation in library preparation and fragment size, and deviations from this expected range can indicate potential structural variants such as insertions or deletions.**](images/read pairs.png){width="306"}
