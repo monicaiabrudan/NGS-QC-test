@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>module6_solutions – NGS Bioinformatics course</title>
+<title>Solutions – NGS Bioinformatics course</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">module6_solutions</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Solutions</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -325,15 +325,30 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#answers" id="toc-answers" class="nav-link active" data-scroll-target="#answers">1 Answers</a>
+  <ul class="collapse">
+  <li><a href="#tutorial-sections" id="toc-tutorial-sections" class="nav-link" data-scroll-target="#tutorial-sections">1.1 Tutorial sections</a></li>
+  <li><a href="#aligning-the-pax5-sample-to-the-genome" id="toc-aligning-the-pax5-sample-to-the-genome" class="nav-link" data-scroll-target="#aligning-the-pax5-sample-to-the-genome">1.2 Aligning the PAX5 sample to the genome</a></li>
+  <li><a href="#visualising-alignments-in-igv" id="toc-visualising-alignments-in-igv" class="nav-link" data-scroll-target="#visualising-alignments-in-igv">1.3 Visualising alignments in IGV</a></li>
+  <li><a href="#aligning-the-control-sample-to-the-genome" id="toc-aligning-the-control-sample-to-the-genome" class="nav-link" data-scroll-target="#aligning-the-control-sample-to-the-genome">1.4 Aligning the control sample to the genome</a></li>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">1.5 File formats</a></li>
+  <li><a href="#inspecting-genomic-regions-using-bedtools" id="toc-inspecting-genomic-regions-using-bedtools" class="nav-link" data-scroll-target="#inspecting-genomic-regions-using-bedtools">1.6 Inspecting genomic regions using bedtools</a></li>
+  <li><a href="#motif-analysis" id="toc-motif-analysis" class="nav-link" data-scroll-target="#motif-analysis">1.7 Motif analysis</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">module6_solutions</h1>
+<h1 class="title">Solutions</h1>
 </div>
 
 
@@ -350,8 +365,342 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="answers" class="level2">
+<h2 class="anchored" data-anchor-id="answers">1 Answers</h2>
+<p>To run the commands alongside the answers you must first have run all of the tutorial commands for that section and generated the output files they reference.</p>
+<section id="tutorial-sections" class="level3">
+<h3 class="anchored" data-anchor-id="tutorial-sections">1.1 Tutorial sections</h3>
+<p>Let’s go to our data directory.</p>
+<p><code>cd data</code></p>
+</section>
+<section id="aligning-the-pax5-sample-to-the-genome" class="level3">
+<h3 class="anchored" data-anchor-id="aligning-the-pax5-sample-to-the-genome">1.2 Aligning the PAX5 sample to the genome</h3>
+<p><strong>Q1. How can you distinguish between the header of the SAM format and the actual alignments?</strong></p>
+<p>Each header line begins with the **@** character followed by one of the two-letter header record type codes and each alignment line starts with the read name.</p>
+<p><img src="images/sam.png" class="img-fluid" width="472"></p>
+<p><strong>Q2. What information does the header provide you with?</strong></p>
+<p>The header is categorised using two letter record type codes.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Record type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>@HD</td>
+<td>header line with general information about the file</td>
+</tr>
+<tr class="even">
+<td>@SQ&nbsp;</td>
+<td>reference sequence dictionary and alignment order</td>
+</tr>
+<tr class="odd">
+<td>@PG&nbsp;</td>
+<td>Programs used to generate the alignment file</td>
+</tr>
+</tbody>
+</table>
+<p>Within each of these categories are a series of tags and values.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Record type</th>
+<th>Tag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>@HD</td>
+<td>VN</td>
+<td>format version</td>
+</tr>
+<tr class="even">
+<td>@HD</td>
+<td>SO</td>
+<td>alignment sorting order</td>
+</tr>
+<tr class="odd">
+<td>@SQ</td>
+<td>SN</td>
+<td>reference sequence name</td>
+</tr>
+<tr class="even">
+<td>@SQ</td>
+<td>LN</td>
+<td>reference sequence length</td>
+</tr>
+<tr class="odd">
+<td>@PG</td>
+<td>ID</td>
+<td>program record identifier</td>
+</tr>
+<tr class="even">
+<td>@PG</td>
+<td>PN</td>
+<td>program name</td>
+</tr>
+<tr class="odd">
+<td>@PG</td>
+<td>VN</td>
+<td>program version number</td>
+</tr>
+<tr class="even">
+<td>@PG</td>
+<td>CL</td>
+<td>command used when the program was run</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q3. Which chromosome are the reads mapped to?</strong></p>
+<p>The reads are aligned to chromosome 1 (chr1). You’re looking for this line in the header.</p>
+<p><code>@SQ SN:chr1 LN:249250621</code></p>
+</section>
+<section id="visualising-alignments-in-igv" class="level3">
+<h3 class="anchored" data-anchor-id="visualising-alignments-in-igv">1.3 Visualising alignments in IGV</h3>
+<p><strong>Q1. Look for gene NASP in the search box. Can you see a PAX5 binding site near the NASP gene?</strong></p>
+<p>When you have loaded your PAX5.sorted.bam and PAX5.bw into IGV, made the necessary adjustments and searched for NASP, you should see the following.</p>
+<p>There is a peak representing a PAX5 binding site approximately 1kb upstream of the NASP gene, in the promoter region.</p>
+<p><img src="images/igv1.png" class="img-fluid" width="290"></p>
+<p><img src="images/igv2.png" class="img-fluid" width="296"></p>
+<p><strong>Q2. What is the main difference between the visualisation of BAM and bigWig files?</strong></p>
+<p>bigWig files display dense, continuous data as a graph whereas BAM files display the read alignment pileup which is discrete.</p>
+</section>
+<section id="aligning-the-control-sample-to-the-genome" class="level3">
+<h3 class="anchored" data-anchor-id="aligning-the-control-sample-to-the-genome">1.4 Aligning the control sample to the genome</h3>
+<p><code>bowtie2 -k 1 -x bowtie_index/hs19 Control.fastq.gz -S Control.sam</code></p>
+<p><code>samtools view -bSo Control.bam Control.sam</code></p>
+<p><code>samtools sort -T Control.temp.bam -o Control.sorted.bam Control.bam</code></p>
+<p><code>samtools index Control.sorted.bam</code></p>
+</section>
+<section id="file-formats" class="level3">
+<h3 class="anchored" data-anchor-id="file-formats">1.5 File formats</h3>
+<p><strong>Q1. The simplest bed file contains just three columns (chromosome, start, end) and is often called BED3 format. What extra columns does BED6 contain?</strong></p>
+<p>BED6 contains <strong>BED3</strong> columns with the addition of three extra columns: <strong>name</strong>, <strong>score</strong> and <strong>strand</strong></p>
+<p><strong>Q2. In the above examples, what are the lengths of the intervals?</strong></p>
+<p>The intervals in the example were 50, 500 and 200 respectively. Remember that the start coordinates are 0-based which means that you can just subtract the start position from the end position.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>chromosome</th>
+<th>start</th>
+<th>end</th>
+<th>length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chr1</td>
+<td>50</td>
+<td>100</td>
+<td>100 - 50 = 50</td>
+</tr>
+<tr class="even">
+<td>chr1</td>
+<td>500</td>
+<td>1000</td>
+<td>1000 - 500 = 500</td>
+</tr>
+<tr class="odd">
+<td>chr2</td>
+<td>600</td>
+<td>800</td>
+<td>800 - 600 = 200</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q3. Can you output a BED6 format with a transcript called “loc1”, transcribed on the forward strand and having three exons of length 100 starting at positions 1000, 2000 and 3000?</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>chromosome</th>
+<th>start</th>
+<th>end</th>
+<th>name</th>
+<th>score</th>
+<th>strand</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chr1</td>
+<td>999</td>
+<td>1099</td>
+<td>loc1</td>
+<td>.</td>
+<td>+</td>
+</tr>
+<tr class="even">
+<td>chr1</td>
+<td>1999</td>
+<td>2099</td>
+<td>loc1</td>
+<td>.</td>
+<td>+</td>
+</tr>
+<tr class="odd">
+<td>chr1</td>
+<td>2999</td>
+<td>3099</td>
+<td>loc1</td>
+<td>.</td>
+<td>+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q4. What additional information is given in the narrowPeak file, beside the location of the peaks?</strong></p>
+<p>narrowPeak files are in BED6+4 format which contains the peak locations together with <strong>overall enrichment</strong>, <strong>peak summit</strong>, <strong>p-value</strong> and <strong>q-value</strong>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>column name</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>signalValue</td>
+<td>overall/average enrichment for the region</td>
+</tr>
+<tr class="even">
+<td>pValue</td>
+<td>-log10(pvalue) for the peak summit</td>
+</tr>
+<tr class="odd">
+<td>qValue</td>
+<td>-log10(qvalue) for the peak summit</td>
+</tr>
+<tr class="even">
+<td>peak</td>
+<td>summit position relative to peak start</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q5. Does the first peak that was called look convincing to you?</strong></p>
+<p>Look at the peak in IGV by entering the coordinates in the search box (i.e.&nbsp;<em>chr1:710543-710713</em>).</p>
+<p>If you hover over the peak annotation, you can see some of the information produced by MACS2 for this peak.</p>
+<p><img src="images/igv3.png" class="img-fluid"></p>
+<p><img src="images/igv4.png" class="img-fluid" width="249"></p>
+<p>There are 29 reads piled up under this peak which has a q-value of 10. Remember that this is a negative log and so is equivalent to 1e-10.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>chromosome</th>
+<th>start</th>
+<th>end</th>
+<th>name</th>
+<th>score</th>
+<th>strand</th>
+<th>signalValue</th>
+<th>pValue</th>
+<th>qValue</th>
+<th>peak</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chr1</td>
+<td>710543</td>
+<td>710713</td>
+<td>PAX5_peak_1</td>
+<td>137</td>
+<td>.</td>
+<td>7.50382</td>
+<td>13.75727</td>
+<td>10.47078</td>
+<td>97</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q6. In the small example table above, why have the coordinates changed from the BED description?</strong></p>
+<p>From the BED file:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>chromosome</th>
+<th>start</th>
+<th>end</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chr1</td>
+<td>50</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>From the GTF file:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>chromosome</th>
+<th>start</th>
+<th>stop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>chr1</td>
+<td>51</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that the start values differ by 1. This is because the start coordinates in BED format are <strong>0-based</strong> (i.e.&nbsp;first base is at position 0) while the start coordinates in GTF format are <strong>1-based</strong> (i.e.&nbsp;the first base is at position 1).</p>
+</section>
+<section id="inspecting-genomic-regions-using-bedtools" class="level3">
+<h3 class="anchored" data-anchor-id="inspecting-genomic-regions-using-bedtools">1.6 Inspecting genomic regions using bedtools</h3>
+<p><strong>Q1. Looking at the output of the <code>bedtools genomecov</code> we ran, what percentage of chromosome1 do the peaks of PAX5 cover?</strong></p>
+<p>The peaks of PAX5 cover <strong>0.28%</strong> of chromosome 1 (chr1).</p>
+<p>The output of <code>bedtools genomecov</code> contains 5 columns which represent:</p>
+<p>1. chromosome (or entire genome)</p>
+<p>2. depth of coverage from features in input file</p>
+<p>3. number of bases on chromosome (or genome) with depth equal to column 2</p>
+<p>4. size of chromosome (or entire genome) in base pairs</p>
+<p>5. fraction of bases on chromosome (or entire genome) with depth equal to column 2</p>
+<p>The output for chromosome 1 was:</p>
+<p><code>chr1 0 248561847 249250621 0.997237</code></p>
+<p><code>chr1 1 602947 249250621 0.00241904</code></p>
+<p><code>chr1 2 68077 249250621 0.000273127</code></p>
+<p><code>chr1 3 15400 249250621 6.17852e-05</code></p>
+<p><code>chr1 4 963 249250621 3.86358e-06</code></p>
+<p><code>chr1 7 1387 249250621 5.56468e-06</code></p>
+<p>The important value here is in column <strong>5</strong> - fraction of bases with depth equal to column 2.</p>
+<p>There are two ways to get the percentage. The first is to add together the fraction of bases which have a depth &gt; 1 on chr1 and convert it into a percentage.</p>
+<p><code>0.00241904 + 0.000273127 + 6.17852e-05 + 3.86358e-06 + 5.56468e-06 = 0.00276338</code></p>
+<p><code>= 0.28%</code></p>
+<p>Alternatively, you could subtract the fraction of bases with 0 coverage from 1.</p>
+<p><code>1 - 0.997237 = 0.002763 = 0.28%</code></p>
+<p><strong>Q2. Looking at the output from bedtools intersect, what proportion of PAX5 peaks overlap genes?</strong></p>
+<p><strong>72%</strong> of the PAX5 peaks overlap genes (a proportion of <strong>0.72</strong>).</p>
+<p>You need to divide the number of peaks overlapping genes (2722) by the total number of peaks (3799).</p>
+<p><strong>Q3. Looking at PAX5_closestTSS.txt, which gene was found to be closest to MACS peak 2?</strong></p>
+<p>The closest gene to <code>PAX5_peak_2</code> is a <strong>lincRNA</strong> called <strong>RP11-206L10</strong>.</p>
+</section>
+<section id="motif-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="motif-analysis">1.7 Motif analysis</h3>
+<p><strong>Q1. Which motif was found to be the most similar to your motif?</strong></p>
+<p>Using the output from Tomtom, we can see that the most similar motif is <strong>PAX5</strong>.</p>
+<p><img src="images/motif.png" class="img-fluid"></p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -10,6 +10,6 @@ title: "Introduction"
 
 [Welcome to the course](welcome.qmd)
 
-[Meet the team](meet the team.qmd)
+[Meet the team](meet%20the%20team.qmd)
 
 [Glossary](glossary.qmd)
