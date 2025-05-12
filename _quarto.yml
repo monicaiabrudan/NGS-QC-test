@@ -25,6 +25,8 @@ website:
             text: "RNA-seq"
           - href: course_modules/Module7/module7.qmd
             text: "CHiP-Seq"
+          - href: course_modules/Glossary/glossary.qmd
+            text: "Glossary of terms"
   sidebar:
     style: "docked"
     search: true
