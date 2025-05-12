@@ -181,6 +181,10 @@ BAM stores all of the data, this includes every read base, every base quality, a
 
 The figure below displays how reference-based compression works. Instead of saving all the bases of all the reads, only the nucleotides that differ from the reference, and their positions, are kept.
 
+![**Reference based compression**](images/reference based compression1.png){width="472"}
+
+![**Reference based compression**](images/reference based compression2.png){width="473"}
+
 In lossless (no information is lost) mode a CRAM file is 60% of the size of a BAM file, so archives and sequencing centres have moved from BAM to CRAM.
 
 Since **samtools 1.3**, CRAM files can be read in the same way that BAM files can. We will look closer at how you can convert between SAM, BAM and CRAM formats in the next section.
@@ -213,11 +217,11 @@ And to explore the 1001bp long region on **chr4** beginning at position 1,000 an
 
 ### 2.7 VCF
 
+![**The VCF format**](images/VCF.png){width="542"}
+
 The VCF file format was introduced to store variation data. VCF consists of tab-delimited text and is parsable by standard UNIX commands which makes it flexible and user-extensible. The figure below provides an overview of the different components of a VCF file:
 
-Figure 2: VCF format
-
-2.7.1 VCF header
+### 2.7.1 VCF header
 
 The VCF header consists of meta-information lines (starting with ##) and a header line (starting with #). All meta-information lines are optional and can be put in any order, except for fileformat. This holds the information about which version of VCF is used and must come first.
 
@@ -260,6 +264,8 @@ BCF is a compressed binary representation of VCF. VCF can be compressed with BGZ
 it can still be very big. For example, a compressed VCF with 3781 samples of human data will be 54 GB for chromosome 1, and 680 GB for the whole genome. VCFs can also be slow to parse, as text conversion is slow. The main bottleneck is the “FORMAT” fields. For this reason the BCF format was developed.
 
 In BCF files the fields are rearranged for fast access. The following images show the process of converting a VCF file into a BCF file.
+
+![](images/BCF.png){width="528"}
 
 Bcftools comprises a set of programs for interacting with VCF and BCF files. It can be used to convert between VCF and BCF and to view or extract records from a region.
 
@@ -321,7 +327,7 @@ Now, try and answer the following questions about the file **1kg.bcf** in the da
 
 Often it is not enough to know variant sites only. For instance, we don’t know if a site was dropped because it matches the reference or because the data is missing. We sometimes need evidence for both variant and non-variant positions in the genome. In gVCF format, blocks of reference-only sites can be represented in a single record using the “INFO/END” tag. Symbolic alleles (\<\*\>) are used for incremental calling:
 
-Figure 3: gVCF
+![**gVCF**](images/gVCF.png){width="430"}
 
 **Q25: In the above example, what is the size of the reference-only block starting at position 9923?**
 
@@ -339,13 +345,13 @@ QC is an important part of any analysis. In this section we are going to look at
 
 Illumina sequencing technology relies on sequencing by synthesis. One of the most common problems with this is dephasing. For each sequencing cycle, there is a possibility that the replication machinery slips and either incorporates more than one nucleotide or perhaps misses to incorporate one at all. The more cycles that are run (i.e. the longer the read length gets), the greater the accumulation of these types of errors gets. This leads to a heterogeneous population in the cluster, and a decreased signal purity, which in turn reduces the precision of the base calling. The figure below shows an example of this.
 
-Figure 4: Mean Base Quality
+![**Mean base quality**](images/base quality.png){width="336"}
 
 Because of dephasing, it is possible to have high-quality data at the beginning of the read but really low-quality data towards the end of the read. In those cases you can decide to trim off the low-quality reads, for example using a tool called Trimmomatic.
 
 The figures below shows an example of a good sequencing run (left) and a poor sequencing run (right).
 
-Figure 5: Base quality
+![**Base quality**](images/base quality2.png){width="438"}
 
 ### 3.2 Other base calling errors
 
@@ -353,19 +359,19 @@ There are several different reasons for a base to be called incorrectly, as show
 
 Phasing noise and signal decay is a result of the dephasing issue described above. During library preparation, mixed clusters can occur if multiple templates get co-located. These clusters should be removed from the downstream analysis. Boundary effects occur due to optical effects when the intensity is uneven across each tile, resulting in higher intensity found toward the center. Cross-talk occurs because the emission frequency spectra for each of the four base dyes partly overlap, creating uncertainty. Finally, for previous sequencing cycle methods T fluorophore accumulation was an issue, where incomplete removal of the dye coupled to thymine lead to an ambient accumulation the nucleotides, causing a false high Thymine trend.
 
-Figure 6: Base Calling Errors
+![**Base calling errors**](images/base calling errors.png){width="501"}
 
 ### 3.3 Mismatches per cycle
 
 Aligning reads to a high-quality reference genome can provide insight to the quality of a sequencing run by showing you the mismatches to the reference sequence. This can help you detect cycle-specific errors. Mismatches can occur due to two main causes, sequencing errors and differences between your sample and the reference genome, which is important to bear in mind when interpreting mismatch graphs. The figure below shows an example of a good run (left) and a bad one (right). In the graph on the left, the distribution of the number of mismatches is even between the cycles, which is what we would expect from a good run. However, in the graph on the right, two cycles stand out with a lot of mismatches compared to the other cycles.
 
-Figure 7: Mismatches per cycle
+![Missmatches per cycle](images/missmatches per cycle.png){width="536"}
 
 #### 3.4 GC content
 
 It is a good idea to compare the GC content of the reads against the expected distribution in a reference sequence. The GC content varies between species, so a shift in GC content like the one seen below could be an indication of sample contamination. In the left graph below, we can see that the GC content of the sample is about the same as for the reference, at \~38%. However, in the right graph, the GC content of the sample is closer to 55%, indicating that there is an issue with this sample.
 
-Figure 8: GC Content
+![**GC content**](images/gc content.png){width="497"}
 
 ### 3.5 GC content by cycle
 
@@ -373,23 +379,23 @@ Looking at the GC content per cycle can help detect if the adapter sequence was 
 
 In the graph on the right, the initial spikes are likely due to adapter sequences that have not been removed.
 
-Figure 9: GC content by cycle
+![**GC content by cycle**](images/GC content by cycle.png){width="542"}
 
 ### 3.6 Fragment size
 
 For paired-end sequencing the size of DNA fragments also matters. In the first of the examples below, the fragment size peaks around 440 bp. In the second however, there is also a peak at around 200 bp. This indicates that there was an issue with the fragment size selection during library prep.
 
-Figure 10: Fragment size distribution
+![**Fragment size distribution**](images/fragment size distribution.png)
 
 **Q1: The figure below is from a 100bp paired-end sequencing. Can you spot any problems?**
 
-Figure 11: Q1 Insert size distribution
+![**Insert size**](images/insert size.png){width="490"}
 
 ### 3.7 Insertions/Deletions per cycle
 
 Sometimes, air bubbles occur in the flow cell, which can manifest as false indels. The spike in the right image provides an example of how this can look.
 
-Figure 12: Indels per cycle
+![**Indels per cycle**](images/indels per cycle.png){width="415"}
 
 ### 3.8 Generating QC stats
 
@@ -485,82 +491,48 @@ To convert CRAM back to BAM, simply change **-C** to **-b** and change places fo
 
 SAM format is mainly used to store alignment data, however in some cases we may want to store
 
-the unaligned data in SAM format and for this we can use the picard tools FastqToSam application.
+the unaligned data in SAM format and for this we can use the **picard tools FastqToSam** application.
 
-Picard tools is a Java application that comes with a number of useful options for manipulating high-
-
-throughput sequencing data. .
+**Picard tools** is a Java application that comes with a number of useful options for manipulating high-throughput sequencing data. .
 
 To convert the FASTQ files of lane 13681_1#18 to unaligned SAM format, run:
 
-� picard FastqToSam F1=data/13681_1#18_1.fastq.gz F2=data/13681_1#18_2.fastq.gz␣
-
-→O=data/13681_1#18.sam SM=13681_1#18
+`picard FastqToSam F1=data/13681_1#18_1.fastq.gz F2=data/13681_1#18_2.fastq.gz O=data/13681_1#18.sam SM=13681_1#18`
 
 From here you can go on and convert the SAM file to BAM and CRAM, as described previously.
 
-There are also multiple options for specifying what metadata to include in the SAM header. To see
+There are also multiple options for specifying what metadata to include in the SAM header. To see all available options, run:
 
-all available options, run:
+`picard FastqToSam -h`
 
-� picard FastqToSam -h
+### 4.4 CRAM to FASTQ
 
-4.4 CRAM to FASTQ
+It is possible to convert CRAM to FASTQ directly using the `samtools fastq` command. However, for many applications we need the fastq files to be ordered so that the order of the reads in the first file match the order of the reads in the mate file. For this reason, we first use samtools collate to produce a collated BAM file.
 
-It is possible to convert CRAM to FASTQ directly using the samtools fastq command. However,
+`samtools collate data/yeast.cram data/yeast.collated`
 
-for many applications we need the fastq files to be ordered so that the order of the reads in the first
+The newly produced BAM file will be called yeast.collated.bam. Let’s use this to create two FASTQ files, one for the forward reads and one for the reverse reads:
 
-file match the order of the reads in the mate file. For this reason, we first use samtools collate to
+`samtools fastq -1 data/yeast.collated_1.fastq -2 data/yeast.collated_2.fastq data/yeast.collated.bam`
 
-produce a collated BAM file.
+For further information and usage options, have a look at the samtools manual page (<http://www.htslib.org/doc/samtools.html>).
 
-� samtools collate data/yeast.cram data/yeast.collated
+### 4.5 VCF to BCF
 
-The newly produced BAM file will be called yeast.collated.bam. Let’s use this to create two FASTQ
+In a similar way that **samtools view** can be used to convert between SAM, BAM and CRAM, **bcftools view** can be used to convert between VCF and BCF. To convert the file called 1kg.bcf to a compressed VCF file called *1kg.vcf.gz*, run:
 
-files, one for the forward reads and one for the reverse reads:
+`bcftools view -O z -o data/1kg.vcf.gz data/1kg.bcf`
 
-� samtools fastq -1 data/yeast.collated_1.fastq -2 data/yeast.collated_2.fastq␣
+The **-O** option allows us to specify in what format we want the output, compressed BCF (b), uncompressed BCF (u), compressed VCF (z) or uncompressed VCF (v). With the -o option we can select the name of the output file.
 
-→data/yeast.collated.bam
+Have a look at what files were generated (the options **-lrt** will list the files in reverse chronological order):
 
-254 File conversion 4.5 VCF to BCF
+`ls -lrt data`
 
-For further information and usage options, have a look at the samtools manual page (http://www.ht-
+This also generated an index file, `1kg.bcf.csi`.
 
-slib.org/doc/samtools.html).
+To convert a VCF file to BCF, we can run a similar command. If we want to keep the original BCF, we need to give the new one a different name so that the old one is not overwritten:
 
-4.5 VCF to BCF
-
-In a similar way that samtools view can be used to convert between SAM, BAM and CRAM, bcftools
-
-view can be used to convert between VCF and BCF. To convert the file called 1kg.bcf to a compressed
-
-VCF file called 1kg.vcf.gz, run:
-
-� bcftools view -O z -o data/1kg.vcf.gz data/1kg.bcf
-
-The -O option allows us to specify in what format we want the output, compressed BCF (b), uncom-
-
-pressed BCF (u), compressed VCF (z) or uncompressed VCF (v). With the -o option we can select
-
-the name of the output file.
-
-Have a look at what files were generated (the options -lrt will list the files in reverse chronological
-
-order):
-
-� ls -lrt data
-
-This also generated an index file, 1kg.bcf.csi.
-
-To convert a VCF file to BCF, we can run a similar command. If we want to keep the original BCF,
-
-we need to give the new one a different name so that the old one is not overwritten:
-
-� bcftools view -O b -o data/1kg_2.bcf data/1kg.vcf.gz
+`bcftools view -O b -o data/1kg_2.bcf data/1kg.vcf.gz`
 
 Congratulations you have reached the end of the Data formats and QC tutorial!
-
-26

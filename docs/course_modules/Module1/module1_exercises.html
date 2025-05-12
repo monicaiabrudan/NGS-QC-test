@@ -355,6 +355,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#cram" id="toc-cram" class="nav-link" data-scroll-target="#cram">2.5 CRAM</a></li>
   <li><a href="#indexing" id="toc-indexing" class="nav-link" data-scroll-target="#indexing">Indexing</a></li>
   <li><a href="#vcf" id="toc-vcf" class="nav-link" data-scroll-target="#vcf">2.7 VCF</a></li>
+  <li><a href="#vcf-header" id="toc-vcf-header" class="nav-link" data-scroll-target="#vcf-header">2.7.1 VCF header</a></li>
   <li><a href="#body" id="toc-body" class="nav-link" data-scroll-target="#body">2.7.2 Body</a></li>
   <li><a href="#bcf" id="toc-bcf" class="nav-link" data-scroll-target="#bcf">2.8 BCF</a></li>
   <li><a href="#bcftools-view" id="toc-bcftools-view" class="nav-link" data-scroll-target="#bcftools-view">2.8.1 bcftools view</a></li>
@@ -376,6 +377,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sam-to-bam" id="toc-sam-to-bam" class="nav-link" data-scroll-target="#sam-to-bam">4.1 SAM to BAM</a></li>
   <li><a href="#bam-to-cram" id="toc-bam-to-cram" class="nav-link" data-scroll-target="#bam-to-cram">4.2 BAM to CRAM</a></li>
   <li><a href="#fastq-to-sam" id="toc-fastq-to-sam" class="nav-link" data-scroll-target="#fastq-to-sam">4.3 FASTQ to SAM</a></li>
+  <li><a href="#cram-to-fastq" id="toc-cram-to-fastq" class="nav-link" data-scroll-target="#cram-to-fastq">4.4 CRAM to FASTQ</a></li>
+  <li><a href="#vcf-to-bcf" id="toc-vcf-to-bcf" class="nav-link" data-scroll-target="#vcf-to-bcf">4.5 VCF to BCF</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -517,6 +520,18 @@ ul.task-list li input[type="checkbox"] {
 <p>• Controlled loss of quality information</p>
 <p>• Different compression methods to suit the type of data, e.g.&nbsp;base qualities vs.&nbsp;metadata vs.&nbsp;extra tags</p>
 <p>The figure below displays how reference-based compression works. Instead of saving all the bases of all the reads, only the nucleotides that differ from the reference, and their positions, are kept.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reference based compression1.png" class="img-fluid figure-img" width="472"></p>
+<figcaption><strong>Reference based compression</strong></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reference based compression2.png" class="img-fluid figure-img" width="473"></p>
+<figcaption><strong>Reference based compression</strong></figcaption>
+</figure>
+</div>
 <p>In lossless (no information is lost) mode a CRAM file is 60% of the size of a BAM file, so archives and sequencing centres have moved from BAM to CRAM.</p>
 <p>Since <strong>samtools 1.3</strong>, CRAM files can be read in the same way that BAM files can. We will look closer at how you can convert between SAM, BAM and CRAM formats in the next section.</p>
 </section>
@@ -537,9 +552,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="vcf" class="level3">
 <h3 class="anchored" data-anchor-id="vcf">2.7 VCF</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/VCF.png" class="img-fluid figure-img" width="542"></p>
+<figcaption><strong>The VCF format</strong></figcaption>
+</figure>
+</div>
 <p>The VCF file format was introduced to store variation data. VCF consists of tab-delimited text and is parsable by standard UNIX commands which makes it flexible and user-extensible. The figure below provides an overview of the different components of a VCF file:</p>
-<p>Figure 2: VCF format</p>
-<p>2.7.1 VCF header</p>
+</section>
+<section id="vcf-header" class="level3">
+<h3 class="anchored" data-anchor-id="vcf-header">2.7.1 VCF header</h3>
 <p>The VCF header consists of meta-information lines (starting with ##) and a header line (starting with #). All meta-information lines are optional and can be put in any order, except for fileformat. This holds the information about which version of VCF is used and must come first.</p>
 <p>The meta-information lines consist of key=value pairs. Examples of meta-information lines that can be included are ##INFO, ##FORMAT and ##reference. The values can consist of multiple fields enclosed by &lt;&gt;. More information about these fields is available in the VCF specification <a href="http://samtools.github.io/hts-specs/VCFv4.3.pdf" class="uri">http://samtools.github.io/hts-specs/VCFv4.3.pdf</a>. This can be accessed using a web browser and there is a copy in the QC directory.</p>
 <p>Header line The header line starts with # and consists of 8 required fields:</p>
@@ -565,6 +587,7 @@ ul.task-list li input[type="checkbox"] {
 <p>BCF is a compressed binary representation of VCF. VCF can be compressed with BGZF (bgzip) and indexed with TBI or CSI (tabix), but even compressed</p>
 <p>it can still be very big. For example, a compressed VCF with 3781 samples of human data will be 54 GB for chromosome 1, and 680 GB for the whole genome. VCFs can also be slow to parse, as text conversion is slow. The main bottleneck is the “FORMAT” fields. For this reason the BCF format was developed.</p>
 <p>In BCF files the fields are rearranged for fast access. The following images show the process of converting a VCF file into a BCF file.</p>
+<p><img src="images/BCF.png" class="img-fluid" width="528"></p>
 <p>Bcftools comprises a set of programs for interacting with VCF and BCF files. It can be used to convert between VCF and BCF and to view or extract records from a region.</p>
 </section>
 <section id="bcftools-view" class="level3">
@@ -601,7 +624,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="gvcf" class="level3">
 <h3 class="anchored" data-anchor-id="gvcf">2.9 gVCF</h3>
 <p>Often it is not enough to know variant sites only. For instance, we don’t know if a site was dropped because it matches the reference or because the data is missing. We sometimes need evidence for both variant and non-variant positions in the genome. In gVCF format, blocks of reference-only sites can be represented in a single record using the “INFO/END” tag. Symbolic alleles (&lt;*&gt;) are used for incremental calling:</p>
-<p>Figure 3: gVCF</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gVCF.png" class="img-fluid figure-img" width="430"></p>
+<figcaption><strong>gVCF</strong></figcaption>
+</figure>
+</div>
 <p><strong>Q25: In the above example, what is the size of the reference-only block starting at position 9923?</strong></p>
 <p><strong>Q26: For the same block, what is the first base?</strong></p>
 <p><strong>Q27: How many reference reads does the block have?</strong></p>
@@ -614,44 +642,89 @@ ul.task-list li input[type="checkbox"] {
 <section id="base-quality" class="level3">
 <h3 class="anchored" data-anchor-id="base-quality">3.1 Base quality</h3>
 <p>Illumina sequencing technology relies on sequencing by synthesis. One of the most common problems with this is dephasing. For each sequencing cycle, there is a possibility that the replication machinery slips and either incorporates more than one nucleotide or perhaps misses to incorporate one at all. The more cycles that are run (i.e.&nbsp;the longer the read length gets), the greater the accumulation of these types of errors gets. This leads to a heterogeneous population in the cluster, and a decreased signal purity, which in turn reduces the precision of the base calling. The figure below shows an example of this.</p>
-<p>Figure 4: Mean Base Quality</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/base quality.png" class="img-fluid figure-img" width="336"></p>
+<figcaption><strong>Mean base quality</strong></figcaption>
+</figure>
+</div>
 <p>Because of dephasing, it is possible to have high-quality data at the beginning of the read but really low-quality data towards the end of the read. In those cases you can decide to trim off the low-quality reads, for example using a tool called Trimmomatic.</p>
 <p>The figures below shows an example of a good sequencing run (left) and a poor sequencing run (right).</p>
-<p>Figure 5: Base quality</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/base quality2.png" class="img-fluid figure-img" width="438"></p>
+<figcaption><strong>Base quality</strong></figcaption>
+</figure>
+</div>
 </section>
 <section id="other-base-calling-errors" class="level3">
 <h3 class="anchored" data-anchor-id="other-base-calling-errors">3.2 Other base calling errors</h3>
 <p>There are several different reasons for a base to be called incorrectly, as shown in the figure below.</p>
 <p>Phasing noise and signal decay is a result of the dephasing issue described above. During library preparation, mixed clusters can occur if multiple templates get co-located. These clusters should be removed from the downstream analysis. Boundary effects occur due to optical effects when the intensity is uneven across each tile, resulting in higher intensity found toward the center. Cross-talk occurs because the emission frequency spectra for each of the four base dyes partly overlap, creating uncertainty. Finally, for previous sequencing cycle methods T fluorophore accumulation was an issue, where incomplete removal of the dye coupled to thymine lead to an ambient accumulation the nucleotides, causing a false high Thymine trend.</p>
-<p>Figure 6: Base Calling Errors</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/base calling errors.png" class="img-fluid figure-img" width="501"></p>
+<figcaption><strong>Base calling errors</strong></figcaption>
+</figure>
+</div>
 </section>
 <section id="mismatches-per-cycle" class="level3">
 <h3 class="anchored" data-anchor-id="mismatches-per-cycle">3.3 Mismatches per cycle</h3>
 <p>Aligning reads to a high-quality reference genome can provide insight to the quality of a sequencing run by showing you the mismatches to the reference sequence. This can help you detect cycle-specific errors. Mismatches can occur due to two main causes, sequencing errors and differences between your sample and the reference genome, which is important to bear in mind when interpreting mismatch graphs. The figure below shows an example of a good run (left) and a bad one (right). In the graph on the left, the distribution of the number of mismatches is even between the cycles, which is what we would expect from a good run. However, in the graph on the right, two cycles stand out with a lot of mismatches compared to the other cycles.</p>
-<p>Figure 7: Mismatches per cycle</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/missmatches per cycle.png" class="img-fluid figure-img" width="536"></p>
+<figcaption>Missmatches per cycle</figcaption>
+</figure>
+</div>
 <section id="gc-content" class="level4">
 <h4 class="anchored" data-anchor-id="gc-content">3.4 GC content</h4>
 <p>It is a good idea to compare the GC content of the reads against the expected distribution in a reference sequence. The GC content varies between species, so a shift in GC content like the one seen below could be an indication of sample contamination. In the left graph below, we can see that the GC content of the sample is about the same as for the reference, at ~38%. However, in the right graph, the GC content of the sample is closer to 55%, indicating that there is an issue with this sample.</p>
-<p>Figure 8: GC Content</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/gc content.png" class="img-fluid figure-img" width="497"></p>
+<figcaption><strong>GC content</strong></figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="gc-content-by-cycle" class="level3">
 <h3 class="anchored" data-anchor-id="gc-content-by-cycle">3.5 GC content by cycle</h3>
 <p>Looking at the GC content per cycle can help detect if the adapter sequence was trimmed. For a random library, it is expected to be little to no difference between the different bases of a sequence run, so the lines in this plot should be parallel with each other like in the graph on the left below.</p>
 <p>In the graph on the right, the initial spikes are likely due to adapter sequences that have not been removed.</p>
-<p>Figure 9: GC content by cycle</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/GC content by cycle.png" class="img-fluid figure-img" width="542"></p>
+<figcaption><strong>GC content by cycle</strong></figcaption>
+</figure>
+</div>
 </section>
 <section id="fragment-size" class="level3">
 <h3 class="anchored" data-anchor-id="fragment-size">3.6 Fragment size</h3>
 <p>For paired-end sequencing the size of DNA fragments also matters. In the first of the examples below, the fragment size peaks around 440 bp. In the second however, there is also a peak at around 200 bp. This indicates that there was an issue with the fragment size selection during library prep.</p>
-<p>Figure 10: Fragment size distribution</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fragment size distribution.png" class="img-fluid figure-img"></p>
+<figcaption><strong>Fragment size distribution</strong></figcaption>
+</figure>
+</div>
 <p><strong>Q1: The figure below is from a 100bp paired-end sequencing. Can you spot any problems?</strong></p>
-<p>Figure 11: Q1 Insert size distribution</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/insert size.png" class="img-fluid figure-img" width="490"></p>
+<figcaption><strong>Insert size</strong></figcaption>
+</figure>
+</div>
 </section>
 <section id="insertionsdeletions-per-cycle" class="level3">
 <h3 class="anchored" data-anchor-id="insertionsdeletions-per-cycle">3.7 Insertions/Deletions per cycle</h3>
 <p>Sometimes, air bubbles occur in the flow cell, which can manifest as false indels. The spike in the right image provides an example of how this can look.</p>
-<p>Figure 12: Indels per cycle</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/indels per cycle.png" class="img-fluid figure-img" width="415"></p>
+<figcaption><strong>Indels per cycle</strong></figcaption>
+</figure>
+</div>
 </section>
 <section id="generating-qc-stats" class="level3">
 <h3 class="anchored" data-anchor-id="generating-qc-stats">3.8 Generating QC stats</h3>
@@ -713,46 +786,33 @@ ul.task-list li input[type="checkbox"] {
 <section id="fastq-to-sam" class="level3">
 <h3 class="anchored" data-anchor-id="fastq-to-sam">4.3 FASTQ to SAM</h3>
 <p>SAM format is mainly used to store alignment data, however in some cases we may want to store</p>
-<p>the unaligned data in SAM format and for this we can use the picard tools FastqToSam application.</p>
-<p>Picard tools is a Java application that comes with a number of useful options for manipulating high-</p>
-<p>throughput sequencing data. .</p>
+<p>the unaligned data in SAM format and for this we can use the <strong>picard tools FastqToSam</strong> application.</p>
+<p><strong>Picard tools</strong> is a Java application that comes with a number of useful options for manipulating high-throughput sequencing data. .</p>
 <p>To convert the FASTQ files of lane 13681_1#18 to unaligned SAM format, run:</p>
-<p>� picard FastqToSam F1=data/13681_1#18_1.fastq.gz F2=data/13681_1#18_2.fastq.gz␣</p>
-<p>→O=data/13681_1#18.sam SM=13681_1#18</p>
+<p><code>picard FastqToSam F1=data/13681_1#18_1.fastq.gz F2=data/13681_1#18_2.fastq.gz O=data/13681_1#18.sam SM=13681_1#18</code></p>
 <p>From here you can go on and convert the SAM file to BAM and CRAM, as described previously.</p>
-<p>There are also multiple options for specifying what metadata to include in the SAM header. To see</p>
-<p>all available options, run:</p>
-<p>� picard FastqToSam -h</p>
-<p>4.4 CRAM to FASTQ</p>
-<p>It is possible to convert CRAM to FASTQ directly using the samtools fastq command. However,</p>
-<p>for many applications we need the fastq files to be ordered so that the order of the reads in the first</p>
-<p>file match the order of the reads in the mate file. For this reason, we first use samtools collate to</p>
-<p>produce a collated BAM file.</p>
-<p>� samtools collate data/yeast.cram data/yeast.collated</p>
-<p>The newly produced BAM file will be called yeast.collated.bam. Let’s use this to create two FASTQ</p>
-<p>files, one for the forward reads and one for the reverse reads:</p>
-<p>� samtools fastq -1 data/yeast.collated_1.fastq -2 data/yeast.collated_2.fastq␣</p>
-<p>→data/yeast.collated.bam</p>
-<p>254 File conversion 4.5 VCF to BCF</p>
-<p>For further information and usage options, have a look at the samtools manual page (http://www.ht-</p>
-<p>slib.org/doc/samtools.html).</p>
-<p>4.5 VCF to BCF</p>
-<p>In a similar way that samtools view can be used to convert between SAM, BAM and CRAM, bcftools</p>
-<p>view can be used to convert between VCF and BCF. To convert the file called 1kg.bcf to a compressed</p>
-<p>VCF file called 1kg.vcf.gz, run:</p>
-<p>� bcftools view -O z -o data/1kg.vcf.gz data/1kg.bcf</p>
-<p>The -O option allows us to specify in what format we want the output, compressed BCF (b), uncom-</p>
-<p>pressed BCF (u), compressed VCF (z) or uncompressed VCF (v). With the -o option we can select</p>
-<p>the name of the output file.</p>
-<p>Have a look at what files were generated (the options -lrt will list the files in reverse chronological</p>
-<p>order):</p>
-<p>� ls -lrt data</p>
-<p>This also generated an index file, 1kg.bcf.csi.</p>
-<p>To convert a VCF file to BCF, we can run a similar command. If we want to keep the original BCF,</p>
-<p>we need to give the new one a different name so that the old one is not overwritten:</p>
-<p>� bcftools view -O b -o data/1kg_2.bcf data/1kg.vcf.gz</p>
+<p>There are also multiple options for specifying what metadata to include in the SAM header. To see all available options, run:</p>
+<p><code>picard FastqToSam -h</code></p>
+</section>
+<section id="cram-to-fastq" class="level3">
+<h3 class="anchored" data-anchor-id="cram-to-fastq">4.4 CRAM to FASTQ</h3>
+<p>It is possible to convert CRAM to FASTQ directly using the <code>samtools fastq</code> command. However, for many applications we need the fastq files to be ordered so that the order of the reads in the first file match the order of the reads in the mate file. For this reason, we first use samtools collate to produce a collated BAM file.</p>
+<p><code>samtools collate data/yeast.cram data/yeast.collated</code></p>
+<p>The newly produced BAM file will be called yeast.collated.bam. Let’s use this to create two FASTQ files, one for the forward reads and one for the reverse reads:</p>
+<p><code>samtools fastq -1 data/yeast.collated_1.fastq -2 data/yeast.collated_2.fastq data/yeast.collated.bam</code></p>
+<p>For further information and usage options, have a look at the samtools manual page (<a href="http://www.htslib.org/doc/samtools.html" class="uri">http://www.htslib.org/doc/samtools.html</a>).</p>
+</section>
+<section id="vcf-to-bcf" class="level3">
+<h3 class="anchored" data-anchor-id="vcf-to-bcf">4.5 VCF to BCF</h3>
+<p>In a similar way that <strong>samtools view</strong> can be used to convert between SAM, BAM and CRAM, <strong>bcftools view</strong> can be used to convert between VCF and BCF. To convert the file called 1kg.bcf to a compressed VCF file called <em>1kg.vcf.gz</em>, run:</p>
+<p><code>bcftools view -O z -o data/1kg.vcf.gz data/1kg.bcf</code></p>
+<p>The <strong>-O</strong> option allows us to specify in what format we want the output, compressed BCF (b), uncompressed BCF (u), compressed VCF (z) or uncompressed VCF (v). With the -o option we can select the name of the output file.</p>
+<p>Have a look at what files were generated (the options <strong>-lrt</strong> will list the files in reverse chronological order):</p>
+<p><code>ls -lrt data</code></p>
+<p>This also generated an index file, <code>1kg.bcf.csi</code>.</p>
+<p>To convert a VCF file to BCF, we can run a similar command. If we want to keep the original BCF, we need to give the new one a different name so that the old one is not overwritten:</p>
+<p><code>bcftools view -O b -o data/1kg_2.bcf data/1kg.vcf.gz</code></p>
 <p>Congratulations you have reached the end of the Data formats and QC tutorial!</p>
-<p>26</p>
 
 
 </section>
