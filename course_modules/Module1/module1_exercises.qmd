@@ -3,9 +3,9 @@ title: "Exercises"
 format: html
 ---
 
-## 1 NGS Data formats and QC
+## NGS Data formats and QC
 
-### 1.1 Introduction
+### Introduction
 
 There are several file formats for storing Next Generation Sequencing (NGS) data. In this tutorial we will look at some of the most common formats for storing NGS reads and variant data. We will cover the following formats:
 
@@ -21,17 +21,7 @@ Following this, we will work through some examples of converting between the dif
 
 Further to understanding the different file formats, it is important to remember that all sequencing platforms have technical limitations that can introduce biases in your sequencing data. Because of this it is very important to check the quality of the data before starting any analysis, whether you are planning to use something you have sequenced yourself or publicly available data. In the latter part of this tutorial we will describe how to perform a QC assessment for your NGS data.
 
-### 1.2 Learning outcomes
-
-On completion of the tutorial, you can expect to be able to:
-
-• Describe the different NGS data formats available (FASTQ, SAM/BAM, CRAM, VCF/BCF)
-
-• Perform a QC assessment of high throughput sequence data
-
-• Perform conversions between the different data formats
-
-### 1.3 Tutorial sections
+### Tutorial sections
 
 This tutorial comprises the following sections:
 
@@ -43,11 +33,7 @@ If you have time you can also complete:
 
 3\. File conversion
 
-### 1.4 Authors
-
-This tutorial was written by Jacqui Keane and Sara Sjunnebo based on material from Petr Danecek and Thomas Keane.
-
-### 1.5 Running the commands from this tutorial
+### Running the commands from this tutorial
 
 You can follow this tutorial by typing all the commands you see into a terminal window. This is similar to the “Command Prompt” window on MS Windows systems, which allows the user to type DOS commands to manage files.
 
@@ -57,7 +43,7 @@ To get started, open a new terminal on your computer and type the command below:
 
 Now you can follow the instructions in the tutorial from here.
 
-### 1.6 Let’s get started!
+### Let’s get started!
 
 This tutorial assumes that you have **samtools**, **bcftools** and **Picard** tools installed on your computer.
 
@@ -73,7 +59,7 @@ This should return the help message for samtools, bcftools and picard tools resp
 
 To get started with the tutorial, go to the first section: Data formats
 
-## 2 Data formats for NGS data
+## Data formats for NGS data
 
 Here we will take a closer look at some of the most common NGS data formats. First, check you are in the correct directory:
 
@@ -83,15 +69,15 @@ It should display something like:
 
 `/home/manager/course_data/data_formats/`
 
-### 2.1 FASTA
+### FASTA
 
 **Q1: How many sequences are there in the fasta file `data/example.fasta`? (Hint: is there a grep option you can use?)**
 
-### 2.2 FASTQ
+### FASTQ
 
 **Q2: How many reads are there in the file example.fastq? (Hint: remember that \@ is a possible quality score. Is there something else in the header that is unique?)**
 
-### 2.3 SAM
+### SAM
 
 **Look at the following line from the header of a SAM file and answering the questions that follow:**
 
@@ -117,7 +103,7 @@ Let’s have a look at *example.sam*. Notice that we can use the standard UNIX o
 
 **Q10: What is the inferred insert size of ERR003814.1408899?**
 
-### 2.3.1 CIGAR string
+### CIGAR string
 
 **Q11: What does the CIGAR from Q9 mean?**
 
@@ -127,7 +113,7 @@ Ref: ACGT- - - - ACGTACGT
 
 Read: ACGTACGTACGTACGT
 
-### 2.4 BAM
+### BAM
 
 BAM (Binary Alignment/Map) format, is a compressed binary version of SAM. This means that, while SAM is human readable, BAM is only readable for computers. BAM files can be viewed using samtools, and will then have the same format as a SAM file. The key features of BAM are:
 
@@ -167,7 +153,7 @@ This gets printed to STDOUT in the terminal, so we will want to pipe it to somet
 
 **Q18: What position does the alignment of the read start at?**
 
-### 2.5 CRAM
+### CRAM
 
 Even though BAM files are compressed, they are still very large. Typically they use 1.5-2 bytes for each base pair of sequencing data that they contain, and while disk capacity is ever improving, increases in disk capacity are being far outstripped by sequencing technologies.
 
@@ -181,9 +167,9 @@ BAM stores all of the data, this includes every read base, every base quality, a
 
 The figure below displays how reference-based compression works. Instead of saving all the bases of all the reads, only the nucleotides that differ from the reference, and their positions, are kept.
 
-![**Reference based compression**](images/reference based compression1.png){width="472"}
+![**Reference based compression**](images/reference%20based%20compression1.png){width="472"}
 
-![**Reference based compression**](images/reference based compression2.png){width="473"}
+![**Reference based compression**](images/reference%20based%20compression2.png){width="473"}
 
 In lossless (no information is lost) mode a CRAM file is 60% of the size of a BAM file, so archives and sequencing centres have moved from BAM to CRAM.
 
@@ -215,13 +201,13 @@ And to explore the 1001bp long region on **chr4** beginning at position 1,000 an
 
 **Q19: How many reads are mapped to region 20025000-20030000 on chromosome 1?**
 
-### 2.7 VCF
+### VCF
 
 ![**The VCF format**](images/VCF.png){width="542"}
 
 The VCF file format was introduced to store variation data. VCF consists of tab-delimited text and is parsable by standard UNIX commands which makes it flexible and user-extensible. The figure below provides an overview of the different components of a VCF file:
 
-### 2.7.1 VCF header
+### VCF header
 
 The VCF header consists of meta-information lines (starting with ##) and a header line (starting with #). All meta-information lines are optional and can be put in any order, except for fileformat. This holds the information about which version of VCF is used and must come first.
 
@@ -253,11 +239,11 @@ If the file contains genotype data, the required fields are also followed by a F
 
 • **GQ**: Conditional genotype quality, encoded as a phred quality
 
-### 2.7.2 Body
+### Body
 
 In the body of the VCF, each row contains information about a position in the genome along with genotype information on samples for each position, all according to the fields in the header line.
 
-### 2.8 BCF
+### BCF
 
 BCF is a compressed binary representation of VCF. VCF can be compressed with BGZF (bgzip) and indexed with TBI or CSI (tabix), but even compressed
 
@@ -269,7 +255,7 @@ In BCF files the fields are rearranged for fast access. The following images sho
 
 Bcftools comprises a set of programs for interacting with VCF and BCF files. It can be used to convert between VCF and BCF and to view or extract records from a region.
 
-### 2.8.1 bcftools view
+### bcftools view
 
 Let’s have a look at the header of the file 1kg.bcf in the data directory. Note that **bcftools** uses **-h** to print only the header, while **samtools** uses **-H** for this.
 
@@ -283,7 +269,7 @@ Now we can extract all records from the region **20:24042765-24043073**, using t
 
 `bcftools view -H -r 20:24042765-24043073 data/1kg.bcf`
 
-### 2.8.2 bcftools query
+### bcftools query
 
 The versatile `bcftools query` command can be used to extract any VCF field. Combined with standard UNIX commands, this gives a powerful tool for quick querying of VCFs. Have a look at the usage options:
 
@@ -323,7 +309,7 @@ Now, try and answer the following questions about the file **1kg.bcf** in the da
 
 **Q24: In how many positions does HG00107 have a non-reference genotype and a read depth bigger than 10? (Hint: you can use pipes to combine bcftools queries)**
 
-### 2.9 gVCF
+### gVCF
 
 Often it is not enough to know variant sites only. For instance, we don’t know if a site was dropped because it matches the reference or because the data is missing. We sometimes need evidence for both variant and non-variant positions in the genome. In gVCF format, blocks of reference-only sites can be represented in a single record using the “INFO/END” tag. Symbolic alleles (\<\*\>) are used for incremental calling:
 
@@ -337,67 +323,67 @@ Often it is not enough to know variant sites only. For instance, we don’t know
 
 Now continue to the next section of the tutorial: QC assessment of NGS data.
 
-### 3 QC assessment of NGS data
+### QC assessment of NGS data
 
 QC is an important part of any analysis. In this section we are going to look at some of the metrics and graphs that can be used to assess the QC of NGS data.
 
-### 3.1 Base quality
+### Base quality
 
 Illumina sequencing technology relies on sequencing by synthesis. One of the most common problems with this is dephasing. For each sequencing cycle, there is a possibility that the replication machinery slips and either incorporates more than one nucleotide or perhaps misses to incorporate one at all. The more cycles that are run (i.e. the longer the read length gets), the greater the accumulation of these types of errors gets. This leads to a heterogeneous population in the cluster, and a decreased signal purity, which in turn reduces the precision of the base calling. The figure below shows an example of this.
 
-![**Mean base quality**](images/base quality.png){width="336"}
+![**Mean base quality**](images/base%20quality.png){width="336"}
 
 Because of dephasing, it is possible to have high-quality data at the beginning of the read but really low-quality data towards the end of the read. In those cases you can decide to trim off the low-quality reads, for example using a tool called Trimmomatic.
 
 The figures below shows an example of a good sequencing run (left) and a poor sequencing run (right).
 
-![**Base quality**](images/base quality2.png){width="438"}
+![**Base quality**](images/base%20quality2.png){width="438"}
 
-### 3.2 Other base calling errors
+### Other base calling errors
 
 There are several different reasons for a base to be called incorrectly, as shown in the figure below.
 
 Phasing noise and signal decay is a result of the dephasing issue described above. During library preparation, mixed clusters can occur if multiple templates get co-located. These clusters should be removed from the downstream analysis. Boundary effects occur due to optical effects when the intensity is uneven across each tile, resulting in higher intensity found toward the center. Cross-talk occurs because the emission frequency spectra for each of the four base dyes partly overlap, creating uncertainty. Finally, for previous sequencing cycle methods T fluorophore accumulation was an issue, where incomplete removal of the dye coupled to thymine lead to an ambient accumulation the nucleotides, causing a false high Thymine trend.
 
-![**Base calling errors**](images/base calling errors.png){width="501"}
+![**Base calling errors**](images/base%20calling%20errors.png){width="501"}
 
-### 3.3 Mismatches per cycle
+### Mismatches per cycle
 
 Aligning reads to a high-quality reference genome can provide insight to the quality of a sequencing run by showing you the mismatches to the reference sequence. This can help you detect cycle-specific errors. Mismatches can occur due to two main causes, sequencing errors and differences between your sample and the reference genome, which is important to bear in mind when interpreting mismatch graphs. The figure below shows an example of a good run (left) and a bad one (right). In the graph on the left, the distribution of the number of mismatches is even between the cycles, which is what we would expect from a good run. However, in the graph on the right, two cycles stand out with a lot of mismatches compared to the other cycles.
 
-![Missmatches per cycle](images/missmatches per cycle.png){width="536"}
+![Missmatches per cycle](images/missmatches%20per%20cycle.png){width="536"}
 
-#### 3.4 GC content
+#### GC content
 
 It is a good idea to compare the GC content of the reads against the expected distribution in a reference sequence. The GC content varies between species, so a shift in GC content like the one seen below could be an indication of sample contamination. In the left graph below, we can see that the GC content of the sample is about the same as for the reference, at \~38%. However, in the right graph, the GC content of the sample is closer to 55%, indicating that there is an issue with this sample.
 
-![**GC content**](images/gc content.png){width="497"}
+![**GC content**](images/gc%20content.png){width="497"}
 
-### 3.5 GC content by cycle
+### GC content by cycle
 
 Looking at the GC content per cycle can help detect if the adapter sequence was trimmed. For a random library, it is expected to be little to no difference between the different bases of a sequence run, so the lines in this plot should be parallel with each other like in the graph on the left below.
 
 In the graph on the right, the initial spikes are likely due to adapter sequences that have not been removed.
 
-![**GC content by cycle**](images/GC content by cycle.png){width="542"}
+![**GC content by cycle**](images/GC%20content%20by%20cycle.png){width="542"}
 
-### 3.6 Fragment size
+### Fragment size
 
 For paired-end sequencing the size of DNA fragments also matters. In the first of the examples below, the fragment size peaks around 440 bp. In the second however, there is also a peak at around 200 bp. This indicates that there was an issue with the fragment size selection during library prep.
 
-![**Fragment size distribution**](images/fragment size distribution.png)
+![**Fragment size distribution**](images/fragment%20size%20distribution.png)
 
 **Q1: The figure below is from a 100bp paired-end sequencing. Can you spot any problems?**
 
-![**Insert size**](images/insert size.png){width="490"}
+![**Insert size**](images/insert%20size.png){width="490"}
 
-### 3.7 Insertions/Deletions per cycle
+### Insertions/Deletions per cycle
 
 Sometimes, air bubbles occur in the flow cell, which can manifest as false indels. The spike in the right image provides an example of how this can look.
 
-![**Indels per cycle**](images/indels per cycle.png){width="415"}
+![**Indels per cycle**](images/indels%20per%20cycle.png){width="415"}
 
-### 3.8 Generating QC stats
+### Generating QC stats
 
 Now let’s try this out! We will generate QC stats for two lanes of Illumina paired-end sequencing data from yeast. The reads have already been aligned to the *Saccromyces cerevisiae* reference genome to produce the BAM file *lane1.sorted.bam*.
 
@@ -413,7 +399,7 @@ This file contains a number of useful stats that we can use to get a better pict
 
 `grep ^'#' data/lane1.sorted.bam.bchk | grep 'Use'`
 
-### 3.8.1 Summary Numbers (SN)
+### Summary Numbers (SN)
 
 This initial section contains a summary of the alignment and includes some general statistics. In particular, you can see how many bases mapped, and how much of the genome that was covered.
 
@@ -429,7 +415,7 @@ Now look at the output and try to answer the questions below.
 
 **Q6: How many reads were paired properly?**
 
-### 3.8.3 Generating QC plots
+### Generating QC plots
 
 Finally, we will create some QC plots from the output of the stats command using the command plot-bamstats which is included in the samtools package:
 
@@ -443,11 +429,11 @@ Now in your web browser open the file lane1-plots/index.html to view the QC info
 
 Now continue to the next section of the tutorial: File conversion.
 
-## 4 File conversion
+## File conversion
 
 In this section we are going to look at how to convert from one file format to another. There are many tools available for converting between file formats, and we will use some of the most common ones: **samtools, bcftools** and **Picard**.
 
-### 4.1 SAM to BAM
+### SAM to BAM
 
 To convert from SAM to BAM format we are going to use the samtools view command. In this instance, we would like to include the SAM header, so we use the -h option:
 
@@ -465,7 +451,7 @@ We do so by adding the **-b** option:
 
 Samtools is very well documented, so for more usage options and functions, have a look at the samtools manual <http://www.htslib.org/doc/samtools-1.0.html>.
 
-### 4.2 BAM to CRAM
+### BAM to CRAM
 
 The `samtools view` command can be used to convert a BAM file to CRAM format. In the data directory there is a BAM file called yeast.bam that was created from *S. cerevisiae* Illumina sequencing data. There is also a reference genome in the directory, called *Saccharomyces_cerevisiae.EF4.68.dna.toplevel.fa*. For the conversion, an index file (.fai) for the reference must be created. This can be done using `samtools faidx`. However, as we will see, **samtools** will generate this file on the fly when we specify a reference file using the **-F** option.
 
@@ -487,7 +473,7 @@ To convert CRAM back to BAM, simply change **-C** to **-b** and change places fo
 
 `samtools view -b -T data/Saccharomyces_cerevisiae.EF4.68.dna.toplevel.fa -o data/yeast.bam data/yeast.cram`
 
-### 4.3 FASTQ to SAM
+### FASTQ to SAM
 
 SAM format is mainly used to store alignment data, however in some cases we may want to store
 
@@ -505,7 +491,7 @@ There are also multiple options for specifying what metadata to include in the S
 
 `picard FastqToSam -h`
 
-### 4.4 CRAM to FASTQ
+### CRAM to FASTQ
 
 It is possible to convert CRAM to FASTQ directly using the `samtools fastq` command. However, for many applications we need the fastq files to be ordered so that the order of the reads in the first file match the order of the reads in the mate file. For this reason, we first use samtools collate to produce a collated BAM file.
 
@@ -517,7 +503,7 @@ The newly produced BAM file will be called yeast.collated.bam. Let’s use this 
 
 For further information and usage options, have a look at the samtools manual page (<http://www.htslib.org/doc/samtools.html>).
 
-### 4.5 VCF to BCF
+### VCF to BCF
 
 In a similar way that **samtools view** can be used to convert between SAM, BAM and CRAM, **bcftools view** can be used to convert between VCF and BCF. To convert the file called 1kg.bcf to a compressed VCF file called *1kg.vcf.gz*, run:
 

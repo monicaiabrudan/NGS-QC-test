@@ -3,7 +3,7 @@ title: "Manual"
 format: html
 ---
 
-# **1. Sequence Data Formats**
+## **Sequence Data Formats**
 
 These formats store raw or processed nucleotide and protein sequences. 
 
@@ -50,7 +50,7 @@ Beware:
 
 The **ASCII table** (American Standard Code for Information Interchange) is a character encoding standard that maps **128 characters** (0–127) to numeric codes. It includes letters (uppercase and lowercase), digits, punctuation marks, control characters (e.g., newline, tab), and special symbols, enabling computers to represent and process text.\
 
-# **2. Alignment and Mapping Formats**
+## **Alignment and Mapping Formats**
 
 These formats store sequence alignments against a reference genome.
 
@@ -247,9 +247,7 @@ While BAM files have been a cornerstone of genomic data storage, reference-based
 
 ![](images/CRAM.png){width="427"}
 
-### 
-
-# **3. Variant Calling Formats**
+## **Variant Calling Formats**
 
 These formats store genetic variations detected in sequencing data.
 

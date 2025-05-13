@@ -3,11 +3,13 @@ title: "Overview"
 format: html
 ---
 
-Content by **Eric Dawson (**Bioinformatics Scientist (Genomics / AI) - Nvidia) **and Carla Daniela Robles Espinoza (**Laboratorio Internacional de Investigación sobre el Genoma Humano, Universidad Nacional Autónoma de México)
-
 # Module Title
 
 **NGS Data formats and QC**
+
+# Authors
+
+This tutorial was written by Jacqui Keane and Sara Sjunnebo based on material from Petr Danecek and Thomas Keane.
 
 # Duration
 
@@ -25,6 +27,14 @@ In this module, learners will look at data formats in detail. At the end of the 
 
 **VCF/BCF:** Flexible variant call format; SNPs, indels, structural variations
 
+# Learning outcomes
+
+• Describe the different NGS data formats available (FASTQ, SAM/BAM, CRAM, VCF/BCF)
+
+• Perform a QC assessment of high throughput sequence data
+
+• Perform conversions between the different data formats
+
 # Activities
 
 -   Lecture: 1 hour
@@ -33,9 +43,13 @@ In this module, learners will look at data formats in detail. At the end of the 
 
 -   Assessment quiz: 0.5 hours
 
-# Manual
+# Manual and practical execises
 
 [Module manual](module1_manual.qmd)
+
+[Exercises](module1_exercises.qmd)
+
+Solutions
 
 # Presentation slides
 
@@ -45,34 +59,20 @@ In this module, learners will look at data formats in detail. At the end of the 
 
 [Pre-recorded lecture, temporally stored on the LMS](https://lms.wellcomeconnectingscience.org/mod/page/view.php?id=8519)
 
-# Practical exercises
-
-### Google Colab
-
-You can practice working with the file formats presented in this modules using [a Google Colab](https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb) developed specifically for this purpose.
-
-For detailed information on what is Google Colab, check: [[What is google colab?]{.underline}](https://github.com/WCSCourses/index/blob/main/Google_Colab.md#1-what-is-google-colab)
-
-To get started with Google Colab use a shared link from Google Drive:
-
-**a. Open the Shared Link:** Click on the shared link provided to you. It will usually look like this: [`https://drive.google.com/file/d/`](https://drive.google.com/file/d/)`...`.
-
-**The shared link is [[IntroductionToLinux.ipynb]{.underline}](https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb)**
-
-**b. Make a Copy:** If the link opens a view-only version of the notebook, you can create your own editable copy by **selecting File \> Save a copy in Drive**. This will save the notebook to your Google Drive.
-
-**c. Open Your Copy:** Once the copy is saved, you can open it from your Google Drive. You can also access it anytime through Google Colab by selecting File \> Open notebook and navigating to your Drive.
-
-### Virtual Machine
-
-Command line walk through.
-
-# Datasets
-
-Practice files for this module can be found on [Github](https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data).
-
 # Check you knowledge quiz
 
 [Questions](module1_assessment.qmd)
 
 # Summary of this module
+
+# Teaching guidance
+
+[Instructor notes](module1_instructor_notes.qmd)
+
+# Datasets
+
+Practice files for this module can be found on [Github](https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data).
+
+# Platform Guidance
+
+[Guide](module1_platform_guidance.qmd)

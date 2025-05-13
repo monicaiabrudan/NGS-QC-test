@@ -1,0 +1,6 @@
+---
+title: "Instructor notes"
+format: html
+---
+
+-   Learners often confuse FASTA vs FASTQ. Emphasize that FASTA has no quality scores, whereas FASTQ includes them

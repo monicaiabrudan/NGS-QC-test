@@ -3,18 +3,7 @@ title: "Manual"
 format: html
 ---
 
-## 
-
-### 1. Introduction and Learning Outcomes
-
-By the end of this module, you should be able to:
-
--   Understand various types of variation and how they are ascertained.
--   Understand how variant calls are made.
--   Assess variant quality and visualise variants.
--   Annotate variants and assess consequences.
-
-### 2. DNA Variations: Definitions and Types
+### DNA Variations: Definitions and Types
 
 Mutations refer to any alteration in the DNA base sequence and can be broadly classified into germline and somatic mutations.
 
@@ -314,7 +303,7 @@ You can read more about the typical variant calling process in the following art
 <https://www.ensembl.org/info/genome/variation/prediction/predicted_data.html>
 
 |  |  |  |  |  |
-|------------|-------------------------|------------|------------|------------|
+|-------------|--------------------|-------------|-------------|-------------|
 | SO Term | SO Description | SO Accession | Display Term | IMPACT |
 | transcript_ablation | A feature ablation whereby the deleted region includes a transcript feature | SO:0001893 | Transcript ablation | HIGH |
 | splice_acceptor_variant | A splice variant that changes the 2 base region at the 3' end of an intron | SO:0001574 | Splice acceptor variant | HIGH |
@@ -346,7 +335,7 @@ Variant pathogenicity refers to the classification of genetic variants based on 
 (Richards S, Aziz N, Bale S, et al. (2015). Standards and guidelines for the interpretation of sequence variants: a joint consensus recommendation. *Genetics in Medicine*, 17(5), 405–424. <https://doi.org/10.1038/gim.2015.30>)
 
 |  |  |  |  |
-|----------------|-------------------------|--------------|----------------|
+|-----------------|-----------------------|-----------------|-----------------|
 | Category | Description | Interpretation | Clinical Actionability |
 | Pathogenic | Strong evidence supports a disease-causing role. | Disease-causing | Yes |
 | Likely Pathogenic | Evidence suggests the variant is likely to cause disease. | Probably disease-causing | Often |
@@ -368,7 +357,7 @@ This global collaboration catalogs human genetic variation across diverse popula
 
 The Genome Aggregation Database (gnomAD) aggregates and harmonizes exome and genome sequencing data from over 140,000 individuals. It provides allele frequencies across populations, helping researchers filter out common variants in rare disease studies and identify population-specific variation, making it a crucial reference for clinical and research genomics.
 
-### **Ensembl Variation** 
+### **Ensembl Variation**
 
 **(<https://grch37.ensembl.org/info/genome/variation/index.html>):**\
 

@@ -13,6 +13,8 @@ Genome Assembly
 
 # Key topics
 
+# Learning outcomes
+
 # Activities
 
 -   Lecture: 1 hour

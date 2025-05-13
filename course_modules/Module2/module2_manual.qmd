@@ -3,18 +3,6 @@ title: "Manual"
 format: html
 ---
 
-## Learning outcomes
-
-On completion of the tutorial, you can expect to be able to: ● Understand the background and theory of read alignment ● Perform read alignment using standard tools (BWA-MEM)
-
-● Perform the following task and understand their effect on analysis results (e.g. Mark Duplicates)
-
-● Visualise read alignments using IGV (Integrated Visualisation Tool)
-
-If there is time you will learn how to:
-
-● Merge the results from multiple alignments and understand when it is appropriate to perform a merge
-
 ## Reads alignment
 
 Sequence alignment in NGS is the process of determining the most likely source of the observed DNA sequencing read within the reference genome sequence
@@ -39,7 +27,7 @@ Although sequencing technologies have advanced dramatically, the core principles
 
 ## The Smith-Waterman Algorithm
 
-![**The Smith Waterman algorithm**](images/smith waterman.png){width="378"}
+![**The Smith Waterman algorithm**](images/smith%20waterman.png){width="378"}
 
 **Local Alignment using the Smith-Waterman Algorithm** (developed in 1981) is a crucial step in refining read placement on a reference genome. Once a rough location for a read is identified through seeding or indexing methods, Smith-Waterman is used to compute the **optimal pairwise alignment** between the read and the reference in that region. This alignment helps determine the precise structure of the match, including the **CIGAR string**, which encodes matches, mismatches, insertions, and deletions. While highly accurate, the algorithm is **computationally intensive**, so it is typically applied only to a **subset of reads**—those that cannot be exactly matched during the initial mapping. This step is particularly important for **accurately detecting small insertions and deletions (indels)** that simpler matching approaches may miss.
 
@@ -71,9 +59,9 @@ The **fragment length** refers to the full DNA segment between the sequencing ad
 
 ### The challenges of sequence alignment in **highly divergent genomic regions**
 
-![](images/high divergence1.png){width="425"}
+![](images/high%20divergence1.png){width="425"}
 
-![](images/high divergence2.png){width="451"}
+![](images/high%20divergence2.png){width="451"}
 
 The images above illustrate the challenges of aligning reads in regions with **high sequence divergence and structural variation**. Such areas can lead to **poor mapping quality and inaccurate variant detection**, highlighting the limitations of standard alignment tools when dealing with **complex, strain-specific genomic differences**.
 
@@ -81,11 +69,11 @@ The images above illustrate the challenges of aligning reads in regions with **h
 
 **Long-read sequencing** technologies, such as those from **Oxford Nanopore** and **Pacific Biosciences**, enable the sequencing of **large DNA fragments**—typically **10–20 kilobases** in length. These long reads are especially useful for resolving repetitive regions and structural variants, as they often **span entire transposable elements** that short reads cannot. However, long-read sequencing introduces new challenges: the reads are **more error-prone**, with error rates up to **10%**, making **accurate alignment** more difficult and requiring specialized algorithms for effective analysis.
 
-![](images/alignment challenges.png)
+![](images/alignment%20challenges.png)
 
 Structural variants, such as **deletions** and **inversions**, can cause challenges for short-read aligners like **BWA-MEM**. In the case of a deletion (left), reads fail to align properly across the missing region, often resulting in soft-clipping, mismatches, or gaps in coverage. For an inversion (right), alignment is disrupted due to the reversed orientation of the sequence, leading to a dense cluster of mismatches and misaligned bases.
 
-### **NGMLR (Next-Generation Mapping and Long Read)** 
+### **NGMLR (Next-Generation Mapping and Long Read)**
 
 ![**NGMLR**](images/NGMLR.png){width="450"}
 
@@ -93,7 +81,7 @@ Structural variants, such as **deletions** and **inversions**, can cause challen
 
 ### The **Data production workflow**
 
-![**Data production workflow**](images/data production workflow.png)
+![**Data production workflow**](images/data%20production%20workflow.png)
 
 The **Data production workflow** begins with sequencing instruments generating raw **FASTQ files** from individual lanes or plexes. These reads are then aligned to a reference genome using tools like **BWA** or **SMALT**, producing **BAM files** that represent aligned read data. Next, the **BAM improvement** step enhances data quality through operations such as sorting, duplicate marking, and base quality recalibration. Improved BAMs are merged at the **library level**, combining data from multiple lanes of the same library, and then at the **sample/platform level**, integrating multiple libraries or sequencing runs from the same sample.
 
@@ -103,7 +91,7 @@ The **Data production workflow** begins with sequencing instruments generating r
 
 ### Duplicates and false SNPs
 
-![**Duplicates and false SNPs**](images/duplicates and false SNPs.png)
+![**Duplicates and false SNPs**](images/duplicates%20and%20false%20SNPs.png)
 
 Identical or nearly identical sequences stack at the same genomic position, artificially inflating read depth. In the image above, the red box marks a site where duplicates introduce an apparent variant, potentially misinterpreted as a true SNP. Proper duplicate removal is essential to avoid such false-positive variant calls in downstream analysis.
 

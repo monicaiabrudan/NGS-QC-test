@@ -335,20 +335,19 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#module-title" id="toc-module-title" class="nav-link active" data-scroll-target="#module-title">Module Title</a></li>
+  <li><a href="#authors" id="toc-authors" class="nav-link" data-scroll-target="#authors">Authors</a></li>
   <li><a href="#duration" id="toc-duration" class="nav-link" data-scroll-target="#duration">Duration</a></li>
   <li><a href="#key-topics" id="toc-key-topics" class="nav-link" data-scroll-target="#key-topics">Key topics</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
   <li><a href="#activities" id="toc-activities" class="nav-link" data-scroll-target="#activities">Activities</a></li>
-  <li><a href="#manual" id="toc-manual" class="nav-link" data-scroll-target="#manual">Manual</a></li>
+  <li><a href="#manual-and-practical-execises" id="toc-manual-and-practical-execises" class="nav-link" data-scroll-target="#manual-and-practical-execises">Manual and practical execises</a></li>
   <li><a href="#presentation-slides" id="toc-presentation-slides" class="nav-link" data-scroll-target="#presentation-slides">Presentation slides</a></li>
   <li><a href="#lecture-recording-notes-and-scripts" id="toc-lecture-recording-notes-and-scripts" class="nav-link" data-scroll-target="#lecture-recording-notes-and-scripts">Lecture recording, notes and scripts</a></li>
-  <li><a href="#practical-exercises" id="toc-practical-exercises" class="nav-link" data-scroll-target="#practical-exercises">Practical exercises</a>
-  <ul class="collapse">
-  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
-  <li><a href="#virtual-machine" id="toc-virtual-machine" class="nav-link" data-scroll-target="#virtual-machine">Virtual Machine</a></li>
-  </ul></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
   <li><a href="#check-you-knowledge-quiz" id="toc-check-you-knowledge-quiz" class="nav-link" data-scroll-target="#check-you-knowledge-quiz">Check you knowledge quiz</a></li>
   <li><a href="#summary-of-this-module" id="toc-summary-of-this-module" class="nav-link" data-scroll-target="#summary-of-this-module">Summary of this module</a></li>
+  <li><a href="#teaching-guidance" id="toc-teaching-guidance" class="nav-link" data-scroll-target="#teaching-guidance">Teaching guidance</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Datasets</a></li>
+  <li><a href="#platform-guidance" id="toc-platform-guidance" class="nav-link" data-scroll-target="#platform-guidance">Platform Guidance</a></li>
   </ul>
 </nav>
     </div>
@@ -374,10 +373,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Content by <strong>Eric Dawson (</strong>Bioinformatics Scientist (Genomics / AI) - Nvidia) <strong>and Carla Daniela Robles Espinoza (</strong>Laboratorio Internacional de Investigación sobre el Genoma Humano, Universidad Nacional Autónoma de México)</p>
 <section id="module-title" class="level1">
 <h1>Module Title</h1>
 <p><strong>NGS Data formats and QC</strong></p>
+</section>
+<section id="authors" class="level1">
+<h1>Authors</h1>
+<p>This tutorial was written by Jacqui Keane and Sara Sjunnebo based on material from Petr Danecek and Thomas Keane.</p>
 </section>
 <section id="duration" class="level1">
 <h1>Duration</h1>
@@ -391,6 +393,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>CRAM:</strong> Better compression than BAM</p>
 <p><strong>VCF/BCF:</strong> Flexible variant call format; SNPs, indels, structural variations</p>
 </section>
+<section id="learning-outcomes" class="level1">
+<h1>Learning outcomes</h1>
+<p>• Describe the different NGS data formats available (FASTQ, SAM/BAM, CRAM, VCF/BCF)</p>
+<p>• Perform a QC assessment of high throughput sequence data</p>
+<p>• Perform conversions between the different data formats</p>
+</section>
 <section id="activities" class="level1">
 <h1>Activities</h1>
 <ul>
@@ -399,9 +407,11 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Assessment quiz: 0.5 hours</p></li>
 </ul>
 </section>
-<section id="manual" class="level1">
-<h1>Manual</h1>
+<section id="manual-and-practical-execises" class="level1">
+<h1>Manual and practical execises</h1>
 <p><a href="../../course_modules/Module1/module1_manual.html">Module manual</a></p>
+<p><a href="../../course_modules/Module1/module1_exercises.html">Exercises</a></p>
+<p>Solutions</p>
 </section>
 <section id="presentation-slides" class="level1">
 <h1>Presentation slides</h1>
@@ -411,33 +421,24 @@ ul.task-list li input[type="checkbox"] {
 <h1>Lecture recording, notes and scripts</h1>
 <p><a href="https://lms.wellcomeconnectingscience.org/mod/page/view.php?id=8519">Pre-recorded lecture, temporally stored on the LMS</a></p>
 </section>
-<section id="practical-exercises" class="level1">
-<h1>Practical exercises</h1>
-<section id="google-colab" class="level3">
-<h3 class="anchored" data-anchor-id="google-colab">Google Colab</h3>
-<p>You can practice working with the file formats presented in this modules using <a href="https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb">a Google Colab</a> developed specifically for this purpose.</p>
-<p>For detailed information on what is Google Colab, check:&nbsp;<a href="https://github.com/WCSCourses/index/blob/main/Google_Colab.md#1-what-is-google-colab"><u>What is google colab?</u></a></p>
-<p>To get started with Google Colab use a shared link from Google Drive:</p>
-<p><strong>a.&nbsp;Open the Shared Link:</strong> Click on the shared link provided to you. It will usually look like this:&nbsp;<a href="https://drive.google.com/file/d/"><code>https://drive.google.com/file/d/</code></a><code>...</code>.</p>
-<p><strong>The shared link is&nbsp;<a href="https://colab.research.google.com/github/WCSCourses/Precourses_DataRepo/blob/main/course_data_2025/IntroductionToLinux.ipynb"><u>IntroductionToLinux.ipynb</u></a></strong></p>
-<p><strong>b.&nbsp;Make a Copy:</strong>&nbsp;If the link opens a view-only version of the notebook, you can create your own editable copy by&nbsp;<strong>selecting&nbsp;File&nbsp;&gt;&nbsp;Save a copy&nbsp;in Drive</strong>. This will save the notebook to your Google Drive.</p>
-<p><strong>c.&nbsp;Open Your Copy:</strong>&nbsp;Once the copy is saved, you can open it from your Google Drive. You can also access it anytime through Google Colab by selecting&nbsp;File &gt; Open notebook&nbsp;and navigating to your Drive.</p>
-</section>
-<section id="virtual-machine" class="level3">
-<h3 class="anchored" data-anchor-id="virtual-machine">Virtual Machine</h3>
-<p>Command line walk through.</p>
-</section>
-</section>
-<section id="datasets" class="level1">
-<h1>Datasets</h1>
-<p>Practice files for this module can be found on <a href="https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data">Github</a>.</p>
-</section>
 <section id="check-you-knowledge-quiz" class="level1">
 <h1>Check you knowledge quiz</h1>
 <p><a href="../../course_modules/Module1/module1_assessment.html">Questions</a></p>
 </section>
 <section id="summary-of-this-module" class="level1">
 <h1>Summary of this module</h1>
+</section>
+<section id="teaching-guidance" class="level1">
+<h1>Teaching guidance</h1>
+<p><a href="../../course_modules/Module1/module1_instructor_notes.html">Instructor notes</a></p>
+</section>
+<section id="datasets" class="level1">
+<h1>Datasets</h1>
+<p>Practice files for this module can be found on <a href="https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data">Github</a>.</p>
+</section>
+<section id="platform-guidance" class="level1">
+<h1>Platform Guidance</h1>
+<p><a href="../../course_modules/Module1/module1_platform_guidance.html">Guide</a></p>
 
 
 </section>
