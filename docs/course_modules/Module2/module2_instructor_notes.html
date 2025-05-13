@@ -354,6 +354,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>If learners haven’t used IGV before, spend a few minutes showing how to load a BAM and navigate to a gene locus.</p>
+<p>Many think a higher alignment rate always means better data – remind them that quality filtering and reference completeness also play roles.</p>
+<p>Running the alignment on the sample data should take ~5 minutes; ensure everyone has the reference indexed beforehand to save time.</p>
+<p><strong>Trainer Tips:</strong></p>
+<p><strong>Connect Theory to Practice:</strong> Start with a high-level example – e.g., show how a short read aligns to a reference by drawing it on the board, then relate that to what BWA-MEM does at scale. This helps demystify the aligner’s “black box.”</p>
+<p><strong>Address Common Errors:</strong> Warn about pitfalls like forgetting to index the reference (a very common mistake that causes BWA to error). Also, if learners will run commands, remind them about file paths and available disk space (alignment can generate large files).</p>
+<p><strong>Use Analogies:</strong> When explaining the seed-and-extend algorithm or hash tables, analogies can help. For instance, “finding a seed match is like finding the first few letters of a word in a big book index, then checking the surrounding text for a full match.”</p>
+<p><strong>Time Management:</strong> Aligners on large data can take a long time; ensure any live runs use small data. Test the exercise beforehand and maybe have an output ready in case running it live fails or is slow. Also, if short on time, the actual running can be skipped and results provided for interpretation instead – the key is understanding the process and output, not just executing commands.</p>
+<p>Ask the students questions (“Why do you think long reads have a higher error rate? How might that affect alignment?”) to keep learners engaged and check comprehension.</p>
 
 
 
