@@ -29,15 +29,15 @@ In this module, learners will look at:
 
 On completion of the tutorial, you can expect to be able to:
 
-● Understand the background and theory of read alignment
+-   Understand the background and theory of read alignment
 
-● Perform read alignment using standard tools (BWA-MEM)
+-   Perform read alignment using standard tools (BWA-MEM)
 
-● Perform the following task and understand their effect on analysis results (e.g. Mark Duplicates)
+-   Perform the following task and understand their effect on analysis results (e.g. Mark Duplicates)
 
-● Visualise read alignments using IGV (Integrated Visualisation Tool)
+-   Visualise read alignments using IGV (Integrated Visualisation Tool)
 
-● Merge the results from multiple alignments and understand when it is appropriate to perform a merge
+-   Merge the results from multiple alignments and understand when it is appropriate to perform a merge
 
 # Activities
 
