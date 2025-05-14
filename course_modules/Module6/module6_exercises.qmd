@@ -3,9 +3,9 @@ title: "Exercises"
 format: html
 ---
 
-## 1 RNA-Seq expression analysis
+## RNA-Seq expression analysis
 
-### 1.1 Introduction
+### Introduction
 
 RNA sequencing (RNA-Seq) is a high-throughput method used to profile the transcriptome, quantify gene expression and discover novel RNA molecules. This tutorial uses RNA sequencing of malaria parasites to walk you through transcriptome visualisation, performing simple quality control checks and will show you how to profile transcriptomic differences by identifying differentially expressed genes.
 
@@ -13,19 +13,7 @@ For an introduction to RNA-Seq principles and best practices see:
 
 A survey of best practices for RNA-Seq data analysis, Ana Conesa, Pedro Madrigal, Sonia Tarazona, David Gomez-Cabrero, Alejandra Cervera, Andrew McPherson, Michał Wojciech Szcześniak, Daniel J. Gaffney, Laura L. Elo, Xuegong Zhang and Ali Mortazavi, Genome Biol. 2016 Jan 26;17:13 doi:10.1186/s13059-016-0881-8
 
-### 1.2 Learning outcomes
-
-By the end of this tutorial you can expect to be able to:
-
-• Align RNA-Seq reads to a reference genome and a transcriptome
-
-• Visualise transcription data using standard tools
-
-• Perform QC of NGS transcriptomic data
-
-• Quantify the expression values of your transcripts using standard tools
-
-### 1.3 Tutorial sections
+### Tutorial sections
 
 This tutorial comprises the following sections:
 
@@ -43,10 +31,6 @@ This tutorial comprises the following sections:
 
 7\. Key aspects of differential expression analysis
 
-### 1.4 Authors
-
-This tutorial was written by Victoria Offord based on materials from Adam Reid.
-
 In this tutorial, we are going to use the following software versions:
 
 -   [HISAT2](https://ccb.jhu.edu/software/hisat2/index.shtml) v2.1.0
@@ -63,11 +47,11 @@ In this tutorial, we are going to use the following software versions:
 
 -   [bedtools](http://bedtools.readthedocs.io/en/latest/content/installation.html) v2.29.2
 
-### 1.5 Prerequisites
+### Prerequisites
 
 This tutorial assumes that you have the following software or packages and their dependencies installed on your computer. The software or packages used in this tutorial may be updated from time to time so, we have also given you the version which was used when writing the tutorial.
 
-### 1.6 Where can I find the tutorial data?
+### Where can I find the tutorial data?
 
 You can find the data for this tutorial by typing the following command in a new terminal window.
 
@@ -75,7 +59,7 @@ You can find the data for this tutorial by typing the following command in a new
 
 Now, let’s head to the first section of this tutorial which will be introducing the tutorial dataset.
 
-## 2 Introducing the tutorial dataset
+## Introducing the tutorial dataset
 
 Working through this tutorial, you will investigate the effect of vector transmission on gene expression of the malaria parasite. The dataset you will be using for this tutorial and Figure 1 have been taken from the following publication:
 
@@ -83,7 +67,7 @@ Spence, P., Jarra, W., Lévy, P. *et al.* Vector transmission regulates immune c
 
 ![**Figure 1. Serial blood passage increases virulence of malaria parasites.**](images/publication.png){width="512"}
 
-### 2.1 Is the transcriptome of a mosquito-transmitted parasite different from one which has not passed through a mosquito?
+### Is the transcriptome of a mosquito-transmitted parasite different from one which has not passed through a mosquito?
 
 The key reason for asking this question is that parasites which are transmitted by mosquito (MT) are less virulent (severe/harmful) than those which are serially blood passaged (SBP) in the laboratory.
 
@@ -95,7 +79,7 @@ The key reason for asking this question is that parasites which are transmitted 
 
 We hypothesise that parasites which have been through the mosquito are somehow better able to control the mosquito immune system than those which have not. This control of the immune system would result in lower parasitemia because this is advantageous for the parasite. Too high a parasitemia is bad for the mouse and therefore bad for the parasite.
 
-### 2.2 Exercise 1
+### Exercise 1
 
 In this tutorial, you will be analysing five RNA samples, each of which has been sequenced on an Illumina HiSeq sequencing machine. There are two conditions: serially blood-passaged parasites (SBP) and mosquito transmitted parasites (MT). One with three biological replicates (SBP), one with two biological replicates (MT).
 
@@ -127,7 +111,7 @@ Take a look at one of the FASTQ files.
 
 Find out more about FASTQ formats at <https://en.wikipedia.org/wiki/FASTQ_format>.
 
-### 2.3 Questions
+### Questions
 
 **2.3.1 Q1: Why is there more than one FASTQ file per sample?**
 
@@ -139,9 +123,9 @@ Find out more about FASTQ formats at <https://en.wikipedia.org/wiki/FASTQ_format
 
 Now let’s move on to mapping RNA-Seq reads to the genome using HISAT2.
 
-## 3 Mapping RNA-Seq reads to the genome using HISAT2
+## Mapping RNA-Seq reads to the genome using HISAT2
 
-### 3.1 Introduction
+### Introduction
 
 For this exercise, we have reduced the number of reads in each sample to around 2.5 million to reduce the mapping time. However, this is sufficient to detect most differentially expressed genes.
 
@@ -151,7 +135,7 @@ The objectives of this part of the tutorial are:
 
 • use HISAT2 to map RNA-Seq reads to the reference genome
 
-### 3.1.1 Mapping RNA-Seq reads to a genome
+### Mapping RNA-Seq reads to a genome
 
 By this stage, you should have already performed a standard NGS quality control check on your reads to see whether there were any issues with the sample preparation or sequencing. In the interest of time, we won’t be doing that as part of this tutorial, but feel free to use the tools from earlier modules to give that a go later if you have time.
 
@@ -167,7 +151,7 @@ For more information, and to find the original version of Figure 2, please see t
 
 HISAT2 is a splice-aware aligner which means it takes into account that when a read is mapped it may be split across multiple exons with (sometimes large) intronic gaps between aligned regions.
 
-![**Figure 2. Read types and their relative proportions from 20 million simulated 100-bp reads**](images/splice%20aware%20alignment.png){width="676"}
+![**Figure 2. Read types and their relative proportions from 20 million simulated 100-bp reads**](images/splice%20aware%20alignment.png){width="554"}
 
 As you can see in Figure 2, HISAT2 splits read alignments into five classes based on the number of exons the read alignment is split across and the length of the anchor (longest continuously mapped portion of a split read):
 
@@ -191,7 +175,7 @@ Figure 2. Read types and their relative proportions from 20 million simulated 10
 
 There are five HISAT2 RNA-seq read mapping categories: (i) M, exonic read; (ii) 2M_gt_15, junction reads with long, \>15-bp anchors in both exons; (iii) 2M_8_15, junction reads with intermediate, 8- to 15-bp anchors; (iv) 2M_1_7, junction reads with short, 1- to 7-bp, anchors; and (v) gt_2M, junction reads spanning more than two exons (Figure 2A). Exoninc reads span only a single exon and represent over 60% of the read mappings in the 20 million 100-bp simulated read dataset.
 
-### 3.2 Exercise 2
+### Exercise 2
 
 Be patient, each of the following steps will take a couple of minutes!
 
@@ -275,11 +259,11 @@ It allows programs like IGV (which we will be using to visualise the alignment) 
 
 You should see three files:
 
-data/SBP1_sorted.bam
+**data/SBP1_sorted.bam**
 
-data/SBP2_sorted.bam
+**data/SBP2_sorted.bam**
 
-data/SBP3_sorted.bam
+**data/SBP3_sorted.bam**
 
 **If you can’t see these files, please let your instructor know!**
 
@@ -291,7 +275,7 @@ To take a look at the script you can run:
 
 If you have time at the end of the tutorial, feel free to take a closer look at the script and a more detailed breakdown of what it does in Running commands on multiple samples. Bash scripts and loops are a useful way of automating an analysis and running the same commands for multiple samples. Imagine if you had 50 samples and not 5! In truth, you’d probably want to run that many samples on a compute cluster, in parallel. But that’s outside the scope of this tutorial.
 
-### 3.3 Questions
+### Questions
 
 **3.3.1 Q1: How many index files were generated when you ran hisat2-build?**
 
@@ -305,9 +289,9 @@ Hint: look at the the output from the hisat2 commands
 
 Hint: look at the the output from the hisat2 commands, you’re looking for reads (not read pairs) which have aligned 0 times (remember that one read from a pair may map even if the other doesn’t)
 
-## 4 Visualising transcriptomes with IGV
+## Visualising transcriptomes with IGV
 
-### 4.1 Introduction
+### Introduction
 
 Integrative Genome Viewer (IGV) allows us to visualise genomic datasets. We have provided a quick start guide which contains the information you need to complete Exercise 3. There is also an IGV user guide online which contains more information on all of the IGV features and functions: <http://software.broadinstitute.org/software/igv/UserGuide>.
 
@@ -319,7 +303,7 @@ The objectives of this part of the tutorial are:
 
 • load read alignments into IGV and inspect read alignments
 
-### 4.2 Exercise 3
+### Exercise 3
 
 First, we will use samtools to create an index for the P. chabaudi reference genome, which IGV will use to traverse the genome. This index file will have the extension .fai and should always be in the same directory as the reference genome.
 
@@ -389,7 +373,7 @@ sample has been sequenced to a greater depth we would expect more reads to map i
 
 From the gene annotation at the bottom we can also see that there are three annotated exon/CDS features for this gene. However, the coverage plot suggests there may be a fourth unannotated exon which, given the direction of the gene, could suggest a 5’ untranslated region (UTR). Note the clean drop off of the coveraged at around position 377,070.
 
-### 4.3 Questions
+### Questions
 
 **4.3.1 Q1: How many CDS features are there in “PCHAS_1402500”?**
 
@@ -405,9 +389,9 @@ plots alone a reliable way to assess differential expression?
 
 Hint: Look at the coverage similarities/differences between the MT and SBP samples.
 
-## 5 Transcript quantification with Kallisto
+## Transcript quantification with Kallisto
 
-### 5.1 Introduction
+### Introduction
 
 After visually inspecting the genome alignment, the next step in a typical RNA-Seq analysis is to estimate transcript abundance. To do this, reads are assigned to the transcripts they came from. These assignments are then used to quantify gene or transcript abundance (expression level).
 
@@ -419,7 +403,7 @@ The objectives of this part of the tutorial are:
 
 • use Kallisto to estimate transcript abundance
 
-### 5.1.1 Quantifying transcripts with Kallisto
+### Quantifying transcripts with Kallisto
 
 Many of the existing methods used for estimating transcript abundance are alignment-based. This means they rely on mapping reads onto the reference genome. The gene expression levels are then calculated by counting the number of reads overlapping the transcripts. However, read alignment is a computationally and time intensive process. So, in this tutorial, we will be running Kallisto which uses a fast, alignment-free method for transcript quantification.
 
@@ -447,7 +431,7 @@ We can see that `kallisto quant` needs us to tell it where our sample read are. 
 
 **Bootstrapping** Not all reads will be assigned unambiguously to a single transcript. This means there will be “noise” in our abundance estimates where reads can be assigned to multiple transcripts. Kallisto quantifies the uncertainty in its abundance estimates using random resampling and replacement. This process is called bootstrapping and indicates how reliable the expression estimates are from the observed pseudoalignment. Bootstrap values can be used downstream to distinguish the technical variability from the biological variability in your experiment.
 
-### 5.2 Exercise 4
+### Exercise 4
 
 **Build an index called PccAS_v3_kallisto from transcript sequences in PccAS_v3_transcripts.fa.**
 
@@ -519,7 +503,7 @@ If we wanted to get the TPM value for a particular gene, we can use awk.
 
 Use `kallisto quant` four more times, for the MT2 sample and the three SBP samples.
 
-### 5.3 Questions
+### Questions
 
 **5.3.1 Q1: What k-mer length was used to build the Kallisto index?**
 
@@ -535,9 +519,9 @@ Hint: use grep to look at the abundance.tsv files
 
 **5.3.4 Q4: Do you think PCHAS_1402500 is differentially expressed?**
 
-## 6 Identifying differentially expressed genes with Sleuth
+## Identifying differentially expressed genes with Sleuth
 
-### 6.1 Introduction
+### Introduction
 
 In the previous sections, we have quantified our transcript abundance and looked at why counts are normalised. In this section, you will be using sleuth to do some simple quality checks and get a first look at the results.
 
@@ -549,7 +533,7 @@ The objectives of this part of the tutorial are:
 
 • use sleuth to investigate DE transcripts
 
-### 6.1.1 Differential expression analysis (DEA)
+### Differential expression analysis (DEA)
 
 Differential expression analysis tries to identify genes whose expression levels differ between experimental conditions. We don’t normally have enough replicates to do traditional tests of significance for RNA-Seq data. So, most methods look for outliers in the relationship between average abundance and fold change and assume most genes are not differentially expressed.
 
@@ -557,7 +541,7 @@ Rather than just using a fold change threshold to determine which genes are diff
 
 However, we perform these comparisons for each one of the thousands of genes/transcripts in our dataset. A p-value of 0.01 estimates a probability of 1% for seeing our observation just by chance. In an experiment like ours with 5,000 genes we would expect 5 genes to be significantly differentially expressed by chance (i.e. even if there were no difference between our conditions). Instead of using a p-value we use a q-value to account for multiple testing and adjusts the p-value accordingly.
 
-### 6.1.2 sleuth
+### sleuth
 
 **sleuth** is a companion tool for **Kallisto**. Unlike most other tools, sleuth can utilize the technical variation information generated by Kallisto so that you can look at both the technical and biological variation in your dataset.
 
@@ -565,11 +549,11 @@ For the DEA, sleuth essentially tests two models, one which assumes that the abu
 
 It is nowhere near as hard to get started with as full-blown programming languages such as Perl or Python!
 
-### 6.2 Exercise 5
+### Exercise 5
 
 For this tutorial, we’ve provided a series of R commands as an R script that will get sleuth running.
 
-### 6.2.1 Running sleuth
+### Running sleuth
 
 The commands we need to run sleuth are in the file sleuth.R. There’s a great overview of the commands and what they do by the developers of sleuth here: <https://pachterlab.github.io/sleuth_walk-throughs/trapnell/analysis.html>. Using R is not as hard as it seems, most of this script was copied from the manual!
 
@@ -595,7 +579,7 @@ Type the URL below into your a web browser (e.g. chrome or firefox) to open the 
 
 You should now see a page with the heading “sleuth live”. If not, just give the script a little longer and then refresh the page.
 
-### 6.2.2 Using sleuth to quality check (QC) transcript quanification
+### Using sleuth to quality check (QC) transcript quanification
 
 Quality control checks are absolutely vital at every step of the experimental process. We can use sleuth to perform simple quality checks (QC) on our dataset.
 
@@ -619,7 +603,7 @@ Our samples form two condition-related clusters with the two MT samples (red) on
 
 ![**sleuth variance plot**](images/sleuth%20variance%20plot.png){width="745"}
 
-### 6.2.3 Using sleuth to look at DE transcripts
+### Using sleuth to look at DE transcripts
 
 We used the output from Kallisto to identify DE transcripts using sleuth. Let’s take a look and see if we found any.
 
@@ -649,13 +633,13 @@ The transcripts have now been grouped by their descriptions. Let’s take a clos
 
 Here we can see the individual CIR protein transcript abundances. We can see that PCHAS_1100300 is more highly expressed in the SBP samples while PCHAS_0302100 and PCHAS_0302100 are more highly expressed in the MT samples.
 
-### 6.3 Questions
+### Questions
 
 **6.3.1 Q1: Is our gene from earlier, PCHAS_1402500, significantly differentially expressed?**
 
-## 7 Interpreting the results
+## Interpreting the results
 
-### 7.1 Introduction
+### Introduction
 
 The main objective of this part of the tutorial is to use simple Unix commands to get a list of significantly differentially expressed genes. Using this gene list and the quantitative information from our analysis we can then start to make biological inferences about our dataset.
 
@@ -735,9 +719,9 @@ Hint: try replacing head in the earlier command with another unix command to cou
 
 Hint: look for gene products that are seen more often in genes more highly expressed in the SBP samples than those more highly expressed in the MT samples
 
-## 8 Key aspects of differential expression analysis
+## Key aspects of differential expression analysis
 
-### 8.1 Replicates and power
+### Replicates and power
 
 In order to accurately ascertain which genes are differentially expressed and by how much it is necessary to use replicated data. As with all biological experiments doing it once is simply not enough.
 
@@ -747,11 +731,11 @@ This means, for instance, growing up three batches of parasites, treating them a
 
 Note: more replicates will help improve power for genes that are already detected at high levels, while deeper sequencing will improve power to detect differential expression for genes which are expressed at low levels.
 
-### 8.2 p-values vs. q-values
+### p-values vs. q-values
 
 When asking whether a gene is differentially expressed we use statistical tests to assign a p-value. If a gene has a p-value of 0.05, we say that there is only a 5% chance that it is not really differentially expressed. However, if we are asking this question for every gene in the genome (\~5500 genes for Plasmodium), then we would expect to see p-values less than 0.05 for many genes even though they are not really differentially expressed. Due to this statistical problem, we must correct the p-values so that we are not tricked into accepting a large number of erroneous results. Q-values are p-values which have been corrected for what is known as multiple hypothesis testing. Therefore, it is a q-value of less than 0.05 that we should be looking for when asking whether a gene is differentially expressed.
 
-### 8.3 Alternative software
+### Alternative software
 
 If you have a good quality genome and genome annotation such as for model organisms e.g. human, mouse, Plasmodium; map to the transcriptome to determine transcript abundance. This is even more relevant if you have variant transcripts per gene as you need a tool which will do its best to determine which transcript is really expressed. As well as Kallisto (Bray et al. 2016; PMID: 27043002), there is eXpress (Roberts & Pachter, 2012; PMID: 23160280) which will do this.
 
@@ -759,7 +743,7 @@ Alternatively, you can map to the genome and then call abundance of genes, essen
 
 There are a variety of programs for detecting differentially expressed genes from tables of RNA-seq read counts. DESeq2 (Love et al., 2014; PMID: 25516281), EdgeR (Robinson et al., 2010; PMID: 19910308) and BaySeq (Hardcastle & Kelly, 2010; PMID: 20698981) are good examples.
 
-### 8.4 What do I do with a gene list?
+### What do I do with a gene list?
 
 Differential expression analysis results are a list of genes which show differences between two conditions. It can be daunting trying to determine what the results mean. On one hand, you may find that that there are no real differences in your experiment. Is this due to biological reality or noisy data? On the other hand, you may find several thousands of genes are differentially expressed.
 
@@ -767,9 +751,9 @@ What can you say about that?
 
 Other than looking for genes you expect to be different or unchanged, one of the first things to do is look at Gene Ontology (GO) term enrichment. There are many different algorithms for this, but you could annotate your genes with functional terms from GO using for instance Blast2GO (Conesa et al., 2005; PMID: 16081474) and then use TopGO (Alexa et al., 2005; PMID: 16606683) to determine whether any particular sorts of genes occur more than expected in your differentially expressed genes.
 
-## 9 Normalisation
+## Normalisation
 
-### 9.1 Introduction
+### Introduction
 
 In the previous section, we looked at estimating transcript abundance with Kallisto. The abundances are reported as transcripts per million (TPM), but what does TPM mean and how is it calculated?
 
@@ -791,7 +775,7 @@ There are many useful websites, publications and blog posts which go into much m
 
 • The RNA-seq abundance zoo
 
-### 9.2 Why do we use normalisation units instead of raw counts?
+### Why do we use normalisation units instead of raw counts?
 
 Raw reads counts are the number of reads originating from each transcript which can be affected by several factors:
 
@@ -815,7 +799,7 @@ Neither, they are both expressed at the same level. This time we didn’t tell y
 
 In the top part of **Figure 4**, the gene in sample X has twice the number of reads assigned to it than the same gene in sample Y. What isn’t shown is that sample X had twice the number or total reads than sample Y so we would expect more reads to be assigned in sample X. Thus, the gene is expressed at roughly the same level in both samples. In the bottom part of Figure 4, gene X has twice the number of reads assigned to it than gene Y. However, gene X is twice the length of gene Y and so we expect more reads to be assigned to gene X. Again, the expression level is roughly the same.
 
-### 9.2.1 Reads per kilobase per million (RPKM)
+### Reads per kilobase per million (RPKM)
 
 Reads per kilobase (of exon) per million (reads mapped) or RPKM is a within sample normalisation method which takes into account sequencing depth and length biases.
 
@@ -849,7 +833,7 @@ Where:
 
 • **N** is the total number of reads mapped in millions
 
-### 9.2.2 Fragments per kilobase per million (FPKM)
+### Fragments per kilobase per million (FPKM)
 
 Fragments per kilobase per million or **FPKM** is essentially the same as **RPKM** except that:
 
@@ -861,7 +845,7 @@ In a paired-end RNA-Seq experiment, two reads may be assigned to a single fragme
 
 The only difference between RPKM and FPKM is that FPKM takes into consideration that two reads may be assigned to the same fragment.
 
-### 9.2.3 Transcripts per million (TPM)
+### Transcripts per million (TPM)
 
 Calculating the transcripts per million or TPM is a similar process to RPKM and FPKM. The main difference is that you will first normalise for length bias and then for sequencing depth bias. In a nutshell, we are swapping the order of normalisations.
 
@@ -887,7 +871,7 @@ Divide your RPK value calculated in step 2 by the per million scaling factor fro
 
 now have your transcripts per millions value or TPM.
 
-### 9.3 Calculating RPKM and TPM values
+### Calculating RPKM and TPM values
 
 To try and answer this, let’s look at a worked example. Here, we have three genes (A-C) and three biological replicates (1-3).
 
@@ -904,7 +888,7 @@ There are two things to notice in our dataset:
 
 • Replicate 3 has more reads mapped than any of the other replicates, regardless of which gene we look at
 
-### 9.3.1 Calculating RPKM
+### Calculating RPKM
 
 **Step 1: get your per million scaling factor** In the table below is the total number of reads which mapped for each of the replicates. To get our per million scaling factor, we divide each of these values by 1,000,000 (1 million).
 
@@ -961,7 +945,7 @@ After:
 
 Notice that even though replicate 3 had more reads assigned than the other samples and a greater sequencing depth, its RPKM is quite similar. And, that although gene B had twice the number of reads assigned than gene A, its RPKM is the same. This is because we have normalised by both length and sequencing depth.
 
-### 9.3.2 Calculating TPM
+### Calculating TPM
 
 Now we’re going to calculate the TPM values for the same example data. As a reminder, here are our three genes (A-C) and three biological replicates (1-3).
 
@@ -1033,11 +1017,11 @@ After:
 | B    | 33.33       | 30.86       | 33.33       |
 | C    | 33.33       | 39.51       | 33.33       |
 
-### 9.4 Which normalisation unit should I use?
+### Which normalisation unit should I use?
 
 There’s a lot of debate around this, so let’s look at our total normalised values for each replicate.
 
-### 9.4.1 RPKM
+### RPKM
 
 | Gene       | Replicate 1 RPKM | Replicate 2 RPKM | Replicate 3 RPKM |
 |------------|------------------|------------------|------------------|
@@ -1046,7 +1030,7 @@ There’s a lot of debate around this, so let’s look at our total normalised v
 | C          | 1.43             | 1.78             | 1.42             |
 | Total RPKM | 4.29             | 4.50             | 4.25             |
 
-### 9.4.2 TPM
+### TPM
 
 | Gene      | Replicate 1 | Replicate 2 | Replicate 3 |
 |-----------|-------------|-------------|-------------|
@@ -1057,7 +1041,7 @@ There’s a lot of debate around this, so let’s look at our total normalised v
 
 Notice that that total TPM value for each of the replicates is the same. This is not true for RPKM and FPKM where the total values differ. With TPM, having the same total value for each replicate makes it easier to compare the proportion of reads mapping to each gene across replicates (although you shouldn’t really compare across experiments). With RPKM and FPKM, the differing total values make it much harder to compare replicates.
 
-### 9.5 Questions
+### Questions
 
 Below is the information for each of the five samples. You will need this information to answer the questions. We have put all of commands used to get this information in the answers.
 
@@ -1100,7 +1084,7 @@ Hint: don’t forget to get your per million scaling factor.
 
 **Q4: Do you think PCHAS_1402500 is differentially expressed between the MT and SBP samples?**
 
-## 10 Running commands on multiple samples
+## Running commands on multiple samples
 
 Now, fair warning, you’re going to wish we’d told you this earlier on. However, then you wouldn’t have had the fun of running and updating each of the previous commands, growling at typos and generally wishing that you’d gone for that cup of coffee before starting this tutorial.
 
@@ -1110,7 +1094,7 @@ There’s a great introduction to bash scripting and loops as part of our Unix m
 
 Whenever you write a loop, it’s always a good idea to build it up slowly to check that it’s doing what you think.
 
-``` 
+```         
 for r in data/*.fastq.gz
 
 do
@@ -1118,7 +1102,8 @@ do
   echo $r
 
 done
-``` 
+```
+
 This loop looks for all (\*) files which end with “.fastq.gz”. The for loop then executes a sequence of commands for each file name that it finds. In the first iteration its “data/MT1_1.fastq.gz”, then “data/MT1_2.fastq.gz” and so on… In each iteration, we assigned each filename that it found to a variable called “r”. for r in \*.fastq.gz
 
 Then, to check we got what we expected, we printed what the variable “r” represented back to the terminal. Because we want to use the variable (“r”) we created we need to use dollar (\$) symbol.
@@ -1127,7 +1112,7 @@ Then, to check we got what we expected, we printed what the variable “r” rep
 
 Now, if we left things as they are, we would be running the commands twice for each sample. This is because we have two FASTQ files for each sample i.e. ”\_1.fastq.gz” and ”\_2.fastq.gz“. Let’s change our loop so that we only get the”\_1.fastq.gz” files.
 
-``` 
+```         
 for r1 in data/*_1.fastq.gz
 
 do
@@ -1135,7 +1120,7 @@ do
   echo $r1
 
 done
-``` 
+```
 
 Great! Now, the only problem here is that we’re going to want to use both the ”\_1.fastq.gz” and the ”\_2.fastq.gz” files in our mapping. We can get around this by removing the “data/” directory and ”\_1.fastq.gz” suffix from the filename to give us our sample name.
 
@@ -1146,7 +1131,8 @@ This will get the base filename (e.g. “MT1_1.fastq.gz”) and replace the ”\
 We’ve added a little descriptive message so that when we run our loop we know which iteration it’s on and what it’s doing. Let’s try adding our HISAT2 mapping command.
 
 Note: we assume that the HISAT2 index has already been generated as that’s a command you’ll only need to run once.
-``` 
+
+```         
 for r1 in data/*_1.fastq.gz
 
 do
@@ -1162,14 +1148,15 @@ do
   hisat2 --max-intronlen 10000 -x data/PccAS_v3_hisat2.idx -1 "data/${sample}_1.fastq.gz" -2 "data/${sample}_2.fastq.gz" -S "data/${sample}.sam"
 
 done
-``` 
+```
+
 Notice that because we’re using a variable as part of the filename, we need to write the filename in double quotes.
 
 `data/${sample}_1.fastq.gz`
 
 Now let’s add in our samtools commands.
 
-``` 
+```         
 for r1 in data/*_1.fastq.gz
 
 do
@@ -1197,14 +1184,13 @@ do
   samtools index "data/${sample}_sorted.bam"
 
 done
-``` 
-
+```
 
 Finally, we don’t really want to keep intermediate SAM and unsorted BAM files if we don’t have to.
 
 They just take up precious space. So, let’s make our samtools command a one-liner, passing the stdout from one command to another.
 
-``` 
+```         
 for r1 in data/*_1.fastq.gz
 
 do
@@ -1218,12 +1204,11 @@ do
   hisat2 --max-intronlen 10000 -x data/PccAS_v3_hisat2.idx -1 "data/${sample}_1.fastq.gz" -2 "data/${sample}_2.fastq.gz" | samtools view -b - | samtools sort -o "data/${sample}_sorted.bam" - && samtools index "data/${sample}_sorted.bam"
 
 done
-``` 
-
+```
 
 You could also have used this approach for transcript quantification with Kallisto, assuming you had already generated the Kallisto index.
 
-``` 
+```         
 for r1 in data/*_1.fastq.gz
 
 do
@@ -1239,9 +1224,9 @@ do
   "data/${sample}_1.fastq.gz" "data/${sample}_2.fastq.gz"
 
 done
-``` 
+```
 
-### 10.1 Taking a closer look at the SBP genome mapping bash script
+### Taking a closer look at the SBP genome mapping bash script
 
 In the genome mapping section of this tutorial, we mentioned that the sorted genome alignments had been provided for the three SBP samples and that to generate them, we had run a bash script.
 

@@ -3,11 +3,11 @@ title: "Solutions"
 format: html
 ---
 
-### 1 Variant Calling - Solutions
+### Variant Calling - Solutions
 
 No exercises in this section.
 
-### 2 Performing variant calling
+### Performing variant calling
 
 **Q1** 66 reads
 
@@ -19,7 +19,7 @@ No exercises in this section.
 
 `bcftools mpileup -f GRCm38_68.19.fa A_J.bam | bcftools call -mv | less -S`
 
-### 2.1 Exercises
+### Exercises
 
 **Q1** The reference allele is A and the alternate allele is G.
 
@@ -29,7 +29,7 @@ No exercises in this section.
 
 **Q4** An indel. Five bases TGTGG were inserted after the T at position 10003649
 
-### 3 Variant Filtering
+### Variant Filtering
 
 **Q1** The complete command is:
 
@@ -51,7 +51,7 @@ No exercises in this section.
 
 `bcftools norm -f GRCm38_68.19.fa out.flt.vcf -o out.flt.norm.vcf`
 
-### 4 Calling Variants Across Multiple Samples
+### Calling Variants Across Multiple Samples
 
 **Q1** Use the commands:
 
@@ -71,7 +71,7 @@ No exercises in this section.
 
 `bcftools stats -e 'FILTER="PASS"' multi.filt.bcf | grep TSTV | cut -f5`
 
-### 5 Visualising Alignments
+### Visualising Alignments
 
 **Q1** 75 in total, 39 on the forward and 36 on the reverse strand.
 
@@ -89,7 +89,7 @@ No exercises in this section.
 
 **Q6** No. It is an alignment artefact, the aligner prefered two SNPs instead of a long deletion.
 
-### 6 Variant annotation
+### Variant annotation
 
 **Q1** Use the command:
 

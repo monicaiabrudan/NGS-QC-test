@@ -7,6 +7,10 @@ format: html
 
 RNA-Seq
 
+# Authors
+
+This tutorial was written by Victoria Offord based on materials from Adam Reid.
+
 # Duration
 
 3 hours
@@ -14,6 +18,16 @@ RNA-Seq
 # Key topics
 
 # Learning outcomes
+
+By the end of this tutorial you can expect to be able to:
+
+• Align RNA-Seq reads to a reference genome and a transcriptome
+
+• Visualise transcription data using standard tools
+
+• Perform QC of NGS transcriptomic data
+
+• Quantify the expression values of your transcripts using standard tools
 
 # Activities
 
@@ -37,16 +51,20 @@ RNA-Seq
 
 # Lecture recording, notes and scripts
 
-# Practical exercises
-
-### Virtual Machine
-
-Command line walk through.
-
-# Datasets
-
-# Assessment quiz
+# Check you knowledge quiz
 
 [Questions](module6_assessment.qmd)
 
-Solution
+# Summary of this module
+
+# Teaching guidance
+
+[Instructor notes](module6_instructor_notes.qmd)
+
+# Datasets
+
+Practice files for this module can be found on [Github](https://github.com/WCSCourses/Precourses_DataRepo/tree/main/course_data_2025/linux_googlecolab_data).
+
+# Platform Guidance
+
+[Guide](module6_platform_guidance.qmd)

@@ -334,13 +334,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#variant-calling---solutions" id="toc-variant-calling---solutions" class="nav-link active" data-scroll-target="#variant-calling---solutions">1 Variant Calling - Solutions</a></li>
-  <li><a href="#performing-variant-calling" id="toc-performing-variant-calling" class="nav-link" data-scroll-target="#performing-variant-calling">2 Performing variant calling</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">2.1 Exercises</a></li>
-  <li><a href="#variant-filtering" id="toc-variant-filtering" class="nav-link" data-scroll-target="#variant-filtering">3 Variant Filtering</a></li>
-  <li><a href="#calling-variants-across-multiple-samples" id="toc-calling-variants-across-multiple-samples" class="nav-link" data-scroll-target="#calling-variants-across-multiple-samples">4 Calling Variants Across Multiple Samples</a></li>
-  <li><a href="#visualising-alignments" id="toc-visualising-alignments" class="nav-link" data-scroll-target="#visualising-alignments">5 Visualising Alignments</a></li>
-  <li><a href="#variant-annotation" id="toc-variant-annotation" class="nav-link" data-scroll-target="#variant-annotation">6 Variant annotation</a></li>
+  <li><a href="#variant-calling---solutions" id="toc-variant-calling---solutions" class="nav-link active" data-scroll-target="#variant-calling---solutions">Variant Calling - Solutions</a></li>
+  <li><a href="#performing-variant-calling" id="toc-performing-variant-calling" class="nav-link" data-scroll-target="#performing-variant-calling">Performing variant calling</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#variant-filtering" id="toc-variant-filtering" class="nav-link" data-scroll-target="#variant-filtering">Variant Filtering</a></li>
+  <li><a href="#calling-variants-across-multiple-samples" id="toc-calling-variants-across-multiple-samples" class="nav-link" data-scroll-target="#calling-variants-across-multiple-samples">Calling Variants Across Multiple Samples</a></li>
+  <li><a href="#visualising-alignments" id="toc-visualising-alignments" class="nav-link" data-scroll-target="#visualising-alignments">Visualising Alignments</a></li>
+  <li><a href="#variant-annotation" id="toc-variant-annotation" class="nav-link" data-scroll-target="#variant-annotation">Variant annotation</a></li>
   </ul>
 </nav>
     </div>
@@ -367,11 +367,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="variant-calling---solutions" class="level3">
-<h3 class="anchored" data-anchor-id="variant-calling---solutions">1 Variant Calling - Solutions</h3>
+<h3 class="anchored" data-anchor-id="variant-calling---solutions">Variant Calling - Solutions</h3>
 <p>No exercises in this section.</p>
 </section>
 <section id="performing-variant-calling" class="level3">
-<h3 class="anchored" data-anchor-id="performing-variant-calling">2 Performing variant calling</h3>
+<h3 class="anchored" data-anchor-id="performing-variant-calling">Performing variant calling</h3>
 <p><strong>Q1</strong> 66 reads</p>
 <p><strong>Q2</strong> The reference allele is A and the alternate allele is G. The upper/lower case letters indicate the forward/reverse orientation of the read.</p>
 <p><strong>Q3</strong> 0 reads calling reference allelle and 66 reads calling the alternate allele</p>
@@ -379,14 +379,14 @@ ul.task-list li input[type="checkbox"] {
 <p><code>bcftools mpileup -f GRCm38_68.19.fa A_J.bam | bcftools call -mv | less -S</code></p>
 </section>
 <section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">2.1 Exercises</h3>
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <p><strong>Q1</strong> The reference allele is A and the alternate allele is G.</p>
 <p><strong>Q2</strong> Look up the tag DP in the INFO column: there were 69 raw reads at the position.</p>
 <p><strong>Q3</strong> There are 0 reads calling the reference and 66 high-quality reads calling the alternate.</p>
 <p><strong>Q4</strong> An indel. Five bases TGTGG were inserted after the T at position 10003649</p>
 </section>
 <section id="variant-filtering" class="level3">
-<h3 class="anchored" data-anchor-id="variant-filtering">3 Variant Filtering</h3>
+<h3 class="anchored" data-anchor-id="variant-filtering">Variant Filtering</h3>
 <p><strong>Q1</strong> The complete command is:</p>
 <p><code>bcftools query -f'%POS %QUAL [%GT %AD] %REF %ALT\n' -i'QUAL&gt;=30 &amp;&amp; type="snp" &amp;&amp; AD[*:1]&gt;=25' out.vcf | head</code></p>
 <p><strong>Q2</strong> The complete command is:</p>
@@ -399,7 +399,7 @@ ul.task-list li input[type="checkbox"] {
 <p><code>bcftools norm -f GRCm38_68.19.fa out.flt.vcf -o out.flt.norm.vcf</code></p>
 </section>
 <section id="calling-variants-across-multiple-samples" class="level3">
-<h3 class="anchored" data-anchor-id="calling-variants-across-multiple-samples">4 Calling Variants Across Multiple Samples</h3>
+<h3 class="anchored" data-anchor-id="calling-variants-across-multiple-samples">Calling Variants Across Multiple Samples</h3>
 <p><strong>Q1</strong> Use the commands:</p>
 <p><code>bcftools mpileup -a AD -f GRCm38_68.19.fa *.bam -Ou | bcftools call -mv -Ob -o multi.bcf bcftools index multi.bcf</code></p>
 <p><strong>Q2</strong> Use the commands</p>
@@ -411,7 +411,7 @@ ul.task-list li input[type="checkbox"] {
 <p><code>bcftools stats -e 'FILTER="PASS"' multi.filt.bcf | grep TSTV | cut -f5</code></p>
 </section>
 <section id="visualising-alignments" class="level3">
-<h3 class="anchored" data-anchor-id="visualising-alignments">5 Visualising Alignments</h3>
+<h3 class="anchored" data-anchor-id="visualising-alignments">Visualising Alignments</h3>
 <p><strong>Q1</strong> 75 in total, 39 on the forward and 36 on the reverse strand.</p>
 <p><strong>Q2</strong> Yes. Use the command:</p>
 <p><code>bcftools view -H -r 19:10001946 multi.filt.bcf</code></p>
@@ -422,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Q6</strong> No.&nbsp;It is an alignment artefact, the aligner prefered two SNPs instead of a long deletion.</p>
 </section>
 <section id="variant-annotation" class="level3">
-<h3 class="anchored" data-anchor-id="variant-annotation">6 Variant annotation</h3>
+<h3 class="anchored" data-anchor-id="variant-annotation">Variant annotation</h3>
 <p><strong>Q1</strong> Use the command:</p>
 <p><code>bcftools query -f '%BCSQ' -r 19:10088937 multi.filt.annot.bcf</code></p>
 <p>to return</p>

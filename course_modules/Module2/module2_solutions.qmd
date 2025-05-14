@@ -3,11 +3,11 @@ title: "Solutions"
 format: html
 ---
 
-### 1 Read Alignment
+### Read Alignment
 
 There are no questions in this section.
 
-### 2 Performing Read Alignment
+### Performing Read Alignment
 
 1\. 145441459
 
@@ -29,7 +29,7 @@ There are no questions in this section.
 
 10\. First/Forward read
 
-### 3 Alignment Visualisation
+### Alignment Visualisation
 
 1\. This exercise is just asking you to explore the genome and become familiar with navigating in IGV.
 
@@ -43,7 +43,7 @@ The third mutation is a bit harder to spot, because it’s bigger than the read 
 
 4\. This mouse was bred from a zygote which was mutagenised with Crispr-Cas9, targeted at the Tyr locus. You are watching the zygote DNA-repair machinery panicking and grabbing at straws when trying to repair double-stranded DNA breaks. In the process, it makes mistakes, and those mistakes are propagated into the mouse genome: different zygote cells received different mutations, which is why some reads reflect different mutations to others. Specifically - The CRISPR-Cas9 has acted on the zygote at this locus to create Non-Homologous-End-Join-based damage around 87,483,960: that resulted in a subclonal 1bp insertion and a 28bp deletion. Also, a related DNA repair process has resulted in the a 336bp deletion across the same area.
 
-### 3.1 Alignment workflows
+### Alignment workflows
 
 1\. -M marks shorter split hits as secondary and -R adds the read group to the header of the BAM file
 
@@ -81,7 +81,7 @@ MarkDuplicates -I library1.bam -O library1.markdup.bam -M library1.metrics.txt
 
 12\. 2.5%
 
-### 3.2 Exercises
+### Exercises
 
 1\. No answer needed
 
