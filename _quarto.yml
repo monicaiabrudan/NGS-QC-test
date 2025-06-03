@@ -3,12 +3,14 @@ project:
   output-dir: docs
   
 website:
-  title: "NGS Bioinformatics course"
+  title: "Genome Sequence Analysis Course"
   navbar:
     background: light
     left:
       - href: index.qmd
         text: Home
+      - href: welcome.qmd
+        text: Learning paths
       - text: Modules
         menu:
           - href: course_modules/Module1/module1.qmd
@@ -27,6 +29,13 @@ website:
             text: "CHiP-Seq"
           - href: course_modules/Glossary/glossary.qmd
             text: "Glossary of terms"
+      - href: VM.qmd
+        text: How to setup a VM
+      - href: Train-the-trainer.qmd
+        text: Train-the-trainer resources
+      - href: 'meet the team.qmd'
+        text: Meet the team
+
   sidebar:
     style: "docked"
     search: true
@@ -34,32 +43,67 @@ website:
     contents:
       - section: "File formats"
         contents:
+          - course_modules/Module1/module1.qmd
           - course_modules/Module1/module1_manual.qmd
           - course_modules/Module1/module1_exercises.qmd
+          - course_modules/Module1/module1_solutions.qmd
+          - course_modules/Module1/module1_instructor_notes.qmd
+          - course_modules/Module1/module1_datasets.qmd
+          - course_modules/Module1/module1_platform_guidance.qmd
       - section: "Read alignment"
         contents:
+          - course_modules/Module2/module2.qmd
           - course_modules/Module2/module2_manual.qmd
           - course_modules/Module2/module2_exercises.qmd
+          - course_modules/Module2/module2_solutions.qmd
+          - course_modules/Module2/module2_instructor_notes.qmd
+          - course_modules/Module2/module2_datasets.qmd
+          - course_modules/Module2/module2_platform_guidance.qmd
       - section: "Variant calling"
         contents:
+          - course_modules/Module3/module3.qmd
           - course_modules/Module3/module3_manual.qmd
           - course_modules/Module3/module3_exercises.qmd
+          - course_modules/Module3/module3_solutions.qmd
+          - course_modules/Module3/module3_instructor_notes.qmd
+          - course_modules/Module3/module3_datasets.qmd
+          - course_modules/Module3/module3_platform_guidance.qmd
       - section: "Structural Variation Calling"
         contents:
+          - course_modules/Module4/module4.qmd
           - course_modules/Module4/module4_manual.qmd
           - course_modules/Module4/module4_exercises.qmd
+          - course_modules/Module4/module4_solutions.qmd
+          - course_modules/Module4/module4_instructor_notes.qmd
+          - course_modules/Module4/module4_datasets.qmd
+          - course_modules/Module4/module4_platform_guidance.qmd
       - section: "Genome Assembly"
         contents:
+          - course_modules/Module5/module5.qmd
           - course_modules/Module5/module5_manual.qmd
           - course_modules/Module5/module5_exercises.qmd
+          - course_modules/Module5/module5_solutions.qmd
+          - course_modules/Module5/module5_instructor_notes.qmd
+          - course_modules/Module5/module5_datasets.qmd
+          - course_modules/Module5/module5_platform_guidance.qmd
       - section: "RNA-Seq"
         contents:
+          - course_modules/Module6/module6.qmd
           - course_modules/Module6/module6_manual.qmd
           - course_modules/Module6/module6_exercises.qmd
+          - course_modules/Module6/module6_solutions.qmd
+          - course_modules/Module6/module6_instructor_notes.qmd
+          - course_modules/Module6/module6_datasets.qmd
+          - course_modules/Module6/module6_platform_guidance.qmd
       - section: "CHiP-Seq"
         contents:
+          - course_modules/Module7/module7.qmd
           - course_modules/Module7/module7_manual.qmd
           - course_modules/Module7/module7_exercises.qmd
+          - course_modules/Module7/module7_solutions.qmd
+          - course_modules/Module7/module7_instructor_notes.qmd
+          - course_modules/Module7/module7_datasets.qmd
+          - course_modules/Module7/module7_platform_guidance.qmd
             
 
   page-navigation: true 

@@ -3,6 +3,8 @@ title: "Welcome"
 format: html
 ---
 
-**Welcome to the course "NGS Data Analysis: From Quality Control to Variant Calling"!**\
+**Welcome to the course on Genome Sequence Analysis!**\
 
-This practical course will take you through the complete workflow of analyzing next-generation sequencing (NGS) data. You’ll learn key steps including quality assessment, read alignment, variant calling, and annotation. By the end, you'll be equipped with the skills to confidently process and interpret NGS datasets in research and clinical contexts.
+This practical course will take you through the complete workflow of genome sequence data analysis. You’ll learn key steps including quality assessment, read alignment, variant calling, annotation, genome assembly, RNA-seq data analysis and ChIP-seq data analysis. By the end, you'll be equipped with the skills to confidently process and interpret various genomic datasets in research and clinical contexts.
+
+![](images/learning paths.jpg)

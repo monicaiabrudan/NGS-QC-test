@@ -53,7 +53,7 @@ Q: mean=454.87 std=86.29
 
 5\. `grep DEL | awk OFS= breakdancer.dels.bed | awk '{print $1"\t"$2"\t"$5"\t"$7"\t"$9}' > breakdancer.dels.bed`
 
-## 4 Calling Structural Variants from Long Reads 
+## 4 Calling Structural Variants from Long Reads
 
 ### 3.2 Inspecting SVs with IGV
 
