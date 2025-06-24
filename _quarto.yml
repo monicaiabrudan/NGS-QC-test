@@ -29,12 +29,24 @@ website:
             text: "CHiP-Seq"
           - href: course_modules/Glossary/glossary.qmd
             text: "Glossary of terms"
-      - href: VM.qmd
-        text: How to setup a VM
-      - href: Train-the-trainer.qmd
-        text: Train-the-trainer resources
+      - text: Informatics Guide
+        menu:
+          - href: course_modules/VM_guide/VM_Guide.qmd
+            text: "How to setup a VM"
+          - href: course_modules/VM_guide/Software_list.qmd
+            text: "Software list"
+      - text: Train-the-trainer
+        menu: 
+          - href: course_modules/Train-the-trainer/introduction.qmd
+            text: "Introduction"
+          - href: course_modules/Train-the-trainer/strategies.qmd
+            text: "Strategies for training professionals"
+          - href: course_modules/Train-the-trainer/elements.qmd
+            text: "Elements of effective training"
+          - href: course_modules/Train-the-trainer/training_design.qmd
+            text: "Training design"
       - href: 'meet the team.qmd'
-        text: Meet the team
+        text: Acknoledgements
 
   sidebar:
     style: "docked"
@@ -104,8 +116,17 @@ website:
           - course_modules/Module7/module7_instructor_notes.qmd
           - course_modules/Module7/module7_datasets.qmd
           - course_modules/Module7/module7_platform_guidance.qmd
-            
-
+      - section: "How to setup a VM"
+        contents:
+          - course_modules/VM_guide/VM_Guide.qmd
+          - course_modules/VM_guide/Software_list.qmd
+      - section: "Train-the-trainer"
+        contents:
+          - course_modules/Train-the-trainer/introduction.qmd
+          - course_modules/Train-the-trainer/strategies.qmd
+          - course_modules/Train-the-trainer/elements.qmd
+          - course_modules/Train-the-trainer/training_design.qmd
+  
   page-navigation: true 
   page-footer: 
     left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
