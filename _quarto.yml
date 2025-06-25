@@ -148,8 +148,10 @@ output:
 format:
   html:
     theme:
-      light: [theme_lter-edu-light, _extensions/lter/lter_scss-theme/theme_lter-edu-light.scss]
-      dark: [theme_lter-edu-dark, _extensions/lter/lter_scss-theme/theme_lter-edu-dark.scss]
+      light: flatly
+      dark: darkly
+      #light: [theme_lter-edu-light, _extensions/lter/lter_scss-theme/theme_lter-edu-light.scss]
+      #dark: [theme_lter-edu-dark, _extensions/lter/lter_scss-theme/theme_lter-edu-dark.scss]
     anchor-sections: true
     toc: true
     footnotes-hover: true

@@ -8,7 +8,7 @@ format: html
 **Software used during the course**
 
 | Software | Version (if not latest) | Module | Notes |
-|-------------------------|----------------|----------------|----------------|
+|----|----|----|----|
 | breakdancer | 1.4.5 | ngsbio |  |
 | samtools | 1.15.1 | ngsbio |  |
 | bcftools | 1.15.1 | ngsbio |  |

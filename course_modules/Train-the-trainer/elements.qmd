@@ -2,19 +2,23 @@
 title: "Elements of effective training"
 ---
 
-#### Elements of effective training and communication in genomics and bioinformatics
-
-#### **Sharing knowledge/skills and information in genomics and bioinformatics**
-
-This section of the course presents sharing knowledge and information, both in general and specific to genomics.
+## Sharing knowledge/skills and information in genomics and bioinformatics
 
 Within the context of this course we are mainly concentrating on teaching, training and mentoring as ways of conveying information to peers and colleagues. Many of the techniques and approaches to training are also relevant to other types of information sharing, such as communicating data or procedures to colleagues. 
 
-In the following activities, we will discuss effective communication in general, and then move on to visualising and communicating data and information. Learners will benefit from applying some of these techniques throughout the course, and beyond in their own training.
+The following activities discuss effective communication in general, and then move on to visualising and communicating data and information.
 
 #### **Answering and asking questions**
 
-{{< video https://www.youtube.com/embed/hMlaJpcRrkc width="50%">}}
+::: {.video-container}
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/hMlaJpcRrkc"
+  title="Answering and asking questions"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+:::
 
 Further reading:
 
@@ -22,7 +26,7 @@ Further reading:
 
 [Let's enjoy the Q&A session](https://www.nig.ac.jp/jimu/soken/courses/OSC/contents/Q&A_e.pdf)
 
-#### **Group work and collaboration**
+## Group work and collaboration
 
 Several studies have shown the advantages of collaborative learning. Group work is one of the most studied and implemented training techniques in the world.
 
@@ -30,7 +34,7 @@ Several studies have shown the advantages of collaborative learning. Group work 
 <iframe style="border: 1px solid #777;" src="https://indd.adobe.com/embed/6b37b1ac-1932-4f91-8969-5ef0d3c20ba0?startpage=1&allowFullscreen=true" width="80%" height="300px"frameborder="0" allowfullscreen=""></iframe>
 ```
 
-#### **Visualising and presenting data and information**
+## Visualising and presenting data and information
 
 With ever increasing amount and complexity of biological and genomic data and information, there is a growing need for visualising it in a clear and appealing manner and communicating it often to different audiences. To visualise data means to transform it into a picture reflecting the information, so that people can understand it. Data visualisation is also important for communicating research in publications.  
 
@@ -57,14 +61,8 @@ The same data can be presented in many different ways to many different audience
 
 **Feedback and collaboration** The formats we can use to present can be different: is it a journal article, with very small size graphic? Is it for the mobile, or a tablet, on the move? Is it a huge display in a poster, where there is a presenter alongside the poster, and you can have a conversation about the piece. There's lots of dynamics about the situation that someone would encounter our presentation. Asking collaborator or teamwork for a feedback before presenting is really important. Because sometimes, we try and do everything ourselves, but even if we can just introduce a second person's mindset, ask a colleague, ask a critical friend about it, we can receive a different insight. Feedback is really something we reluctantly seek out, but we should. We should ask people to test things, run things past people. Sometimes, we ourselves as creators, get too close to our work, we lose sight of what it is we're trying to say. Collaborating with others, getting other people to check things and test things, at the very least, is something that is going to give us the best chance of having the biggest impact with what it is we present.
 
-**Further reading:**
+**Further reading**
 
 Here is [Andy's website](https://www.visualisingdata.com/resources/), presenting many examples and resources on data visualisation and presentation. 
 
-[**Tips**](https://www.visualisingdata.com/2016/03/little-visualisation-design/)for improving your visualisation design.   
-
-#### **Forum: Obstacles to learning/training genomics and bioinformatics**
-
-Learners are asked to create a new discussion topic mentioning a major challenge that affects their ability to train effectively in genomics or bioinformatics.
-
-Areas you might consider: availability of time and resources, trainer knowledge and skills, reaching the right target audience, lack of institutional support, etc
+[**Tips**](https://www.visualisingdata.com/2016/03/little-visualisation-design/) for improving your visualisation design.

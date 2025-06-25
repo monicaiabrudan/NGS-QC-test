@@ -1,5 +1,0 @@
----
-title: "Train-the-trainer"
-format: html
----
-

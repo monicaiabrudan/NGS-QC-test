@@ -2,9 +2,7 @@
 title: "Strategies for training professionals"
 ---
 
-#### Strategies for training professionals
-
-#### Learning theory - Pedagogy and Andragogy
+## Learning theory - Pedagogy and Andragogy
 
 ```{=html}
 <iframe src="https://wellcomegenomecampus.h5p.com/content/1291759681592900897/embed" aria-label="Transcript for this video" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://wellcomegenomecampus.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
@@ -20,8 +18,6 @@ While pedagogy was coined to refer to teaching and learning of children, andrago
 
 Andragogy was proposed by M.S. Knowles in 1968. Knowles recognized that there are differences in the ways that adults learn as opposed to children. Many researchers agree that the **self-directed** approach to learning discussed by Knowles is applicable in a number of settings. Therefore, Knowles' assumptions of andragogy should be considered when designing and facilitating training programs for adult learners as these assumptions aid adult learners in applying new knowledge and skills to their professional environments. 
 
-#### Forum: Adult learning principles - Share with us your experience
-
 #### **Knowles' theory of andragogy** identified five assumptions that teachers should make about adult learners.
 
 -   Adults are self-directed learners, as they are more mature and have more secure self-concept, this allows them to take part in directing their own learning
@@ -36,11 +32,12 @@ Andragogy was proposed by M.S. Knowles in 1968. Knowles recognized that there ar
 
 A later sixth assumption posits that Adults are relevancy-oriented. Adult learners need to understand why learning new knowledge or skills is important. 
 
-**What do you think about these principles of adult learning?\
-\
+**What do you think about these principles of adult learning?
+
+
 Do you have an example from your experience as a learner or trainer to illustrate your views?**
 
-#### Application of adult learning principles in approaches to training/teaching
+## Application of adult learning principles in approaches to training/teaching
 
 Learning and teaching is an active process where knowledge and authority is shared between teachers and learners. The teacher's/trainer's role becomes more one of a facilitator or a guide. Knowles summarised four key principles and practice considerations for adult learning:
 
@@ -54,7 +51,7 @@ Learning and teaching is an active process where knowledge and authority is shar
 
 The assumptions of andragogy shape the design of training. According to Knowles et al. (2015), in the **traditional context** model the instructor decides in advance what knowledge or skills need to be transmitted, develops the content into logical units, selects the most appropriate delivery strategies (lectures, readings, laboratory exercises etc.), and then develops a delivery plan.
 
-Following an **andragogical approach,** ideally, the instructor prepares in advance a set of procedures for involving the learners and other relevant parties in a process involving these elements:
+Following an **andragogical approach,** ideally, the instructor prepares in advance a set of procedures for involving the learners and other relevant parties in a process involving these elements:
 
 1.  preparing the learner;
 
@@ -78,7 +75,7 @@ Other educators have based their teaching practice on variations of these princi
 
 Combining Knowles' and Vandenberg's assumptions, this [Table](Adult_learning_principles_Knowles_-_Vandenberg_-2.pdf) outlines what trainers/facilitators could do for effective adult learning.
 
-## **From teacher to facilitator of learning and trainer of professionals or experts**
+## From teacher to facilitator of learning and trainer of professionals or experts
 
 **Traditional role of a teacher**  is that of being responsible for what learners should learn, how, when and if they have learned. They transmit prescribed content, controlling the way learners receive it and use it, and at the end test their knowledge. This is the model many of us know and have been through. 
 
@@ -88,17 +85,17 @@ Combining Knowles' and Vandenberg's assumptions, this [Table](Adult_learning_pri
 
 Here we will present how the adult learning principles can be translated into more concrete teaching/training strategies, so that as trainers we can use methods and tools to better accommodate the learning process of our adult learners, as part of the facilitation process. 
 
-Click on the fullscreen icon to increase the resolution of the interactive image below and then click on the plus icon to open sections with more information. (The table containing this information can be downloaded [here](Adult%20learning%20principles%20in%20practice.pdf).)
-
 ![](img/adult_learners.png)
 
-#### [**Quiz on adult learning**](module1a_quiz_adult_learning.qmd)
-
-#### **Social learning**
+## **Social learning**
 
 #### When designing training, we should always take into account the social context where learning takes place, as learning is an active, contextualized process of constructing knowledge, rather than pure acquisition of information.
 
-Learning occurs through social interactions, and others in the community play important role in the process of learning. This concept is based on social constructivism, a theory of how people learn. The theory  positions social interactions, such as conversations between teacher and learner, as important in articulating what is already known so that new ideas can be introduced in the context of current understanding. L Vygotksy, the founder of social constructivism, proposed the idea of a Zone of Proximal Development (ZPD) to explain how learners master new ideas and skills under guidance from an expert.
+Learning occurs through social interactions, and others in the community play important role in the process of learning.
+
+This concept is based on social constructivism, a theory of how people learn. The theory positions social interactions, such as conversations between teacher and learner, as important in articulating what is already known so that new ideas can be introduced in the context of current understanding.
+
+L Vygotksy, the founder of social constructivism, proposed the idea of a Zone of Proximal Development (ZPD) to explain how learners master new ideas and skills under guidance from an expert.
 
 Building on this, E. Wenger showed that learning and value creation in networked Communities of Practice happen through engagement and social interaction of its members. 
 
@@ -106,37 +103,23 @@ In the context of this course, social learning will be encouraged through opport
 
 Find below some examples and definitions of ways social learning can take place.
 
-**Knowledge Sharing**
+**Knowledge Sharing:** Directly passing on ideas and information to each other
 
-Directly passing on ideas and information to each other
+**Direct learning from others:** Asking questions, getting responses
 
-**Direct learning from others**
+**Shared knowledge building:** Development of concept through dialogue and interaction
 
-Asking questions, getting responses
+**Group learning:** Orchestrated collaboration, exploration and creation
 
-**Shared knowledge building**
+**Conversational learning:** Discussion, social interaction
 
-Development of concept  through dialogue and interaction
+**Vicarious learning:** Observation of other people's learning
 
-**Group learning**
+**Implicit learning:** Incidental learning
 
-Orchestrated collaboration, exploration and creation
+## **Active learning and shared responsibility**
 
-**Conversational learning**
-
-Discussion, social interaction
-
-**Vicarious learning**
-
-Observation of other people's learning
-
-**Implicit learning**
-
-Incidental learning
-
-**Active learning and shared responsibility**
-
-**Active learning**
+#### **Active learning**
 
 This course involves the course participants as well as the course instructors, in an active process of learning and training. This will mean maximising hands-on, problem solving activities, use of different tools and technology, case studies, group work and collaboration, making of learning plans and reflecting on learning. The instructors on this course will prepare the activities which will encourage active learners involvement, motivate and support learners and provide opportunities for formative assessment throughout the course. 
 
@@ -168,8 +151,6 @@ Areas you might consider: availability of time and resources, trainer knowledge 
 
 Pick one of the outcomes and start a thread in this forum with that name (if someone else has started it already, please use that thread). For each learning outcome, discuss the Bloom's levels, structure of the sentence (verb, object and qualifying phrase) and comment on whether that particular outcome is written in a SMART manner.
 
-#### **Scope of training and teaching**
+## **Scope of training and teaching**
 
 Most of what we taught in this module can be applied to different scopes and formats of teaching/training. The trainer's or teacher's knowledge, skills and attitudes we talked about are needed to apply an active, learner centred approach to teaching/training . However, we paid most attention to training of adult professionals that often takes place via short courses, workshops, seminars, on job training (or in-person, virtual or hybrid equivalents).  You might be working or planning to work on a university course or even the programme consisting of more than one course. You will still be able to use the principles of learning and training described in this module and further in Module 2, in other contexts where your work might be situated. 
-
-**What is the scope of teaching/training you will be working on and what do you think are the main differences in design approach between short training courses and university courses?**

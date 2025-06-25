@@ -1,5 +1,0 @@
----
-title: "References and Acknowledgements"
----
-
-Slides on [References and Acknowledgements](docs/References.pdf)
