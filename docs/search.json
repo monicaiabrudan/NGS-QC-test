@@ -2,9 +2,14 @@
   {
     "objectID": "meet the team.html",
     "href": "meet the team.html",
-    "title": "Acknoledgements",
+    "title": "Acknowledgements",
     "section": "",
-    "text": "As included in ANSI/NISO Z39.104-2022, CRediT, Contributor Roles Taxonomy https://www.niso.org/publications/z39104-2022-credit\n\nContributor Roles\n\nConceptualization\n(Ideas; formulation or evolution of overarching research goals and aims.)\nData curation\n(Management activities to annotate (produce metadata), scrub data and maintain research data (including software code, where it is necessary for interpreting the data itself) for initial use and later re-use.)\nFormal analysis\n(Application of statistical, mathematical, computational, or other formal techniques to analyze or synthesize study data.)\nMethodology\n(Development or design of methodology; creation of models)\nResources\n(Provision of study materials, reagents, materials, patients, laboratory samples, animals, instrumentation, computing resources, or other analysis tools.)\nSupervision\n(Oversight and leadership responsibility for the research activity planning and execution, including mentorship external to the core team)\nValidation\n(Verification, whether as a part of the activity or separate, of the overall replication/reproducibility of results/experiments and other research outputs. )\nVisualization\n(Preparation, creation and/or presentation of the published work, specifically visualization/data presentation)\n\n© Wellcome Connecting Science"
+    "text": "As included in ANSI/NISO Z39.104-2022, CRediT, Contributor Roles Taxonomy https://www.niso.org/publications/z39104-2022-credit\n\nContributor Roles\n\nConceptualization\n(Ideas; formulation or evolution of overarching research goals and aims.)\nData curation\n(Management activities to annotate (produce metadata), scrub data and maintain research data (including software code, where it is necessary for interpreting the data itself) for initial use and later re-use.)\nFormal analysis\n(Application of statistical, mathematical, computational, or other formal techniques to analyze or synthesize study data.)\nMethodology\n(Development or design of methodology; creation of models)\nResources\n(Provision of study materials, reagents, materials, patients, laboratory samples, animals, instrumentation, computing resources, or other analysis tools.)\nSupervision\n(Oversight and leadership responsibility for the research activity planning and execution, including mentorship external to the core team)\nValidation\n(Verification, whether as a part of the activity or separate, of the overall replication/reproducibility of results/experiments and other research outputs. )\nVisualization\n(Preparation, creation and/or presentation of the published work, specifically visualization/data presentation)\n\n© Wellcome Connecting Science",
+    "crumbs": [
+      "Home",
+      "Contributors",
+      "Acknowledgements"
+    ]
   },
   {
     "objectID": "course_modules/Module1/module1_instructor_notes.html",

@@ -2,9 +2,11 @@ project:
   type: website
   output-dir: docs
   
+  
 website:
   title: "Genome Sequence Analysis Course"
   navbar:
+    logo: "_extensions/img/WCS_Logo-Primary_Black.jpg"
     background: light
     left:
       - href: index.qmd
@@ -45,9 +47,6 @@ website:
             text: "Elements of effective training"
           - href: course_modules/Train-the-trainer/training_design.qmd
             text: "Training design"
-      - href: 'meet the team.qmd'
-        text: Acknoledgements
-
   sidebar:
     style: "docked"
     search: true
@@ -126,6 +125,9 @@ website:
           - course_modules/Train-the-trainer/strategies.qmd
           - course_modules/Train-the-trainer/elements.qmd
           - course_modules/Train-the-trainer/training_design.qmd
+      - section: 'Contributors'
+        contents:
+          - "meet the team.qmd"
   
   page-navigation: true 
   page-footer: 
@@ -141,9 +143,6 @@ output:
     toc: true
     toc_float:
       collapsed: false
-    includes:
-      after_body: _extensions/footer.html
-      
 
 format:
   html:
